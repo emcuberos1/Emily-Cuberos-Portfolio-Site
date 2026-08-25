@@ -1,301 +1,907 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Manage and reserve cabanas, shoreline chairs, sports equipment, and gourmet dining at The Harlow Hotel & Resort. Earn and redeem loyalty points on your stays.">
-  <title>The Harlow Hotel & Resort - Amenities & Reservations</title>
-  
-  <!-- Custom Styling -->
-  <link rel="stylesheet" href="style.css">
-  
-  <!-- Lucide Icons Library (Vector Icons) -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emily Cuberos — Technical Project Manager &amp; Web Developer</title>
+<meta name="description" content="Portfolio of Emily Cuberos — technical project manager and web developer bridging architecture, systems analysis, and guest-experience technology.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Public+Sans:wght@400;500;600;700;800&display=swap');
+
+  :root{
+    --cream:#FBF5E7;
+    --cream-deep:#F3E7CC;
+    --card:#FFFFFF;
+    --teal:#1F4A41;
+    --teal-2:#2C6154;
+    --teal-soft:#E4EEE9;
+    --gold:#C1922E;
+    --gold-light:#E7C878;
+    --peach:#E8A97C;
+    --peach-soft:#FBE7D8;
+    --ink:#23291F;
+    --muted:#8A7F68;
+  }
+
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Public Sans',sans-serif;
+  }
+  .font-display{font-family:'Fraunces',serif;}
+
+  ::selection{background:var(--gold-light);color:var(--ink);}
+  ::-webkit-scrollbar{width:10px;}
+  ::-webkit-scrollbar-track{background:var(--cream-deep);}
+  ::-webkit-scrollbar-thumb{background:var(--gold);border-radius:8px;}
+
+  .eyebrow{
+    font-family:'Public Sans',sans-serif;
+    font-weight:700;
+    font-size:12px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--gold);
+  }
+
+  /* Soft organic blobs for hero atmosphere */
+  .blob{
+    position:absolute;
+    border-radius:44% 56% 62% 38% / 45% 41% 59% 55%;
+    filter:blur(2px);
+    opacity:.55;
+    z-index:0;
+  }
+
+  /* Stamp badge — the signature element */
+  .stamp{
+    width:112px;height:112px;
+    border-radius:9999px;
+    border:2px dashed var(--teal-2);
+    display:flex;align-items:center;justify-content:center;
+    flex-direction:column;
+    text-align:center;
+    transform:rotate(-8deg);
+    color:var(--teal);
+    background:rgba(255,255,255,.5);
+    flex-shrink:0;
+  }
+  .stamp.gold{border-color:var(--gold); color:var(--gold);}
+  .stamp span.big{font-family:'Fraunces',serif; font-size:15px; font-weight:600; line-height:1.05;}
+  .stamp span.small{font-size:8px; letter-spacing:.1em; text-transform:uppercase; margin-top:2px; font-weight:700;}
+
+  .ticket{
+    background:var(--card);
+    border-radius:28px;
+    box-shadow:0 18px 45px -20px rgba(31,74,65,0.28);
+    position:relative;
+    overflow:hidden;
+  }
+  .ticket-divider{
+    border-left:2px dashed var(--cream-deep);
+  }
+  .punch{
+    position:absolute;
+    width:28px;height:28px;
+    background:var(--cream);
+    border-radius:9999px;
+    top:50%;
+    transform:translateY(-50%);
+  }
+
+  .stop-number{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    color:var(--gold);
+  }
+
+  .nav-pill{
+    background:rgba(251,245,231,.85);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(31,74,65,0.08);
+  }
+  .nav-link{
+    position:relative;
+    color:var(--ink);
+    opacity:.72;
+    transition:opacity .2s ease;
+  }
+  .nav-link:hover{opacity:1;}
+
+  .btn-primary{
+    background:var(--teal);
+    color:var(--cream);
+    transition:background .2s ease, transform .2s ease;
+  }
+  .btn-primary:hover{background:var(--teal-2); transform:translateY(-1px);}
+
+  .btn-ghost{
+    border:1.5px solid var(--teal);
+    color:var(--teal);
+    transition:background .2s ease, color .2s ease;
+  }
+  .btn-ghost:hover{background:var(--teal); color:var(--cream);}
+
+  .chip{
+    background:var(--teal-soft);
+    color:var(--teal);
+    font-weight:600;
+    font-size:12.5px;
+  }
+  .chip.gold{background:var(--peach-soft); color:#9A5B26;}
+
+  .card-soft{
+    background:var(--card);
+    border-radius:24px;
+    box-shadow:0 14px 34px -22px rgba(31,74,65,0.22);
+  }
+
+  .reveal{
+    opacity:0;
+    transform:translateY(16px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1;transform:none;transition:none;}
+  }
+
+  .underline-gold{
+    background-image:linear-gradient(var(--gold-light), var(--gold-light));
+    background-repeat:no-repeat;
+    background-size:100% 10px;
+    background-position:0 78%;
+  }
+
+  .path-line{
+    position:absolute;
+    left:27px;
+    top:0;
+    bottom:0;
+    width:2px;
+    background-image:linear-gradient(var(--gold-light) 60%, transparent 0%);
+    background-size:2px 12px;
+    background-repeat:repeat-y;
+  }
+
+  .kpi{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+  }
+</style>
 </head>
 <body>
 
-  <div class="app-container">
-    <!-- LUXURY NAVBAR -->
-    <header class="navbar">
-      <div class="brand">
-        <div class="brand-avatar">
-          <!-- Small SVG Palm Tree/H Logo icon -->
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#C5A059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2v20M2 12h20M5 5l14 14M5 19L19 5"/>
-          </svg>
-        </div>
-        <div>
-          <span class="brand-logo">THE HARLOW</span>
-          <span class="brand-subtitle">Hotel & Beach Resort</span>
-        </div>
+<!-- ============ NAV ============ -->
+<header class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-3xl">
+  <div class="nav-pill rounded-full px-5 md:px-7 py-3 flex items-center justify-between shadow-sm">
+    <a href="#top" class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background:var(--teal);">
+        <span class="font-display italic text-[var(--cream)] text-sm">Ec</span>
       </div>
-      
-      <nav>
-        <ul class="nav-links">
-          <li class="nav-item active" data-view="overview"><button>Resort Overview</button></li>
-          <li class="nav-item" data-view="booking"><button>Reserve Amenities</button></li>
-          <li class="nav-item" data-view="dining"><button>Dining Reservations</button></li>
-          <li class="nav-item" data-view="dashboard"><button>Guest Dashboard</button></li>
-          <li class="nav-item" data-view="help"><button>Help & Support</button></li>
-        </ul>
-      </nav>
-      
-      <div class="user-status">
-        <div class="points-pill" id="points-indicator" title="Your loyalty points balance. Click to view history.">
-          <i data-lucide="sparkles"></i>
-          <span id="points-display">0 Points</span>
-        </div>
-        <div class="guest-avatar" id="guest-avatar-pill">G</div>
-      </div>
-    </header>
+    </a>
+    <nav class="hidden md:flex items-center gap-6 text-[13px] font-semibold">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#work" class="nav-link">The Work</a>
+      <a href="#architecture" class="nav-link">Architecture</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#certs" class="nav-link">Certifications</a>
+      <a href="#timeline" class="nav-link">Timeline</a>
+      <a href="#" class="nav-link">R&eacute;sum&eacute;</a>
+    </nav>
+    <a href="#contact" class="btn-primary text-[13px] font-bold rounded-full px-5 py-2.5">Say hello</a>
+  </div>
+</header>
 
-    <!-- HERO SECTION -->
-    <div class="hero">
-      <p>Luxury Oceanfront Living</p>
-      <h1>A Paradise Redefined</h1>
-      <div class="hero-divider"></div>
-      <p style="font-size: 0.85rem; letter-spacing: 4px; color: #F4EEDF;">Cabanas • Sports • Dining • Rewards</p>
+<!-- ============ HERO ============ -->
+<section id="top" class="relative overflow-hidden pt-40 md:pt-48 pb-24 px-5 md:px-10">
+  <div class="blob w-[420px] h-[420px] -top-24 -left-32" style="background:var(--peach-soft);"></div>
+  <div class="blob w-[360px] h-[360px] top-10 -right-24" style="background:var(--teal-soft);"></div>
+  <div class="blob w-[260px] h-[260px] top-72 left-1/3" style="background:var(--gold-light); opacity:.25;"></div>
+
+  <div class="max-w-4xl mx-auto relative z-10 text-center">
+    <div class="eyebrow mb-5">Hi, I&rsquo;m</div>
+    <h1 class="font-display text-[15vw] md:text-7xl leading-[0.98] font-medium">
+      Emily Cuberos
+    </h1>
+    <p class="mt-6 text-lg md:text-xl leading-relaxed text-[var(--ink)]/80 max-w-2xl mx-auto">
+      A technical project management and web development student who started out designing buildings &mdash;
+      and now designs the <span class="font-display italic underline-gold">systems and screens</span>
+      that make a user&rsquo;s experience feel effortless.
+    </p>
+
+    <div class="mt-9 flex flex-wrap justify-center gap-3">
+      <a href="#work" class="btn-primary rounded-full px-7 py-3.5 font-bold text-sm flex items-center gap-2">
+        See what I&rsquo;ve built <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </a>
+      <a href="#contact" class="btn-ghost rounded-full px-7 py-3.5 font-bold text-sm">
+        Get in touch
+      </a>
     </div>
-
-    <!-- MAIN VIEWPORT (Rendered Dynamically) -->
-    <main id="app-viewport" class="container view-transition">
-      <!-- Dynamic content from app.js goes here -->
-    </main>
-
-    <!-- CONCIERGE CHAT WIDGET -->
-    <div class="chat-widget" id="concierge-widget">
-      <!-- Floating action button -->
-      <button class="chat-trigger" id="chat-trigger-btn" aria-label="Open Guest Services Chat">
-        <i data-lucide="message-square"></i>
-        <div class="badge" id="chat-unread-badge" style="display: none;">1</div>
-      </button>
-      
-      <!-- Chat Window Overlay -->
-      <div class="chat-window" id="chat-window-panel">
-        <div class="chat-header">
-          <div class="concierge-profile">
-            <div class="concierge-avatar">H</div>
-            <div class="concierge-name">
-              <h4>Harlow Concierge</h4>
-              <span>Online • Guest Services</span>
-            </div>
-          </div>
-          <button class="chat-close" id="chat-close-btn" aria-label="Close Chat">
-            <i data-lucide="x"></i>
-          </button>
-        </div>
-        
-        <!-- Messages Log Container -->
-        <div class="chat-messages" id="chat-messages-container">
-          <!-- Filled dynamically by app.js -->
-        </div>
-        
-        <!-- Quick replies / FAQ suggestors -->
-        <div class="chat-quick-replies" id="chat-quick-replies">
-          <button class="quick-reply-btn" data-faq="0">Points?</button>
-          <button class="quick-reply-btn" data-faq="1">Time Limits?</button>
-          <button class="quick-reply-btn" data-faq="2">Cancellation?</button>
-          <button class="quick-reply-btn" data-faq="3">Report Issue</button>
-        </div>
-        
-        <!-- Input fields -->
-        <div class="chat-input-bar">
-          <input type="text" class="chat-input" id="chat-input-field" placeholder="Type a message to guest services...">
-          <button class="chat-send-btn" id="chat-send-btn" aria-label="Send Message">
-            <i data-lucide="send"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- CHECKOUT / BOOKING MODAL OVERLAY -->
-    <div class="modal-overlay" id="checkout-modal">
-      <div class="modal-content">
-        <!-- CHECKOUT FORM VIEW -->
-        <div id="modal-form-view">
-          <div class="modal-header">
-            <h3 id="modal-item-name">Confirm Booking</h3>
-            <button class="modal-close" id="modal-close-btn">&times;</button>
-          </div>
-          <div class="modal-body">
-            <div class="modal-summary-card">
-              <h4 class="summary-title" id="summary-card-title">Oceanfront Cabana</h4>
-              <div class="summary-meta" id="summary-card-meta">Beach Amenities</div>
-              <div class="summary-grid">
-                <div class="summary-item">
-                  <strong>Duration</strong>
-                  <span id="summary-duration">3 Hours</span>
-                </div>
-                <div class="summary-item">
-                  <strong>Hourly Rate</strong>
-                  <span id="summary-hourly-rate">$80.00/hr</span>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Schedule Selection Module -->
-            <div class="schedule-section" style="margin-bottom: 20px; padding: 16px; background: var(--color-sand-light); border-radius: var(--border-radius-md); border: 1px solid var(--color-sand-dark);">
-              <div style="font-size:0.8rem; text-transform:uppercase; font-weight:600; color:var(--color-ocean-medium); margin-bottom:10px; display:flex; align-items:center; gap:6px;"><i data-lucide="calendar" style="width:14px;height:14px;color:var(--color-gold-metallic);"></i> Select Date & Start Time</div>
-              <div style="display:grid; grid-template-columns: 1.2fr 1fr; gap:10px;">
-                <div class="input-group">
-                  <label style="font-size: 0.75rem; font-weight:600; color:var(--color-gray-dark);">Date</label>
-                  <input type="date" id="checkout-date-input" class="dining-input" required>
-                </div>
-                <div class="input-group">
-                  <label style="font-size: 0.75rem; font-weight:600; color:var(--color-gray-dark);">Start Time</label>
-                  <select id="checkout-time-select" class="dining-select" required>
-                    <option value="8:00 AM">8:00 AM</option>
-                    <option value="9:00 AM">9:00 AM</option>
-                    <option value="10:00 AM">10:00 AM</option>
-                    <option value="11:00 AM">11:00 AM</option>
-                    <option value="12:00 PM">12:00 PM</option>
-                    <option value="1:00 PM">1:00 PM</option>
-                    <option value="2:00 PM">2:00 PM</option>
-                    <option value="3:00 PM">3:00 PM</option>
-                    <option value="4:00 PM">4:00 PM</option>
-                    <option value="5:00 PM">5:00 PM</option>
-                    <option value="6:00 PM">6:00 PM</option>
-                    <option value="7:00 PM">7:00 PM</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <!-- Payment Method Module -->
-            <div class="payment-section" style="margin-bottom: 20px; padding: 16px; background: var(--color-white); border-radius: var(--border-radius-md); border: 1px solid var(--color-gray-medium);">
-              <div style="font-size:0.8rem; text-transform:uppercase; font-weight:600; color:var(--color-ocean-medium); margin-bottom:10px; display:flex; align-items:center; gap:6px;"><i data-lucide="credit-card" style="width:14px;height:14px;color:var(--color-gold-metallic);"></i> Payment Option</div>
-              <div class="input-group" style="margin-bottom:8px;">
-                <select id="checkout-payment-method" class="dining-select">
-                  <option value="room-charge">Charge to Suite (Room 304)</option>
-                  <option value="credit-card">Credit / Debit Card</option>
-                  <option value="apple-pay">Apple Pay</option>
-                </select>
-              </div>
-              
-              <!-- Conditional Card Details Fields -->
-              <div id="payment-card-details" style="display:none; flex-direction:column; gap:8px; margin-top:10px;">
-                <input type="text" class="dining-input" id="card-number" placeholder="Card Number (4111 2222 3333 4444)" maxlength="19">
-                <div style="display:grid; grid-template-columns:1.5fr 1fr; gap:10px;">
-                  <input type="text" class="dining-input" id="card-expiry" placeholder="MM/YY" maxlength="5">
-                  <input type="text" class="dining-input" id="card-cvv" placeholder="CVV" maxlength="3">
-                </div>
-              </div>
-            </div>
-            
-            <!-- Loyalty redemption area -->
-            <div class="redeem-points-section" id="points-redemption-module">
-              <div class="redeem-header">
-                <h4>Redeem Points</h4>
-                <span class="redeem-balance" id="checkout-points-balance">Available: 500 pts ($5.00)</span>
-              </div>
-              <div class="redeem-control">
-                <input type="checkbox" id="use-points-checkbox" class="redeem-checkbox">
-                <label for="use-points-checkbox" class="redeem-label">Apply points to cover cost</label>
-              </div>
-              <div class="points-slider-group" id="points-slider-wrapper">
-                <div class="slider-info">
-                  <span>Redeem: <strong id="points-slider-val">0</strong> points</span>
-                  <span>Discount: -<strong id="points-discount-val">$0.00</strong></span>
-                </div>
-                <input type="range" class="points-slider" id="points-checkout-slider" min="0" max="0" value="0" step="100">
-              </div>
-            </div>
-
-            <!-- Checkout Math Summary -->
-            <table class="math-table">
-              <tr>
-                <td>Rental Subtotal</td>
-                <td id="checkout-subtotal">$0.00</td>
-              </tr>
-              <tr style="color: var(--color-coral); display: none;" id="checkout-points-discount-row">
-                <td>Points Discount</td>
-                <td id="checkout-discount">-$0.00</td>
-              </tr>
-              <tr class="total-row">
-                <td>Estimated Total</td>
-                <td id="checkout-total">$0.00</td>
-              </tr>
-            </table>
-
-            <div class="points-earned-msg" id="checkout-points-earned-badge">
-              <i data-lucide="sparkles"></i>
-              <span>Earn +<strong id="points-to-earn">0</strong> Points with this reservation!</span>
-            </div>
-
-            <div class="modal-footer">
-              <button class="btn-secondary" id="checkout-cancel-btn">Cancel</button>
-              <button class="btn-primary" id="checkout-confirm-btn">Confirm Reservation</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- CHECKOUT SUCCESS VIEW -->
-        <div id="modal-success-view" style="display: none;">
-          <div class="modal-header" style="background: var(--color-teal-accent);">
-            <h3>Booking Confirmed</h3>
-            <button class="modal-close" id="modal-success-close-btn">&times;</button>
-          </div>
-          <div class="modal-success-state">
-            <div class="success-icon-circle">
-              <i data-lucide="check-circle"></i>
-            </div>
-            <h4 style="font-size: 1.6rem; color: var(--color-ocean-deep); font-family: var(--font-serif); margin-top: -10px;">Your booking is confirmed!</h4>
-            <p style="font-size: 0.95rem; color: var(--color-gray-dark); max-width: 380px; margin-top: -10px; line-height: 1.4;">Thank you for your booking! Your reservation at The Harlow is confirmed. Details of your stay rewards and booking receipt are listed below.</p>
-            
-            <div class="success-receipt-card">
-              <div class="success-receipt-row">
-                <span>Amenity</span>
-                <strong id="success-receipt-item">Oceanfront Cabana</strong>
-              </div>
-              <div class="success-receipt-row">
-                <span>Date & Time</span>
-                <strong id="success-receipt-datetime">Mon, Jun 8 @ 10:00 AM</strong>
-              </div>
-              <div class="success-receipt-row">
-                <span>Duration</span>
-                <strong id="success-receipt-duration">3 Hours</strong>
-              </div>
-              <div class="success-receipt-row">
-                <span>Payment Method</span>
-                <strong id="success-receipt-payment">Room Charge (Suite 304)</strong>
-              </div>
-              <div class="success-receipt-row" style="border-top: 1px dashed var(--color-gray-medium); padding-top: 10px; margin-top: 5px;">
-                <span>Total Paid</span>
-                <strong id="success-receipt-total">$155.00</strong>
-              </div>
-              <div class="success-receipt-row" style="color: var(--color-teal-accent); font-weight: 600; border-bottom: none; padding-bottom: 0;">
-                <span>Rewards Earned</span>
-                <strong id="success-receipt-points">+155 Points</strong>
-              </div>
-            </div>
-            
-            <button class="btn-primary" id="success-dashboard-btn" style="width: 100%; margin-top: 10px;">Go to Dashboard</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- LUXURY FOOTER -->
-    <footer class="footer">
-      <div class="footer-content">
-        <div class="footer-logo">
-          THE <span>HARLOW</span>
-        </div>
-        <ul class="footer-links">
-          <li><a href="#" class="view-trigger" data-view="overview">About</a></li>
-          <li><a href="#" class="view-trigger" data-view="booking">Bookings</a></li>
-          <li><a href="#" class="view-trigger" data-view="help">Support</a></li>
-          <li><a href="#" class="view-trigger" data-view="help">Privacy</a></li>
-        </ul>
-      </div>
-      <div class="footer-copy">
-        <p>&copy; 2026 The Harlow Hotel & Beach Resort. All Rights Reserved. Crafted with coastal elegance.</p>
-      </div>
-    </footer>
   </div>
 
-  <!-- Data and Application Scripts -->
-  <script src="data.js"></script>
-  <script src="app.js"></script>
+  <!-- Welcome strip -->
+  <div class="max-w-5xl mx-auto mt-20 relative z-10">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="card-soft p-6 text-center">
+        <div class="kpi text-3xl" style="color:var(--teal);">3.74</div>
+        <div class="text-xs font-semibold text-[var(--muted)] mt-1 uppercase tracking-wide">Cumulative GPA</div>
+      </div>
+      <div class="card-soft p-6 text-center">
+        <div class="kpi text-3xl" style="color:var(--teal);">5&times;</div>
+        <div class="text-xs font-semibold text-[var(--muted)] mt-1 uppercase tracking-wide">Dean&rsquo;s List terms</div>
+      </div>
+      <div class="card-soft p-6 text-center">
+        <div class="kpi text-3xl" style="color:var(--teal);">2 yrs</div>
+        <div class="text-xs font-semibold text-[var(--muted)] mt-1 uppercase tracking-wide">Architecture studio</div>
+      </div>
+      <div class="card-soft p-6 text-center">
+        <div class="kpi text-3xl" style="color:var(--teal);">9</div>
+        <div class="text-xs font-semibold text-[var(--muted)] mt-1 uppercase tracking-wide">Certifications</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" class="px-5 md:px-10 py-20">
+  <div class="max-w-5xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <div class="eyebrow mb-3">About me</div>
+        <h2 class="font-display text-4xl md:text-[2.75rem] leading-tight mb-6">
+          Two disciplines that turned out to be one skill.
+        </h2>
+        <div class="space-y-4 text-[15.5px] leading-relaxed text-[var(--ink)]/85">
+          <p>
+            I began my degree in FIU&rsquo;s Master of Architecture &ndash; Accelerated Major, spending two years
+            in design studio: structures, digital design, design history, and drawing set after drawing set.
+            It&rsquo;s where I learned to think in systems &mdash; every wall, every load path, every finish has
+            to reconcile with everything else, on a deadline, in front of a critic who will find the part that
+            doesn&rsquo;t.
+          </p>
+          <p>
+            In 2026 I moved into an Interdisciplinary Studies B.A. with an expertise focus in Project Management
+            &mdash; delivered through FIU&rsquo;s Information Systems program &mdash; and a formal Project
+            Management minor. Same instinct, new medium: instead of construction drawings, I write requirement
+            documents, map entity-relationship diagrams, and build the working prototype myself. What I keep
+            coming back to is process improvement &mdash; finding the one bottleneck in a workflow and
+            redesigning around it, whether that&rsquo;s a hotel&rsquo;s booking system or a caf&eacute;&rsquo;s
+            order line. I&rsquo;m on the Magna&nbsp;Cum&nbsp;Laude track with five Dean&rsquo;s List terms, and
+            this fall I&rsquo;m finishing my capstone alongside FIU&rsquo;s Global Career Accelerator, an
+            applied web-development program.
+          </p>
+          <p>
+            What I&rsquo;m looking for next: a technical project management or digital product internship
+            &mdash; ideally with a company that builds real, physical guest experiences, like theme parks or
+            hospitality, where I can bring both halves of my background to the table.
+          </p>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="card-soft p-8">
+          <div class="eyebrow mb-4">Currently</div>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center shrink-0" style="background:var(--teal-soft);">
+                <i data-lucide="graduation-cap" class="w-4 h-4" style="color:var(--teal);"></i>
+              </div>
+              <div>
+                <div class="font-semibold text-sm">B.A., Interdisciplinary Studies</div>
+                <div class="text-xs text-[var(--muted)]">Project Management minor &middot; FIU &middot; expected December 2026</div>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center shrink-0" style="background:var(--peach-soft);">
+                <i data-lucide="compass" class="w-4 h-4" style="color:#9A5B26;"></i>
+              </div>
+              <div>
+                <div class="font-semibold text-sm">Completed 2 years of FIU Master of Architecture</div>
+                <div class="text-xs text-[var(--muted)]">Accelerated Major &mdash; transitioned to current program in 2026</div>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center shrink-0" style="background:var(--teal-soft);">
+                <i data-lucide="sparkles" class="w-4 h-4" style="color:var(--teal);"></i>
+              </div>
+              <div>
+                <div class="font-semibold text-sm">FIU Global Career Accelerator</div>
+                <div class="text-xs text-[var(--muted)]">Applied web dev program &middot; Fall 2026</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="stamp gold absolute -bottom-8 -right-6 hidden md:flex">
+          <span class="big">Magna<br>Cum Laude</span>
+          <span class="small">On track</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WORK / CASE STUDIES ============ -->
+<section id="work" class="px-5 md:px-10 py-24" style="background:var(--teal-soft);">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-16">
+      <div class="eyebrow mb-3">The work</div>
+      <h2 class="font-display text-4xl md:text-5xl mb-4">Two builds, start to finish</h2>
+      <p class="text-[15.5px] text-[var(--ink)]/70 max-w-xl mx-auto leading-relaxed">
+        Both are team systems-analysis projects, built for fictional companies as coursework, carried from
+        requirements through a working, coded interface. I owned the business case and interface design on
+        one, and led process design and the prototype on the other.
+      </p>
+    </div>
+
+    <!-- CASE STUDY 1: HARLOW -->
+    <div class="reveal ticket mb-10 grid md:grid-cols-[1fr_auto_1.6fr]">
+      <div class="p-8 md:p-9 flex flex-col justify-between" style="background:var(--teal); color:var(--cream);">
+        <div>
+          <div class="stop-number text-5xl mb-4">01</div>
+          <h3 class="font-display text-2xl leading-tight mb-2">The Harlow Hotel &amp; Resort</h3>
+          <p class="text-xs uppercase tracking-wide font-semibold" style="color:var(--gold-light);">Guest experience booking platform</p>
+        </div>
+        <div class="mt-8 space-y-3">
+          <div class="flex justify-between text-sm border-b border-white/15 pb-2">
+            <span class="opacity-70">Course</span><span class="font-semibold">ISM 4113</span>
+          </div>
+          <div class="flex justify-between text-sm border-b border-white/15 pb-2">
+            <span class="opacity-70">My role</span><span class="font-semibold text-right">Business case + interface</span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span class="opacity-70">Team</span><span class="font-semibold">5 people</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hidden md:block relative">
+        <div class="punch" style="left:-14px; top:0;"></div>
+        <div class="ticket-divider h-full"></div>
+        <div class="punch" style="left:-14px; bottom:0; top:auto;"></div>
+      </div>
+
+      <div class="p-8 md:p-9">
+        <p class="text-[15px] leading-relaxed text-[var(--ink)]/85 mb-5">
+          A resort-owned reservation system replacing a paper clipboard at the pool and a third-party dining
+          platform that had already caused three double-bookings in one quarter. I led the business case and
+          interface design, then built the guest-facing booking flow myself &mdash; real-time cabana, chair, and
+          equipment reservations, a dining module, and a loyalty-points checkout that redeems points against a
+          booking total live.
+        </p>
+
+        <div class="flex flex-wrap gap-4 mb-6">
+          <div class="chip rounded-full px-3.5 py-1.5">$70K est. build</div>
+          <div class="chip rounded-full px-3.5 py-1.5">$50K/yr saved + earned</div>
+          <div class="chip rounded-full px-3.5 py-1.5">14-table 3NF schema</div>
+        </div>
+
+        <details class="group">
+          <summary class="cursor-pointer text-sm font-bold flex items-center gap-2" style="color:var(--teal);">
+            What I actually did
+            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-open:rotate-180"></i>
+          </summary>
+          <ul class="mt-4 space-y-2.5 text-sm text-[var(--ink)]/80">
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Wrote the business case: problem statement, options analysis, financial and risk analysis, phased rollout plan.</li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Designed the guest interface: amenity booking, dining reservations, loyalty dashboard, and a live checkout with points redemption.</li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Coded the front end in HTML5, Tailwind CSS, and vanilla JavaScript.</li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Contributed to the Level-0 data flow diagram and the relational schema underneath it.</li>
+          </ul>
+        </details>
+
+        <div class="flex flex-wrap gap-3 mt-7">
+          <a href="projects/harlow-hotel/index.html" target="_blank" class="btn-primary rounded-full px-5 py-2.5 text-sm font-bold flex items-center gap-2">
+            Launch live prototype <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+          <a href="https://github.com/emcuberos1/Harlow-Hotel-Booking-Platform" target="_blank" class="btn-ghost rounded-full px-5 py-2.5 text-sm font-bold flex items-center gap-2">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.75 2.69 1.25 3.34.96.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.05.78 2.11 0 1.53-.01 2.76-.01 3.13 0 .3.2.66.79.55A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg> GitHub
+          </a>
+          <a href="docs/harlow-deliverable-1-business-case.pdf" target="_blank" class="btn-ghost rounded-full px-5 py-2.5 text-sm font-bold">
+            Business case
+          </a>
+          <a href="docs/harlow-deliverable-2-system-design.pdf" target="_blank" class="btn-ghost rounded-full px-5 py-2.5 text-sm font-bold">
+            System design
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE STUDY 2: VELVET ESPRESSO -->
+    <div class="reveal ticket grid md:grid-cols-[1fr_auto_1.6fr]">
+      <div class="p-8 md:p-9 flex flex-col justify-between" style="background:var(--teal); color:var(--cream);">
+        <div>
+          <div class="stop-number text-5xl mb-4">02</div>
+          <h3 class="font-display text-2xl leading-tight mb-2">Velvet Espresso Caf&eacute;</h3>
+          <p class="text-xs uppercase tracking-wide font-semibold" style="color:var(--gold-light);">AI-powered order processing redesign</p>
+        </div>
+        <div class="mt-8 space-y-3">
+          <div class="flex justify-between text-sm border-b border-white/15 pb-2">
+            <span class="opacity-70">Course</span><span class="font-semibold">ISM 3153</span>
+          </div>
+          <div class="flex justify-between text-sm border-b border-white/15 pb-2">
+            <span class="opacity-70">My role</span><span class="font-semibold text-right">Process design + prototype</span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span class="opacity-70">Team</span><span class="font-semibold">5 people, project lead</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hidden md:block relative">
+        <div class="punch" style="left:-14px; top:0;"></div>
+        <div class="ticket-divider h-full"></div>
+        <div class="punch" style="left:-14px; bottom:0; top:auto;"></div>
+      </div>
+
+      <div class="p-8 md:p-9">
+        <p class="text-[15px] leading-relaxed text-[var(--ink)]/85 mb-5">
+          A peak-hour observation of 30 orders at a 24-hour caf&eacute; &mdash; a course simulation for a
+          fictional business &mdash; surfaced the real bottleneck: a single rework loop at the order-accuracy
+          check, worsened by the 60% of orders that included a customization. I mapped the as-is process, then
+          designed a phased AI rollout &mdash; voice ordering first, predictive wait times and a support
+          chatbot later &mdash; and built the ordering interface that demonstrates it.
+        </p>
+
+        <div class="flex flex-wrap gap-4 mb-6">
+          <div class="chip gold rounded-full px-3.5 py-1.5">13 min avg. wait</div>
+          <div class="chip gold rounded-full px-3.5 py-1.5">&darr;35&ndash;40% target</div>
+          <div class="chip gold rounded-full px-3.5 py-1.5">&ge;98% accuracy goal</div>
+        </div>
+
+        <details class="group">
+          <summary class="cursor-pointer text-sm font-bold flex items-center gap-2" style="color:var(--teal);">
+            What I actually did
+            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-open:rotate-180"></i>
+          </summary>
+          <ul class="mt-4 space-y-2.5 text-sm text-[var(--ink)]/80">
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Built the as-is / to-be process maps, isolating the single decision point causing peak-hour rework.</li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Benchmarked the AI recommendations against real deployments at Stord and Gojek before proposing them.</li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Designed and coded the ordering-system prototype end to end in HTML5, Tailwind, and vanilla JS.</li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Defined the KPI set (processing time, accuracy, CSAT) used to judge the rollout.</li>
+          </ul>
+        </details>
+
+        <div class="flex flex-wrap gap-3 mt-7">
+          <a href="projects/velvet-espresso-prototype.html" target="_blank" class="btn-primary rounded-full px-5 py-2.5 text-sm font-bold flex items-center gap-2">
+            Launch live prototype <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+          <a href="https://github.com/emcuberos1/Velvet-Espresso-Cafe-Ordering-System" target="_blank" class="btn-ghost rounded-full px-5 py-2.5 text-sm font-bold flex items-center gap-2">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.75 2.69 1.25 3.34.96.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.05.78 2.11 0 1.53-.01 2.76-.01 3.13 0 .3.2.66.79.55A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg> GitHub
+          </a>
+          <a href="docs/velvet-espresso-executive-summary.pdf" target="_blank" class="btn-ghost rounded-full px-5 py-2.5 text-sm font-bold">
+            Executive summary
+          </a>
+          <a href="docs/velvet-espresso-presentation.pdf" target="_blank" class="btn-ghost rounded-full px-5 py-2.5 text-sm font-bold">
+            Full deck
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ARCHITECTURE STUDIO ============ -->
+<section id="architecture" class="px-5 md:px-10 py-20" style="background:var(--cream-deep);">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-14">
+      <div class="eyebrow mb-3">Where it started</div>
+      <h2 class="font-display text-4xl mb-4">Two years of design studio</h2>
+      <p class="text-[15.5px] text-[var(--ink)]/70 max-w-xl mx-auto leading-relaxed">
+        Four studio projects from FIU&rsquo;s Master of Architecture &ndash; Accelerated Major, each carried
+        from a site brief through models, drawings, and final renders.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-6">
+      <div class="card-soft overflow-hidden">
+        <img src="assets/architecture/rubell.jpg" alt="Rendered exterior view of the Rubell Museum courtyard addition, showing a stepped facade with a figure walking through the courtyard" class="w-full h-56 object-cover">
+        <div class="p-6">
+          <div class="stop-number text-2xl mb-1">01</div>
+          <h3 class="font-display text-xl mb-2">Rubell Museum &mdash; Courtyard Addition</h3>
+          <p class="text-sm text-[var(--ink)]/70 leading-relaxed">
+            A new gallery, caf&eacute;, and library building for the Rubell Museum courtyard in Miami, modeled
+            on the geometry and &ldquo;chopped&rdquo; fluidity of Madrid&rsquo;s Royal Collections Gallery.
+          </p>
+          <a href="docs/architecture-portfolio.pdf" target="_blank" class="inline-flex items-center gap-1 mt-3 text-xs font-bold hover:underline" style="color:var(--gold);">
+            View in full architectural portfolio &mdash; link below <i data-lucide="arrow-down" class="w-3 h-3"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="card-soft overflow-hidden">
+        <img src="assets/architecture/lincoln.jpg" alt="Colored isometric drawing of the Lincoln Road folly pavilion, showing seating, planters, and a water feature" class="w-full h-56 object-cover">
+        <div class="p-6">
+          <div class="stop-number text-2xl mb-1">02</div>
+          <h3 class="font-display text-xl mb-2">Lincoln Road &mdash; Folly Addition</h3>
+          <p class="text-sm text-[var(--ink)]/70 leading-relaxed">
+            A shaded pavilion for the eastern end of Miami Beach&rsquo;s Lincoln Road pedestrian mall, with
+            integrated seating, a foot-wash feature, and planters.
+          </p>
+          <a href="docs/architecture-portfolio.pdf" target="_blank" class="inline-flex items-center gap-1 mt-3 text-xs font-bold hover:underline" style="color:var(--gold);">
+            View in full architectural portfolio &mdash; link below <i data-lucide="arrow-down" class="w-3 h-3"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="card-soft overflow-hidden">
+        <img src="assets/architecture/patio.jpg" alt="Physical wood model of the Artist Patio House, showing the house and sloped site" class="w-full h-56 object-cover">
+        <div class="p-6">
+          <div class="stop-number text-2xl mb-1">03</div>
+          <h3 class="font-display text-xl mb-2">Artist Patio House</h3>
+          <p class="text-sm text-[var(--ink)]/70 leading-relaxed">
+            A patio house on a sloped Miami lot, designed around the work of artist Carmen Herrera &mdash; a
+            home for two adults and three children with a studio, gallery, pool, and two gardens.
+          </p>
+          <a href="docs/architecture-portfolio.pdf" target="_blank" class="inline-flex items-center gap-1 mt-3 text-xs font-bold hover:underline" style="color:var(--gold);">
+            View in full architectural portfolio &mdash; link below <i data-lucide="arrow-down" class="w-3 h-3"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="card-soft overflow-hidden">
+        <img src="assets/architecture/hiss.jpg" alt="Physical model of the Florida Room structure, an elevated wood-framed room on a concrete base" class="w-full h-56 object-cover">
+        <div class="p-6">
+          <div class="stop-number text-2xl mb-1">04</div>
+          <h3 class="font-display text-xl mb-2">Florida Room at Hiss Studio &amp; Residence</h3>
+          <p class="text-sm text-[var(--ink)]/70 leading-relaxed">
+            A Florida room inserted between Paul Rudolph&rsquo;s Hiss Studio and &ldquo;Umbrella House&rdquo;
+            residence in Sarasota &mdash; a compact studio and bath under a strict height limit.
+          </p>
+          <a href="docs/architecture-portfolio.pdf" target="_blank" class="inline-flex items-center gap-1 mt-3 text-xs font-bold hover:underline" style="color:var(--gold);">
+            View in full architectural portfolio &mdash; link below <i data-lucide="arrow-down" class="w-3 h-3"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-8">
+      <a href="docs/architecture-portfolio.pdf" target="_blank" class="btn-ghost rounded-full px-6 py-3 text-sm font-bold inline-flex items-center gap-2">
+        View full architectural portfolio (PDF) <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GCA / BRAND PROJECTS ============ -->
+<section id="gca" class="px-5 md:px-10 py-20">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-12">
+      <div class="eyebrow mb-3">Coming this fall</div>
+      <h2 class="font-display text-4xl mb-4">Global Career Accelerator</h2>
+      <p class="text-[15.5px] text-[var(--ink)]/70 max-w-xl mx-auto leading-relaxed">
+        FIU&rsquo;s applied web-development program, run with Podium Education. Four brand-sponsored builds,
+        Fall 2026 &mdash; each one earns a stackable certification.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="card-soft p-6 text-center">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4" style="background:var(--teal-soft);">
+          <i data-lucide="droplets" class="w-5 h-5" style="color:var(--teal);"></i>
+        </div>
+        <div class="font-display text-lg mb-1.5">charity: water</div>
+        <p class="text-xs text-[var(--muted)] leading-relaxed">An interactive game introducing charity: water&rsquo;s mission to new visitors.</p>
+      </div>
+      <div class="card-soft p-6 text-center">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4" style="background:var(--peach-soft);">
+          <i data-lucide="milestone" class="w-5 h-5" style="color:#9A5B26;"></i>
+        </div>
+        <div class="font-display text-lg mb-1.5">Intel</div>
+        <p class="text-xs text-[var(--muted)] leading-relaxed">An interactive timeline built for the Web Development track.</p>
+      </div>
+      <div class="card-soft p-6 text-center">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4" style="background:var(--teal-soft);">
+          <i data-lucide="rocket" class="w-5 h-5" style="color:var(--teal);"></i>
+        </div>
+        <div class="font-display text-lg mb-1.5">NASA</div>
+        <p class="text-xs text-[var(--muted)] leading-relaxed">A photo gallery showcasing NASA imagery and missions.</p>
+      </div>
+      <div class="card-soft p-6 text-center">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4" style="background:var(--peach-soft);">
+          <i data-lucide="sparkles" class="w-5 h-5" style="color:#9A5B26;"></i>
+        </div>
+        <div class="font-display text-lg mb-1.5">L&rsquo;Or&eacute;al</div>
+        <p class="text-xs text-[var(--muted)] leading-relaxed">A smart skincare routine builder with an AI-powered recommendation flow.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section id="skills" class="px-5 md:px-10 py-20" style="background:var(--cream-deep);">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-14">
+      <div class="eyebrow mb-3">What I bring</div>
+      <h2 class="font-display text-4xl">Skills</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="card-soft p-8">
+        <div class="w-11 h-11 rounded-full flex items-center justify-center mb-5" style="background:var(--teal-soft);">
+          <i data-lucide="workflow" class="w-5 h-5" style="color:var(--teal);"></i>
+        </div>
+        <h3 class="font-display text-xl mb-4">Systems &amp; Process</h3>
+        <ul class="space-y-2.5 text-[14px] text-[var(--ink)]/75">
+          <li>Systems analysis &amp; design (SDLC)</li>
+          <li>Data flow &amp; entity-relationship diagrams</li>
+          <li>Relational schema design (3NF)</li>
+          <li>Business process mapping</li>
+          <li>Process improvement</li>
+          <li>Process mining (Celonis)</li>
+          <li>Data visualization (Tableau)</li>
+          <li>SQL</li>
+        </ul>
+      </div>
+      <div class="card-soft p-8">
+        <div class="w-11 h-11 rounded-full flex items-center justify-center mb-5" style="background:var(--peach-soft);">
+          <i data-lucide="clipboard-list" class="w-5 h-5" style="color:#9A5B26;"></i>
+        </div>
+        <h3 class="font-display text-xl mb-4">Project Management</h3>
+        <ul class="space-y-2.5 text-[14px] text-[var(--ink)]/75">
+          <li>Stakeholder analysis &amp; mapping</li>
+          <li>Requirements gathering &amp; interviews</li>
+          <li>Financial &amp; feasibility analysis</li>
+          <li>Risk identification &amp; mitigation</li>
+          <li>Phased implementation planning</li>
+        </ul>
+      </div>
+      <div class="card-soft p-8">
+        <div class="w-11 h-11 rounded-full flex items-center justify-center mb-5" style="background:var(--teal-soft);">
+          <i data-lucide="code-2" class="w-5 h-5" style="color:var(--teal);"></i>
+        </div>
+        <h3 class="font-display text-xl mb-4">Design &amp; Front-End</h3>
+        <ul class="space-y-2.5 text-[14px] text-[var(--ink)]/75">
+          <li>HTML5, Tailwind CSS, vanilla JavaScript</li>
+          <li>Interface &amp; interaction design</li>
+          <li>Architectural &amp; spatial design</li>
+          <li>Survey design (Qualtrics)</li>
+          <li>Data modeling (Celonis)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CERTIFICATIONS ============ -->
+<section id="certs" class="px-5 md:px-10 py-20">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-14">
+      <div class="eyebrow mb-3">Backed up on paper</div>
+      <h2 class="font-display text-4xl">Certifications</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <i data-lucide="badge-check" class="w-4 h-4" style="color:var(--teal);"></i>
+          <span class="text-xs font-bold uppercase tracking-wide" style="color:var(--teal);">Process intelligence &mdash; Celonis</span>
+        </div>
+        <div class="card-soft divide-y" style="--tw-divide-opacity:1; border-color:var(--cream-deep);">
+          <a href="https://www.credly.com/badges/d67224c3-9dd2-47a3-8e56-3dded8f2929b/public_url" target="_blank" class="p-5 flex items-start justify-between gap-4 border-b hover:bg-[var(--cream-deep)] transition-colors" style="border-color:var(--cream-deep);">
+            <div>
+              <div class="font-display text-[17px] leading-snug">Mastercourse in Process Intelligence &amp; Enterprise AI</div>
+              <div class="text-xs text-[var(--muted)] mt-1">Celonis</div>
+            </div>
+            <span class="text-[11px] font-bold text-[var(--muted)] whitespace-nowrap pt-1">Jul 2026</span>
+          </a>
+          <a href="https://www.credly.com/badges/cd9757c7-ef35-40b8-b00b-16f724574861/public_url" target="_blank" class="p-5 flex items-start justify-between gap-4 border-b hover:bg-[var(--cream-deep)] transition-colors" style="border-color:var(--cream-deep);">
+            <div>
+              <div class="font-display text-[17px] leading-snug">Academic Process Mining Fundamentals</div>
+              <div class="text-xs text-[var(--muted)] mt-1">Celonis</div>
+            </div>
+            <span class="text-[11px] font-bold text-[var(--muted)] whitespace-nowrap pt-1">Jun 2026</span>
+          </a>
+          <a href="https://www.credly.com/badges/dbb69389-e3c2-4bcd-b406-062bf2d7afe1/public_url" target="_blank" class="p-5 flex items-start justify-between gap-4 border-b hover:bg-[var(--cream-deep)] transition-colors" style="border-color:var(--cream-deep);">
+            <div>
+              <div class="font-display text-[17px] leading-snug">Celonis Foundations</div>
+              <div class="text-xs text-[var(--muted)] mt-1">Celonis</div>
+            </div>
+            <span class="text-[11px] font-bold text-[var(--muted)] whitespace-nowrap pt-1">Jun 2026</span>
+          </a>
+          <a href="https://www.credly.com/badges/f9e82349-dd11-490a-8afe-4dbc6aae36da/public_url" target="_blank" class="p-5 flex items-start justify-between gap-4 hover:bg-[var(--cream-deep)] transition-colors">
+            <div>
+              <div class="font-display text-[17px] leading-snug">Use and Interpret Views</div>
+              <div class="text-xs text-[var(--muted)] mt-1">Celonis</div>
+            </div>
+            <span class="text-[11px] font-bold text-[var(--muted)] whitespace-nowrap pt-1">Jun 2026</span>
+          </a>
+        </div>
+
+        <div class="flex items-center gap-2 mb-4 mt-9">
+          <i data-lucide="badge-check" class="w-4 h-4" style="color:var(--teal);"></i>
+          <span class="text-xs font-bold uppercase tracking-wide" style="color:var(--teal);">LinkedIn Learning</span>
+        </div>
+        <div class="card-soft divide-y" style="border-color:var(--cream-deep);">
+          <a href="https://www.linkedin.com/learning/certificates/f58bfa3030821f4832615b43bf61398f2063211bf0610408871bbd9d7fd34465/" target="_blank" class="p-5 flex items-start justify-between gap-4 border-b hover:bg-[var(--cream-deep)] transition-colors" style="border-color:var(--cream-deep);">
+            <div>
+              <div class="font-display text-[17px] leading-snug">Project Management Foundations</div>
+              <div class="text-xs text-[var(--muted)] mt-1">LinkedIn Learning</div>
+            </div>
+            <span class="text-[11px] font-bold text-[var(--muted)] whitespace-nowrap pt-1">Mar 2026</span>
+          </a>
+          <a href="https://www.linkedin.com/learning/certificates/ff7fa3bc38d1efd1e13fd564f3e7028a3657671588a9bcb24af1949f8096e78b/" target="_blank" class="p-5 flex items-start justify-between gap-4 border-b hover:bg-[var(--cream-deep)] transition-colors" style="border-color:var(--cream-deep);">
+            <div>
+              <div class="font-display text-[17px] leading-snug">Everybody&rsquo;s Introduction to Tableau</div>
+              <div class="text-xs text-[var(--muted)] mt-1">LinkedIn Learning</div>
+            </div>
+            <span class="text-[11px] font-bold text-[var(--muted)] whitespace-nowrap pt-1">Aug 2026</span>
+          </a>
+          <a href="https://www.linkedin.com/learning/certificates/d08de377003eeaababe2cb9cbda4865e2677b445e74825a3d2fa9540de1e449b/" target="_blank" class="p-5 flex items-start justify-between gap-4 hover:bg-[var(--cream-deep)] transition-colors">
+            <div>
+              <div class="font-display text-[17px] leading-snug">Hands-On Introduction: SQL</div>
+              <div class="text-xs text-[var(--muted)] mt-1">LinkedIn Learning</div>
+            </div>
+            <span class="text-[11px] font-bold text-[var(--muted)] whitespace-nowrap pt-1">Aug 2026</span>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <i data-lucide="clock" class="w-4 h-4" style="color:var(--gold);"></i>
+          <span class="text-xs font-bold uppercase tracking-wide" style="color:var(--gold);">FIU Global Career Accelerator &middot; in progress</span>
+        </div>
+        <div class="card-soft divide-y" style="border-color:var(--cream-deep);">
+          <div class="p-5 flex items-start justify-between gap-4 border-b" style="border-color:var(--cream-deep);">
+            <div>
+              <div class="font-display text-[17px] leading-snug">Web Development</div>
+              <div class="text-xs text-[var(--muted)] mt-1">with Intel</div>
+            </div>
+            <span class="text-[11px] font-bold text-[var(--muted)] whitespace-nowrap pt-1">Fall 2026</span>
+          </div>
+          <div class="p-5 flex items-start justify-between gap-4 border-b" style="border-color:var(--cream-deep);">
+            <div>
+              <div class="font-display text-[17px] leading-snug">AI-Powered JavaScript</div>
+              <div class="text-xs text-[var(--muted)] mt-1">with L&rsquo;Or&eacute;al</div>
+            </div>
+            <span class="text-[11px] font-bold text-[var(--muted)] whitespace-nowrap pt-1">Fall 2026</span>
+          </div>
+          <div class="p-5 flex items-start justify-between gap-4 border-b" style="border-color:var(--cream-deep);">
+            <div>
+              <div class="font-display text-[17px] leading-snug">AI Professional Skills</div>
+              <div class="text-xs text-[var(--muted)] mt-1">with OpenAI</div>
+            </div>
+            <span class="text-[11px] font-bold text-[var(--muted)] whitespace-nowrap pt-1">Fall 2026</span>
+          </div>
+          <div class="p-5 flex items-start justify-between gap-4">
+            <div>
+              <div class="font-display text-[17px] leading-snug">Intercultural Skills</div>
+              <div class="text-xs text-[var(--muted)] mt-1">with UNESCO</div>
+            </div>
+            <span class="text-[11px] font-bold text-[var(--muted)] whitespace-nowrap pt-1">Fall 2026</span>
+          </div>
+        </div>
+        <p class="text-xs text-[var(--muted)] mt-4 leading-relaxed px-1">
+          Earned on completion of each track, Aug&ndash;Dec 2026, alongside the charity:&thinsp;water, Intel,
+          NASA, and L&rsquo;Or&eacute;al brand projects above.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIMELINE ============ -->
+<section id="timeline" class="px-5 md:px-10 py-20" style="background:var(--teal); color:var(--cream);">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-14">
+      <div class="eyebrow mb-3" style="color:var(--gold-light);">How I got here</div>
+      <h2 class="font-display text-4xl">Education, the story so far</h2>
+    </div>
+
+    <div class="relative pl-16">
+      <div class="path-line"></div>
+
+      <div class="reveal relative pb-10">
+        <div class="absolute left-[-64px] top-0 w-14 h-14 rounded-full flex items-center justify-center font-display text-sm font-semibold" style="background:var(--teal-2); border:2px solid var(--gold-light);">21&ndash;23</div>
+        <div class="font-display text-xl mb-1">Dual-enrollment &amp; transfer coursework</div>
+        <p class="text-sm text-[var(--cream)]/75 leading-relaxed">Composition, sociology, physics with calculus, psychology, and communications credit accepted from five institutions before declaring a major.</p>
+      </div>
+
+      <div class="reveal relative pb-10">
+        <div class="absolute left-[-64px] top-0 w-14 h-14 rounded-full flex items-center justify-center font-display text-sm font-semibold" style="background:var(--teal-2); border:2px solid var(--gold-light);">23&ndash;25</div>
+        <div class="font-display text-xl mb-1">Architecture, Accelerated Major</div>
+        <p class="text-sm text-[var(--cream)]/75 leading-relaxed">Design Studios 1&ndash;4, Design Graphics I &amp; II, Design History I &amp; II (Antiquity&ndash;Middle Ages, Renaissance&ndash;XIX), Materials &amp; Methods of Design, Fundamentals of Digital Design, Structures. Dean&rsquo;s List: Fall&nbsp;2023, Spring&nbsp;2024, Fall&nbsp;2024.</p>
+      </div>
+
+      <div class="reveal relative pb-10">
+        <div class="absolute left-[-64px] top-0 w-14 h-14 rounded-full flex items-center justify-center font-display text-xs font-semibold text-center leading-tight" style="background:var(--teal-2); border:2px solid var(--gold-light);">Nov<br>25</div>
+        <div class="font-display text-xl mb-1">Program change</div>
+        <p class="text-sm text-[var(--cream)]/75 leading-relaxed">Moved to Interdisciplinary Studies (B.A.), carrying every architecture credit forward.</p>
+      </div>
+
+      <div class="reveal relative pb-10">
+        <div class="absolute left-[-64px] top-0 w-14 h-14 rounded-full flex items-center justify-center font-display text-xs font-semibold text-center leading-tight" style="background:var(--teal-2); border:2px solid var(--gold-light);">Jan<br>26</div>
+        <div class="font-display text-xl mb-1">Project Management expertise focus and minor declared</div>
+        <p class="text-sm text-[var(--cream)]/75 leading-relaxed">Added alongside the Interdisciplinary Studies major.</p>
+      </div>
+
+      <div class="reveal relative pb-10">
+        <div class="absolute left-[-64px] top-0 w-14 h-14 rounded-full flex items-center justify-center font-display text-sm font-semibold" style="background:var(--gold); border:2px solid var(--gold-light); color:var(--teal);">4.0</div>
+        <div class="font-display text-xl mb-1">Summer 2026 &mdash; a 4.0 term</div>
+        <p class="text-sm text-[var(--cream)]/75 leading-relaxed">Business Process Analysis (ISM&nbsp;3153) and Systems Analysis &amp; Design (ISM&nbsp;4113) &mdash; the two courses behind both case studies above. Dean&rsquo;s List.</p>
+      </div>
+
+      <div class="reveal relative">
+        <div class="absolute left-[-64px] top-0 w-14 h-14 rounded-full flex items-center justify-center font-display text-xs font-semibold text-center leading-tight" style="background:var(--teal-2); border:2px solid var(--gold-light);">Fall<br>26</div>
+        <div class="font-display text-xl mb-1">Capstone &amp; Global Career Accelerator</div>
+        <p class="text-sm text-[var(--cream)]/75 leading-relaxed">Capstone, Project Management coursework, and a program completed through FIU&rsquo;s Global Career Accelerator &mdash; on track for Magna&nbsp;Cum&nbsp;Laude, expected graduation December&nbsp;2026.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="px-5 md:px-10 py-24">
+  <div class="max-w-3xl mx-auto text-center">
+    <div class="eyebrow mb-3">Let&rsquo;s talk</div>
+    <h2 class="font-display text-5xl md:text-6xl leading-[1.02] mb-6">
+      I&rsquo;d love to be a part<br>of your team.
+    </h2>
+    <p class="max-w-xl mx-auto text-[15.5px] leading-relaxed text-[var(--ink)]/75 mb-10">
+      Open to Spring 2027 internships in technical project management and digital product &mdash;
+      especially in guest experience, entertainment, and parks technology.
+    </p>
+
+    <div class="card-soft max-w-md mx-auto p-3 text-left">
+      <a href="mailto:emcuberos@hotmail.com" class="flex items-center justify-between px-4 py-4 rounded-2xl hover:bg-[var(--cream-deep)] transition-colors group">
+        <span class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full flex items-center justify-center" style="background:var(--teal-soft);">
+            <i data-lucide="mail" class="w-4 h-4" style="color:var(--teal);"></i>
+          </div>
+          <span class="font-semibold text-sm">emcuberos@hotmail.com</span>
+        </span>
+        <i data-lucide="arrow-up-right" class="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/emily-cuberos" target="_blank" class="flex items-center justify-between px-4 py-4 rounded-2xl hover:bg-[var(--cream-deep)] transition-colors group">
+        <span class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full flex items-center justify-center" style="background:var(--peach-soft);">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" style="color:#9A5B26;"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.86 0-2.14 1.45-2.14 2.94v5.66H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.8 0 0 .78 0 1.75v20.5C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.75V1.75C24 .78 23.2 0 22.22 0Z"/></svg>
+          </div>
+          <span class="font-semibold text-sm">linkedin.com/in/emily-cuberos</span>
+        </span>
+        <i data-lucide="arrow-up-right" class="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity"></i>
+      </a>
+      <a href="https://github.com/emcuberos1" target="_blank" class="flex items-center justify-between px-4 py-4 rounded-2xl hover:bg-[var(--cream-deep)] transition-colors group">
+        <span class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full flex items-center justify-center" style="background:var(--teal-soft);">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" style="color:var(--teal);"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.75 2.69 1.25 3.34.96.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.05.78 2.11 0 1.53-.01 2.76-.01 3.13 0 .3.2.66.79.55A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+          </div>
+          <span class="font-semibold text-sm">github.com/emcuberos1</span>
+        </span>
+        <i data-lucide="arrow-up-right" class="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity"></i>
+      </a>
+      <a href="#" class="flex items-center justify-between px-4 py-4 rounded-2xl hover:bg-[var(--cream-deep)] transition-colors group">
+        <span class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full flex items-center justify-center" style="background:var(--teal-soft);">
+            <i data-lucide="download" class="w-4 h-4" style="color:var(--teal);"></i>
+          </div>
+          <span class="font-semibold text-sm">Download r&eacute;sum&eacute; (PDF)</span>
+        </span>
+        <i data-lucide="arrow-up-right" class="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="px-5 md:px-10 py-8 border-t" style="border-color:var(--cream-deep);">
+  <div class="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-3 text-xs font-semibold text-[var(--muted)]">
+    <span>&copy; 2026 Emily Cuberos &mdash; Miami, FL</span>
+    <span>Built with HTML5 &middot; Tailwind CSS &middot; Vanilla JS</span>
+  </div>
+</footer>
+
+<script>
+  lucide.createIcons();
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => io.observe(el));
+</script>
 </body>
 </html>
