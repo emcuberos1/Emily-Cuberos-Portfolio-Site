@@ -1,0 +1,2462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Velvet Espresso Cafe - Miami, FL | 24/7 Digital Ordering</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+    
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .font-serif {
+      font-family: 'Playfair Display', serif;
+    }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1c1917;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #c2410c;
+      border-radius: 3px;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            espresso: {
+              50: '#fdf8f5',
+              100: '#fbeee6',
+              200: '#f5dacb',
+              300: '#ebba9f',
+              400: '#df926c',
+              500: '#d37143',
+              600: '#c55734',
+              700: '#a34228',
+              800: '#843725',
+              900: '#6b2f21',
+              950: '#1c1311', // Deep Warm Coffee Black
+            },
+            gold: {
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-espresso-950 text-stone-100 min-h-screen flex flex-col selection:bg-orange-700 selection:text-white">
+
+  <!-- Top Banner -->
+  <div class="bg-gradient-to-r from-espresso-900 via-orange-950 to-amber-950 border-b border-orange-900/40 text-stone-200 py-1.5 px-4 text-center text-xs font-semibold tracking-wider flex items-center justify-center gap-2 flex-wrap">
+    <span class="bg-orange-500/20 text-orange-400 border border-orange-500/30 text-[10px] px-2 py-0.5 rounded-full font-bold uppercase">Miami, FL</span>
+    <span>VELVET ESPRESSO CAFÉ — OPEN 24/7 • EXPRESS ONLINE & AI VOICE ORDERING</span>
+    <span class="hidden md:inline text-stone-500">•</span>
+    <span class="text-amber-400 text-[11px] hidden md:inline">300 Biscayne Blvd</span>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="sticky top-0 z-40 bg-espresso-950/95 backdrop-blur-md border-b border-stone-800/80 px-4 py-3 md:px-8">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#" onclick="switchTab('dashboard')" class="flex items-center gap-3 group">
+        <div class="p-2.5 bg-gradient-to-br from-espresso-700 to-orange-950 rounded-xl border border-orange-800/40 shadow-lg shadow-orange-950/50 group-hover:scale-105 transition-all">
+          <i data-lucide="coffee" class="w-6 h-6 text-orange-400"></i>
+        </div>
+        <div>
+          <h1 class="text-lg md:text-xl font-bold tracking-tight font-serif text-amber-50">Velvet Espresso</h1>
+          <p class="text-[10px] text-orange-500 font-mono tracking-widest uppercase">Miami • Open 24 Hours</p>
+        </div>
+      </a>
+
+      <!-- Navigation Tabs (Desktop) -->
+      <nav class="hidden lg:flex items-center gap-1 bg-stone-900/80 p-1.5 rounded-full border border-stone-800 text-xs">
+        <button onclick="switchTab('dashboard')" id="nav-dashboard" class="px-4 py-2 rounded-full font-semibold transition-all flex items-center gap-1.5 bg-orange-700 text-white">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Home
+        </button>
+        <button onclick="switchTab('menu')" id="nav-menu" class="px-4 py-2 rounded-full font-semibold transition-all flex items-center gap-1.5 text-stone-400 hover:text-stone-200">
+          <i data-lucide="menu" class="w-3.5 h-3.5"></i> Order Menu
+        </button>
+        <button onclick="switchTab('voice')" id="nav-voice" class="px-4 py-2 rounded-full font-semibold transition-all flex items-center gap-1.5 text-orange-400 hover:text-orange-300">
+          <i data-lucide="mic" class="w-3.5 h-3.5"></i> AI Voice Order
+        </button>
+        <button onclick="switchTab('favorites')" id="nav-favorites" class="px-4 py-2 rounded-full font-semibold transition-all flex items-center gap-1.5 text-stone-400 hover:text-stone-200">
+          <i data-lucide="heart" class="w-3.5 h-3.5"></i> Saved Favorites
+        </button>
+        <!-- External Feedback Survey Link -->
+        <a href="https://fiu.qualtrics.com/jfe/form/SV_dcLOzxAeGSPWa9M" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-full font-semibold transition-all flex items-center gap-1.5 text-blue-400 hover:text-blue-300 border border-blue-500/30 bg-blue-500/10">
+          <i data-lucide="message-square" class="w-3.5 h-3.5"></i> Feedback Survey <i data-lucide="external-link" class="w-3 h-3"></i>
+        </a>
+        <button onclick="switchTab('staff')" id="nav-staff" class="px-4 py-2 rounded-full font-semibold transition-all flex items-center gap-1.5 text-stone-400 hover:text-stone-200 relative">
+          <i data-lucide="chef-hat" class="w-3.5 h-3.5"></i> Barista Live View
+          <span id="pending-badge" class="absolute -top-1 -right-1 bg-amber-500 text-espresso-950 text-[10px] font-extrabold px-1.5 py-0.5 rounded-full hidden"></span>
+        </button>
+      </nav>
+
+      <!-- Cart Button & Status Indicators -->
+      <div class="flex items-center gap-2 md:gap-3">
+        <button onclick="openTrackerModal()" id="active-tracker-btn" class="hidden items-center gap-2 bg-stone-900 hover:bg-stone-800 border border-amber-500/30 text-amber-400 px-3 py-1.5 rounded-xl text-xs font-semibold animate-pulse transition-all">
+          <i data-lucide="clock" class="w-4 h-4"></i>
+          <span class="hidden sm:inline">Track Order</span>
+        </button>
+
+        <button onclick="toggleCart(true)" class="relative p-2.5 bg-stone-900 hover:bg-stone-800 border border-stone-800 rounded-xl transition-all flex items-center gap-2 group">
+          <i data-lucide="shopping-bag" class="w-5 h-5 text-stone-300 group-hover:text-orange-400 transition-colors"></i>
+          <span class="hidden sm:inline text-xs font-semibold text-stone-300">My Bag</span>
+          <span id="cart-count-badge" class="absolute -top-1.5 -right-1.5 bg-orange-600 text-white text-[11px] font-bold h-5 w-5 rounded-full flex items-center justify-center border-2 border-espresso-950 scale-0 transition-transform duration-200">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Bar -->
+  <nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-espresso-950/95 backdrop-blur-lg border-t border-stone-900 py-2 px-2 flex justify-around items-center z-40 shadow-xl overflow-x-auto">
+    <button onclick="switchTab('dashboard')" id="mobile-nav-dashboard" class="flex flex-col items-center gap-1 text-orange-500 min-w-[50px]">
+      <i data-lucide="sparkles" class="w-4 h-4"></i>
+      <span class="text-[9px] font-semibold">Home</span>
+    </button>
+    <button onclick="switchTab('menu')" id="mobile-nav-menu" class="flex flex-col items-center gap-1 text-stone-400 min-w-[50px]">
+      <i data-lucide="cup-tot" class="w-4 h-4"></i>
+      <span class="text-[9px] font-semibold">Menu</span>
+    </button>
+    <button onclick="switchTab('voice')" id="mobile-nav-voice" class="flex flex-col items-center gap-1 text-orange-400 min-w-[55px]">
+      <i data-lucide="mic" class="w-4 h-4"></i>
+      <span class="text-[9px] font-bold">AI Voice</span>
+    </button>
+    <button onclick="switchTab('favorites')" id="mobile-nav-favorites" class="flex flex-col items-center gap-1 text-stone-400 min-w-[50px]">
+      <i data-lucide="heart" class="w-4 h-4"></i>
+      <span class="text-[9px] font-semibold">Favorites</span>
+    </button>
+    <a href="https://fiu.qualtrics.com/jfe/form/SV_dcLOzxAeGSPWa9M" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center gap-1 text-blue-400 min-w-[55px]">
+      <i data-lucide="message-square" class="w-4 h-4"></i>
+      <span class="text-[9px] font-semibold">Survey</span>
+    </a>
+    <button onclick="switchTab('staff')" id="mobile-nav-staff" class="flex flex-col items-center gap-1 text-stone-400 relative min-w-[50px]">
+      <i data-lucide="chef-hat" class="w-4 h-4"></i>
+      <span class="text-[9px] font-semibold">Barista</span>
+      <span id="pending-badge-mobile" class="absolute top-0 right-1 bg-amber-500 text-espresso-950 text-[8px] font-bold px-1 rounded-full hidden"></span>
+    </button>
+  </nav>
+
+  <main class="flex-grow max-w-7xl w-full mx-auto p-4 md:p-8 pb-24 lg:pb-8">
+
+    <!-- TAB 1: DASHBOARD -->
+    <section id="tab-dashboard" class="space-y-8 animate-fadeIn">
+      <!-- Hero Welcome Board -->
+      <div class="relative rounded-3xl overflow-hidden bg-gradient-to-br from-espresso-900 via-stone-950 to-espresso-950 border border-stone-800 p-6 md:p-10 shadow-2xl">
+        <div class="absolute right-0 top-0 w-96 h-96 bg-orange-900/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute left-1/4 bottom-0 w-80 h-80 bg-amber-900/15 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-3xl relative z-10 space-y-4">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="inline-flex items-center gap-1.5 bg-orange-500/10 border border-orange-500/20 text-orange-400 px-3 py-1 rounded-full text-xs font-semibold">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+              <span id="time-greeting-title">Late Night Craving? We're Open 24/7.</span>
+            </span>
+            <span class="inline-flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/20 text-amber-300 px-3 py-1 rounded-full text-xs font-semibold">
+              <i data-lucide="zap" class="w-3.5 h-3.5"></i>
+              Average Pickup Wait: ~2-4 Mins
+            </span>
+          </div>
+
+          <h2 class="text-3xl md:text-5xl font-extrabold font-serif tracking-tight leading-tight">
+            Order Hands-Free or Online. <br/>
+            <span class="bg-gradient-to-r from-orange-400 via-amber-400 to-amber-200 bg-clip-text text-transparent">Skip the line & get your fresh brew.</span>
+          </h2>
+          <p class="text-stone-300 text-sm md:text-base max-w-2xl leading-relaxed">
+            Welcome to Velvet Espresso Café in Miami. Speak your custom order using our AI Voice Assistant or customize online to skip counter delays and enjoy your handcrafted espresso faster.
+          </p>
+          
+          <div class="flex flex-wrap items-center gap-3 pt-2">
+            <button onclick="switchTab('voice')" class="bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500 text-white font-bold text-sm px-6 py-3 rounded-xl shadow-lg shadow-orange-950/50 transition-all flex items-center gap-2 group">
+              <i data-lucide="mic" class="w-4.5 h-4.5 animate-pulse text-amber-200"></i> Try AI Voice Ordering
+            </button>
+            <button onclick="switchTab('menu')" class="bg-stone-900 hover:bg-stone-800 border border-stone-800 text-stone-200 font-semibold text-sm px-6 py-3 rounded-xl transition-all flex items-center gap-2">
+              <i data-lucide="menu" class="w-4 h-4 text-orange-400"></i> Browse Classic Menu
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Process Metrics Banner -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 bg-stone-950 p-4 border border-stone-900 rounded-2xl">
+        <div class="flex items-center gap-3 p-3 bg-stone-900/40 rounded-xl border border-stone-900/50">
+          <div class="p-2 bg-orange-500/10 text-orange-400 rounded-lg">
+            <i data-lucide="clock" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <div class="text-[10px] uppercase tracking-wider text-stone-500 font-semibold">Avg Pickup Wait</div>
+            <div class="text-sm font-bold text-emerald-400" id="stat-proc-time">2-4 mins <span class="text-[10px] text-stone-400 font-normal">(Express Line)</span></div>
+          </div>
+        </div>
+        <div class="flex items-center gap-3 p-3 bg-stone-900/40 rounded-xl border border-stone-900/50">
+          <div class="p-2 bg-amber-500/10 text-amber-400 rounded-lg">
+            <i data-lucide="check-check" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <div class="text-[10px] uppercase tracking-wider text-stone-500 font-semibold">Order Accuracy</div>
+            <div class="text-sm font-bold text-stone-100">95.6% <span class="text-[10px] text-emerald-400">(Verified)</span></div>
+          </div>
+        </div>
+        <div class="flex items-center gap-3 p-3 bg-stone-900/40 rounded-xl border border-stone-900/50">
+          <div class="p-2 bg-rose-500/10 text-rose-400 rounded-lg">
+            <i data-lucide="smile" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <div class="text-[10px] uppercase tracking-wider text-stone-500 font-semibold">Customer CSAT</div>
+            <div class="text-sm font-bold text-amber-400">4.8 / 5.0 <span class="text-[10px] font-normal text-stone-400">(Top Rated)</span></div>
+          </div>
+        </div>
+        <div class="flex items-center gap-3 p-3 bg-stone-900/40 rounded-xl border border-stone-900/50">
+          <div class="p-2 bg-blue-500/10 text-blue-400 rounded-lg">
+            <i data-lucide="mic" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <div class="text-[10px] uppercase tracking-wider text-stone-500 font-semibold">Express Pickups</div>
+            <div class="text-sm font-bold text-stone-200" id="dash-voice-rate">24/7 Available</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Curated Sections -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">New</span>
+              <h3 class="text-xl font-bold font-serif">Miami Summer Arrivals</h3>
+            </div>
+            <button onclick="switchTab('menu')" class="text-xs text-orange-400 hover:text-orange-300 font-semibold flex items-center gap-1">
+              View All <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="dashboard-new-grid">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">Trending</span>
+              <h3 class="text-xl font-bold font-serif">Velvet Signature Best-Sellers</h3>
+            </div>
+            <button onclick="switchTab('menu')" class="text-xs text-orange-400 hover:text-orange-300 font-semibold flex items-center gap-1">
+              View All <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="dashboard-popular-grid">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: ORDER MENU -->
+    <section id="tab-menu" class="space-y-6 hidden animate-fadeIn">
+      <div class="bg-stone-900/80 border border-stone-800 p-4 md:p-6 rounded-3xl space-y-4">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div>
+            <h2 class="text-2xl font-bold font-serif">Order Ahead Menu</h2>
+            <p class="text-xs text-stone-400">Craft espresso, pastelitos, artisan sandwiches, and refreshers with custom instruction options.</p>
+          </div>
+          
+          <!-- Search Input -->
+          <div class="relative w-full md:w-80">
+            <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-400"></i>
+            <input type="text" id="menu-search-input" oninput="filterMenu()" placeholder="Search menu items..." class="w-full bg-espresso-950 border border-stone-800 focus:border-orange-500 focus:ring-1 focus:ring-orange-500 rounded-xl pl-9 pr-4 py-2 text-sm text-stone-200 outline-none transition-all">
+          </div>
+        </div>
+
+        <!-- Custom Horizontal Category Scroll buttons -->
+        <div class="flex items-center gap-2 overflow-x-auto pb-2 border-b border-stone-800 scroll-smooth">
+          <button onclick="selectCategory('all')" id="cat-btn-all" class="flex-shrink-0 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all bg-orange-700 text-white">
+            All Items
+          </button>
+          <button onclick="selectCategory('coffee')" id="cat-btn-coffee" class="flex-shrink-0 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all bg-stone-900 hover:bg-stone-800 text-stone-300">
+            Coffee & Espresso
+          </button>
+          <button onclick="selectCategory('signature')" id="cat-btn-signature" class="flex-shrink-0 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all bg-stone-900 hover:bg-stone-800 text-stone-300">
+            Velvet Specialties
+          </button>
+          <button onclick="selectCategory('bakery')" id="cat-btn-bakery" class="flex-shrink-0 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all bg-stone-900 hover:bg-stone-800 text-stone-300">
+            Pastries & Bakery
+          </button>
+          <button onclick="selectCategory('breakfast')" id="cat-btn-breakfast" class="flex-shrink-0 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all bg-stone-900 hover:bg-stone-800 text-stone-300">
+            All-Day Savory Bites
+          </button>
+        </div>
+      </div>
+
+      <!-- Main Menu Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="menu-grid">
+        <!-- Dynamically rendered via JS -->
+      </div>
+
+      <!-- Empty state -->
+      <div id="menu-empty-state" class="hidden text-center py-16 space-y-4">
+        <div class="inline-flex p-4 bg-stone-900 rounded-full border border-stone-800">
+          <i data-lucide="search-code" class="w-8 h-8 text-stone-500"></i>
+        </div>
+        <div class="space-y-1">
+          <h3 class="font-bold text-lg text-stone-200">No items found</h3>
+          <p class="text-sm text-stone-400 max-w-xs mx-auto">Try checking your spelling or selecting another category.</p>
+        </div>
+        <button onclick="resetMenuSearch()" class="text-orange-400 hover:text-orange-300 text-xs font-bold underline">
+          Reset Search
+        </button>
+      </div>
+    </section>
+
+    <!-- TAB 3: AI VOICE ORDERING & CHATBOT -->
+    <section id="tab-voice" class="space-y-6 hidden animate-fadeIn">
+      <div class="bg-gradient-to-br from-espresso-900 via-stone-950 to-espresso-950 border border-orange-900/40 p-6 md:p-8 rounded-3xl space-y-6">
+        
+        <div class="space-y-4 border-b border-stone-800 pb-6">
+          <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div class="space-y-1">
+              <div class="inline-flex items-center gap-2 bg-orange-500/10 text-orange-400 border border-orange-500/20 text-xs px-3 py-1 rounded-full font-bold">
+                <i data-lucide="mic" class="w-3.5 h-3.5 text-orange-400"></i> AI Voice Order System
+              </div>
+              <h2 class="text-2xl md:text-3xl font-bold font-serif">Hands-Free Conversational AI Ordering</h2>
+              <p class="text-xs md:text-sm text-stone-300">
+                Follows our process workflow: Speak order → AI parses & reads back order → Confirm or modify via voice/comment box.
+              </p>
+            </div>
+            
+            <button onclick="restartVoiceWorkflow()" class="bg-stone-900 hover:bg-stone-800 border border-stone-800 text-stone-300 text-xs px-3 py-1.5 rounded-xl font-semibold flex items-center gap-1.5 transition-all">
+              <i data-lucide="rotate-ccw" class="w-3.5 h-3.5 text-amber-400"></i> Restart Voice Session
+            </button>
+          </div>
+
+          <!-- Process Visual Workflow Progress Stepper -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2">
+            <div id="v-step-badge-1" class="bg-orange-700 text-white p-2.5 rounded-xl border border-orange-600 flex items-center gap-2 text-xs font-bold transition-all">
+              <span class="w-5 h-5 rounded-full bg-espresso-950 flex items-center justify-center text-[10px]">1</span>
+              <span>Speak Order</span>
+            </div>
+            <div id="v-step-badge-2" class="bg-stone-900 text-stone-500 p-2.5 rounded-xl border border-stone-800 flex items-center gap-2 text-xs font-bold transition-all">
+              <span class="w-5 h-5 rounded-full bg-stone-950 flex items-center justify-center text-[10px]">2</span>
+              <span>AI Reads Back</span>
+            </div>
+            <div id="v-step-badge-3" class="bg-stone-900 text-stone-500 p-2.5 rounded-xl border border-stone-800 flex items-center gap-2 text-xs font-bold transition-all">
+              <span class="w-5 h-5 rounded-full bg-stone-950 flex items-center justify-center text-[10px]">3</span>
+              <span>Verify & Edit</span>
+            </div>
+            <div id="v-step-badge-4" class="bg-stone-900 text-stone-500 p-2.5 rounded-xl border border-stone-800 flex items-center gap-2 text-xs font-bold transition-all">
+              <span class="w-5 h-5 rounded-full bg-stone-950 flex items-center justify-center text-[10px]">4</span>
+              <span>Confirm & Pay</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Speech Interaction Panel -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          
+          <div class="bg-stone-900/60 border border-stone-800 p-6 rounded-2xl space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="font-bold text-lg font-serif text-stone-100 flex items-center gap-2" id="voice-input-title">
+                <i data-lucide="volume-2" class="w-5 h-5 text-orange-400"></i> Step 1: Speak Order to AI
+              </h3>
+              <span id="voice-stage-indicator" class="text-[10px] bg-orange-500/10 text-orange-400 border border-orange-500/20 px-2 py-0.5 rounded-full font-semibold">Active Input</span>
+            </div>
+
+            <!-- Speech Recording Mic Control -->
+            <div class="flex flex-col items-center justify-center py-6 bg-espresso-950/80 border border-stone-800 rounded-xl text-center space-y-3 relative">
+              <button onclick="toggleSpeechRecognition()" id="mic-record-btn" class="w-16 h-16 rounded-full bg-gradient-to-br from-orange-600 to-amber-600 hover:scale-105 active:scale-95 text-white flex items-center justify-center shadow-xl shadow-orange-950/50 transition-all cursor-pointer group">
+                <i data-lucide="mic" id="mic-icon" class="w-7 h-7 group-hover:animate-bounce"></i>
+              </button>
+              <p class="text-xs text-stone-300 font-medium" id="mic-status-text">Click microphone to START speaking your order naturally</p>
+              <p class="text-[10px] text-stone-500">e.g., "I'd like 2 Cuban Coladas and 1 Beef Empanada with extra oat milk"</p>
+            </div>
+
+            <!-- Speech / Text Input Box -->
+            <div class="space-y-2">
+              <label for="ai-voice-text-input" class="text-xs font-semibold text-stone-300 flex items-center justify-between">
+                <span id="transcript-label-text">Speech Order Transcript:</span>
+                <span class="text-[10px] text-amber-400">Gemini AI Parser</span>
+              </label>
+              <textarea id="ai-voice-text-input" rows="3" placeholder="e.g. Can I get 1 Lavender Oat Latte with extra shot and 2 Guava Cruffins?" class="w-full bg-espresso-950 border border-stone-800 focus:border-orange-500 rounded-xl p-3 text-xs text-stone-200 outline-none transition-all"></textarea>
+            </div>
+
+            <!-- Comment Box Fallback -->
+            <div id="comment-box-container" class="space-y-1.5 bg-amber-500/5 border border-amber-500/20 p-3 rounded-xl">
+              <label for="comment-box-backup" class="text-xs font-bold text-amber-400 flex items-center gap-1.5">
+                <i data-lucide="message-square" class="w-3.5 h-3.5"></i> Special Comment Box (Fallback Note)
+              </label>
+              <input type="text" id="comment-box-backup" placeholder="Add specific notes or modifications if AI misunderstood..." class="w-full bg-espresso-950 border border-stone-800 focus:border-amber-500 rounded-lg p-2 text-xs text-stone-200 outline-none">
+            </div>
+
+            <button onclick="processAIVoiceOrder()" id="process-voice-btn" class="w-full bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-500 to-orange-600 text-white font-bold text-xs py-3 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2">
+              <i data-lucide="sparkles" class="w-4 h-4"></i> Interpret & Advance Process
+            </button>
+          </div>
+
+          <!-- Parsed Order Output -->
+          <div class="space-y-6">
+            <div class="bg-stone-900/60 border border-stone-800 p-6 rounded-2xl space-y-4">
+              <div class="flex items-center justify-between">
+                <h3 class="font-bold text-lg font-serif text-stone-100 flex items-center gap-2">
+                  <i data-lucide="volume-2" class="w-5 h-5 text-emerald-400"></i> AI Parsed Order Read Back
+                </h3>
+                <button onclick="readCartOutLoud()" id="read-aloud-btn" class="text-xs bg-stone-800 hover:bg-stone-750 text-amber-400 border border-stone-700 px-2.5 py-1 rounded-lg font-semibold flex items-center gap-1">
+                  <i data-lucide="volume-2" class="w-3.5 h-3.5"></i> Play AI Audio
+                </button>
+              </div>
+
+              <!-- AI Verbal Readout Banner -->
+              <div id="ai-readout-banner" class="bg-amber-500/10 border border-amber-500/20 p-3 rounded-xl text-xs text-amber-300 leading-relaxed flex items-start gap-2 hidden">
+                <i data-lucide="bot" class="w-4 h-4 text-amber-400 shrink-0 mt-0.5"></i>
+                <div>
+                  <strong>AI Audio Readout:</strong>
+                  <p id="ai-readout-text" class="italic mt-0.5">"I have parsed your order..."</p>
+                </div>
+              </div>
+
+              <!-- Parsed Cart Display -->
+              <div id="ai-parsed-items-list" class="min-h-[120px] bg-espresso-950 border border-stone-850 rounded-xl p-4 flex flex-col justify-center items-center text-center text-stone-500 space-y-2">
+                <i data-lucide="mic-off" class="w-6 h-6 opacity-40"></i>
+                <p class="text-xs">No voice order processed yet. Speak your order on the left to initiate the workflow.</p>
+              </div>
+
+              <!-- Verification Panel -->
+              <div id="bpmn-decision-panel" class="hidden bg-stone-950 border border-stone-800 p-4 rounded-xl space-y-3">
+                <p class="text-xs font-bold text-stone-200">Verification: Did the AI interpret your order correctly?</p>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                  <button onclick="handleBpmnChoice('correct')" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 rounded-xl transition-all flex items-center justify-center gap-1">
+                    <i data-lucide="check" class="w-4 h-4"></i> Yes, Correct!
+                  </button>
+                  <button onclick="handleBpmnChoice('incorrect')" class="bg-rose-900/60 hover:bg-rose-800 text-rose-200 border border-rose-800 font-bold py-2 rounded-xl transition-all flex items-center justify-center gap-1">
+                    <i data-lucide="x" class="w-4 h-4"></i> No, Edit/Modify
+                  </button>
+                </div>
+              </div>
+
+              <!-- Edit Subpanel -->
+              <div id="bpmn-edit-subpanel" class="hidden bg-stone-950 border border-amber-500/30 p-4 rounded-xl space-y-3">
+                <p class="text-xs font-bold text-amber-400">Would you like to retry speaking modifications or add a note in the comment box?</p>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                  <button onclick="handleBpmnEditChoice('retry')" class="bg-orange-600 hover:bg-orange-500 text-white font-bold py-2 rounded-lg transition-all flex items-center justify-center gap-1">
+                    <i data-lucide="mic" class="w-3.5 h-3.5"></i> Speak Modifications
+                  </button>
+                  <button onclick="handleBpmnEditChoice('comment')" class="bg-stone-800 hover:bg-stone-700 text-amber-300 font-bold py-2 rounded-lg transition-all flex items-center justify-center gap-1">
+                    <i data-lucide="message-square" class="w-3.5 h-3.5"></i> Use Comment Box
+                  </button>
+                </div>
+              </div>
+
+              <!-- Confirm & Transfer Button -->
+              <button onclick="confirmAndTransferVoiceOrder()" id="add-voice-cart-btn" disabled class="w-full bg-stone-800 text-stone-500 cursor-not-allowed font-bold text-xs py-3 rounded-xl transition-all flex items-center justify-center gap-2">
+                <i data-lucide="shopping-bag" class="w-4 h-4"></i> Step 4: Confirm Order Verbally & Proceed to Bag
+              </button>
+            </div>
+
+            <!-- Virtual Barista AI Chatbot Box -->
+            <div class="bg-stone-900/40 border border-stone-800 p-4 rounded-2xl space-y-3">
+              <div class="flex items-center justify-between">
+                <h4 class="font-bold text-sm text-stone-200 flex items-center gap-2">
+                  <i data-lucide="bot" class="w-4 h-4 text-amber-400"></i> Virtual Barista Assistant
+                </h4>
+                <span class="text-[10px] text-stone-500">Gemini AI</span>
+              </div>
+              <div id="chatbot-messages" class="h-28 overflow-y-auto bg-espresso-950 border border-stone-850 rounded-xl p-3 text-xs space-y-2">
+                <div class="bg-stone-900 border border-stone-800 p-2 rounded-lg text-stone-300">
+                  👋 <strong>Velvet AI Assistant:</strong> Ask me about dietary options, syrup choices, or pickup times!
+                </div>
+              </div>
+              <div class="flex gap-2">
+                <input type="text" id="chatbot-input" onkeydown="if(event.key==='Enter') sendChatbotQuery()" placeholder="Ask virtual barista a question..." class="w-full bg-espresso-950 border border-stone-800 focus:border-amber-500 rounded-lg px-3 py-1.5 text-xs text-stone-200 outline-none">
+                <button onclick="sendChatbotQuery()" class="bg-amber-600 hover:bg-amber-500 text-white px-3 py-1.5 rounded-lg text-xs font-bold transition-all">Send</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: SAVED FAVORITES & CUSTOM REORDERS -->
+    <section id="tab-favorites" class="space-y-6 hidden animate-fadeIn">
+      <div class="bg-gradient-to-br from-stone-900 to-espresso-950 border border-stone-850 p-6 md:p-8 rounded-3xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div class="space-y-2">
+          <div class="inline-flex items-center gap-2 bg-rose-500/10 text-rose-400 border border-rose-500/20 text-xs px-2.5 py-1 rounded-full font-bold">
+            <i data-lucide="heart" class="w-3.5 h-3.5 fill-rose-400"></i> Express Reordering
+          </div>
+          <h2 class="text-2xl md:text-3xl font-bold font-serif">Your Velvet Favorites</h2>
+          <p class="text-sm text-stone-400 max-w-xl">
+            Save custom combinations or special coffee customization presets as "Favorite Orders". Load them straight to your basket and skip line assembly in a single tap.
+          </p>
+        </div>
+        <div class="bg-stone-900 border border-stone-800 px-4 py-3 rounded-2xl flex items-center gap-3">
+          <i data-lucide="info" class="w-5 h-5 text-amber-500 shrink-0"></i>
+          <p class="text-[11px] text-stone-300">
+            Add items to your cart, and look for the <strong class="text-rose-400">"Save Cart as Favorite"</strong> option to create customized rapid ordering bundles.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="favorites-list-grid">
+        <!-- Loaded via JS -->
+      </div>
+
+      <div id="favorites-empty-state" class="hidden text-center py-16 space-y-4 bg-stone-900/20 border border-stone-900 rounded-3xl">
+        <div class="inline-flex p-4 bg-stone-900 rounded-full border border-stone-800 text-stone-400">
+          <i data-lucide="heart" class="w-8 h-8"></i>
+        </div>
+        <div class="space-y-2">
+          <h3 class="font-bold text-lg text-stone-200">No favorite order templates saved</h3>
+          <p class="text-sm text-stone-400 max-w-sm mx-auto">
+            Build your typical morning rush bundle in the cart, name it something special, and save it to re-order in 1-click next time!
+          </p>
+        </div>
+        <button onclick="switchTab('menu')" class="bg-orange-700 hover:bg-orange-600 text-white font-semibold text-xs px-5 py-2.5 rounded-xl transition-all">
+          Browse Menu & Customize Combo
+        </button>
+      </div>
+    </section>
+
+    <!-- TAB 5: BARISTA LIVE VIEW & KITCHEN DISPLAY -->
+    <section id="tab-staff" class="space-y-6 hidden animate-fadeIn">
+      <div class="bg-amber-500/10 border border-amber-500/20 p-4 rounded-2xl flex items-start gap-3">
+        <i data-lucide="chef-hat" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+        <div class="space-y-1">
+          <h4 class="text-amber-400 text-sm font-bold">Barista Kitchen Display System</h4>
+          <p class="text-xs text-stone-300 leading-relaxed">
+            Monitors incoming customer orders in real time. Mark orders as "Preparing" or "Ready" to advance customer pickup trackers in real-time.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-stone-900/60 border border-stone-800 rounded-2xl p-4">
+          <div class="text-xs text-stone-500 uppercase font-bold tracking-wider">Total Orders Today</div>
+          <div class="flex items-baseline gap-2 mt-1">
+            <span class="text-2xl font-bold font-mono" id="staff-stat-total-orders">18</span>
+            <span class="text-xs text-emerald-400 font-bold font-mono">▲ Express Pickup</span>
+          </div>
+        </div>
+        <div class="bg-stone-900/60 border border-stone-800 rounded-2xl p-4">
+          <div class="text-xs text-stone-500 uppercase font-bold tracking-wider">Est. Time Saved</div>
+          <div class="flex items-baseline gap-2 mt-1">
+            <span class="text-2xl font-bold font-mono text-emerald-400" id="staff-stat-saved-minutes">54m</span>
+            <span class="text-xs text-stone-400">3 mins/order avg</span>
+          </div>
+        </div>
+        <div class="bg-stone-900/60 border border-stone-800 rounded-2xl p-4">
+          <div class="text-xs text-stone-500 uppercase font-bold tracking-wider">Active Incoming Queue</div>
+          <div class="flex items-baseline gap-2 mt-1">
+            <span class="text-2xl font-bold font-mono text-amber-400" id="staff-stat-pending-orders">0</span>
+            <span class="text-xs text-stone-400">In prep</span>
+          </div>
+        </div>
+        <div class="bg-stone-900/60 border border-stone-800 rounded-2xl p-4">
+          <div class="text-xs text-stone-500 uppercase font-bold tracking-wider">Sales Today</div>
+          <div class="flex items-baseline gap-2 mt-1">
+            <span class="text-2xl font-bold font-mono text-stone-100" id="staff-stat-total-revenue">$214.50</span>
+            <span class="text-xs text-orange-500 font-bold">Express pickup</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center justify-between border-b border-stone-800 pb-2">
+            <h3 class="font-bold text-lg font-serif text-stone-100 flex items-center gap-2">
+              <i data-lucide="bell" class="w-5 h-5 text-amber-500"></i> Active Kitchen Queue
+            </h3>
+            <button onclick="injectSampleOrder()" class="text-xs bg-espresso-850 hover:bg-espresso-800 text-orange-400 border border-orange-900/60 px-3 py-1.5 rounded-xl font-bold transition-all flex items-center gap-1">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i> Simulate External Customer
+            </button>
+          </div>
+
+          <div class="space-y-4" id="staff-order-pipeline">
+            <!-- Dynamically populated live order cards -->
+          </div>
+
+          <div id="staff-no-orders" class="hidden text-center py-12 bg-stone-900/20 rounded-2xl border border-stone-900/50">
+            <p class="text-stone-400 text-sm">No pending orders. Try placing one from the main client view!</p>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <div class="border-b border-stone-800 pb-2">
+            <h3 class="font-bold text-lg font-serif text-stone-100 flex items-center gap-2">
+              <i data-lucide="database" class="w-5 h-5 text-orange-500"></i> Velvet Coffee Inventory
+            </h3>
+            <p class="text-xs text-stone-400 mt-1">Manage ingredient levels.</p>
+          </div>
+
+          <div class="bg-stone-900/40 border border-stone-900 rounded-2xl p-4 divide-y divide-stone-800" id="staff-inventory-list">
+            <!-- Dynamically populated stock items -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- CART SIDEBAR OVERLAY -->
+  <div id="cart-drawer-overlay" class="fixed inset-0 bg-black/60 z-50 transition-opacity opacity-0 pointer-events-none duration-300" onclick="toggleCart(false)"></div>
+  <aside id="cart-drawer" class="fixed right-0 top-0 bottom-0 w-full max-w-md bg-espresso-950 border-l border-stone-850 z-50 shadow-2xl translate-x-full transition-transform duration-300 flex flex-col">
+    <div class="p-4 border-b border-stone-800 flex items-center justify-between bg-stone-900/40">
+      <div class="flex items-center gap-2">
+        <i data-lucide="shopping-bag" class="w-5 h-5 text-orange-400"></i>
+        <h3 class="font-bold text-stone-200">My Velvet Bag</h3>
+      </div>
+      <button onclick="toggleCart(false)" class="p-1.5 bg-stone-900 hover:bg-stone-800 rounded-lg text-stone-400 hover:text-stone-200 transition-all">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+
+    <div class="flex-grow overflow-y-auto p-4 space-y-4" id="cart-items-container">
+      <!-- Dynamically filled -->
+    </div>
+
+    <div id="cart-empty-view" class="flex-grow flex flex-col items-center justify-center p-8 text-center hidden">
+      <div class="p-4 bg-stone-900/80 border border-stone-800 rounded-full text-stone-400 mb-4 animate-bounce">
+        <i data-lucide="coffee" class="w-8 h-8"></i>
+      </div>
+      <h4 class="font-bold text-stone-200">Your bag is empty</h4>
+      <p class="text-xs text-stone-400 max-w-xs mx-auto mt-2">Add coffee, pastelitos, or sandwiches from our menu or AI Voice Order to start.</p>
+    </div>
+
+    <div class="p-4 border-t border-stone-800 bg-stone-900/60 space-y-4">
+      <div class="space-y-1.5 text-xs">
+        <div class="flex justify-between text-stone-400">
+          <span>Subtotal</span>
+          <span id="cart-subtotal">$0.00</span>
+        </div>
+        <div class="flex justify-between text-stone-400">
+          <span>Florida Food Tax (7%)</span>
+          <span id="cart-tax">$0.00</span>
+        </div>
+        <div class="flex justify-between text-stone-100 font-bold text-sm pt-1.5 border-t border-stone-800">
+          <span>Total Price</span>
+          <span id="cart-total" class="text-orange-400">$0.00</span>
+        </div>
+      </div>
+
+      <div id="cart-favorites-save-box" class="hidden p-3 bg-stone-900 rounded-xl border border-stone-800 space-y-2">
+        <div class="flex items-center gap-2 text-xs font-bold text-rose-400">
+          <i data-lucide="heart" class="w-3.5 h-3.5"></i> Save this combination?
+        </div>
+        <div class="flex gap-2">
+          <input type="text" id="favorite-name-input" placeholder="e.g., Morning Rush Combo" class="bg-espresso-950 border border-stone-800 focus:border-rose-500 rounded-lg px-2.5 py-1.5 text-xs text-stone-200 outline-none flex-grow">
+          <button onclick="saveCurrentCartAsFavorite()" class="bg-rose-600 hover:bg-rose-500 text-white text-xs px-3 py-1.5 rounded-lg font-bold transition-all">
+            Save
+          </button>
+        </div>
+      </div>
+
+      <button onclick="handlePlaceOrder()" id="checkout-cta" class="w-full bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-500 hover:to-orange-600 text-white font-semibold text-sm py-3 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-orange-950/40">
+        <i data-lucide="credit-card" class="w-4 h-4"></i> Place Order (Online Pick-up)
+      </button>
+    </div>
+  </aside>
+
+  <!-- ORDER TRACKER MODAL -->
+  <div id="tracker-modal" class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4 opacity-0 pointer-events-none transition-all duration-300">
+    <div class="bg-espresso-950 border border-stone-850 rounded-2xl max-w-lg w-full p-6 space-y-6 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-stone-850 pb-3">
+        <div>
+          <h3 class="text-lg font-bold font-serif text-stone-100">Velvet Order Tracker</h3>
+          <p class="text-[10px] text-stone-400" id="tracker-order-id">ID: #---</p>
+        </div>
+        <button onclick="toggleTrackerModal(false)" class="p-1.5 bg-stone-900 hover:bg-stone-800 rounded-lg text-stone-400 hover:text-stone-200 transition-all">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <div class="space-y-6">
+        <div class="relative flex items-center justify-between">
+          <div class="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-1 bg-stone-800 -z-10 rounded-full">
+            <div class="h-full bg-gradient-to-r from-orange-600 to-amber-500 transition-all duration-1000" id="tracker-progress-line" style="width: 15%"></div>
+          </div>
+
+          <div class="flex flex-col items-center text-center">
+            <div id="step-node-1" class="w-10 h-10 rounded-full bg-orange-700 text-white border-4 border-espresso-950 flex items-center justify-center text-xs font-bold transition-all">
+              <i data-lucide="check" class="w-4 h-4"></i>
+            </div>
+            <span class="text-[11px] font-bold mt-2 text-orange-400">Confirmed</span>
+          </div>
+
+          <div class="flex flex-col items-center text-center">
+            <div id="step-node-2" class="w-10 h-10 rounded-full bg-stone-900 text-stone-500 border-4 border-espresso-950 flex items-center justify-center text-xs font-bold transition-all">
+              <i data-lucide="flame" class="w-4 h-4"></i>
+            </div>
+            <span class="text-[11px] font-bold mt-2 text-stone-400" id="step-text-2">Prep Kitchen</span>
+          </div>
+
+          <div class="flex flex-col items-center text-center">
+            <div id="step-node-3" class="w-10 h-10 rounded-full bg-stone-900 text-stone-500 border-4 border-espresso-950 flex items-center justify-center text-xs font-bold transition-all">
+              <i data-lucide="cup-tot" class="w-4 h-4"></i>
+            </div>
+            <span class="text-[11px] font-bold mt-2 text-stone-400" id="step-text-3">Bar Counter</span>
+          </div>
+        </div>
+
+        <div class="p-4 bg-stone-900/60 rounded-xl border border-stone-850 text-center space-y-1">
+          <p class="text-sm font-bold text-stone-100" id="tracker-status-primary">Order received and queued.</p>
+          <p class="text-xs text-stone-400" id="tracker-status-secondary">AI Predictive wait algorithm calculating queue position...</p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-stone-900 p-3 rounded-xl border border-stone-850 text-center">
+            <span class="block text-2xl font-black text-orange-500 font-mono" id="tracker-timer">~ 2-4 Mins</span>
+            <span class="text-[10px] text-stone-400 uppercase tracking-wider font-bold">Predictive AI Wait</span>
+          </div>
+          <div class="bg-stone-900 p-3 rounded-xl border border-stone-850 text-center flex flex-col justify-center items-center">
+            <div class="flex items-center gap-1.5 text-xs text-stone-200 font-bold">
+              <span class="h-2 w-2 bg-emerald-500 rounded-full animate-pulse"></span>
+              Velvet Express Lane
+            </div>
+            <span class="text-[10px] text-stone-400 mt-1">Miami, FL Pickup</span>
+          </div>
+        </div>
+
+        <div class="bg-stone-900/40 border border-stone-900 rounded-xl p-4 space-y-2">
+          <div class="text-xs font-bold text-stone-300 border-b border-stone-800 pb-1.5 flex justify-between">
+            <span>Summary of Items</span>
+            <span class="text-stone-400" id="tracker-receipt-count">0 items</span>
+          </div>
+          <div class="text-xs text-stone-400 space-y-1" id="tracker-receipt-items">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ITEM CUSTOMIZATION MODAL -->
+  <div id="custom-modal" class="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4 opacity-0 pointer-events-none transition-all duration-300">
+    <div class="bg-espresso-950 border border-stone-800 rounded-3xl max-w-lg w-full p-6 space-y-6 shadow-2xl relative">
+      <div class="flex items-start justify-between border-b border-stone-850 pb-4">
+        <div class="flex gap-3 items-center">
+          <img id="custom-modal-img" src="" alt="Item" class="w-14 h-14 rounded-2xl object-cover border border-stone-800">
+          <div>
+            <h3 class="text-lg font-bold font-serif text-stone-100" id="custom-modal-title">Customize Item</h3>
+            <p class="text-xs text-orange-400 font-mono font-bold" id="custom-modal-price">$0.00</p>
+          </div>
+        </div>
+        <button onclick="closeCustomModal()" class="p-2 bg-stone-900 hover:bg-stone-800 rounded-xl text-stone-400 hover:text-stone-200 transition-all">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <div class="space-y-4 max-h-[60vh] overflow-y-auto pr-1">
+        
+        <!-- PANEL 1: COFFEE / ESPRESSO SPECIFIC OPTIONS -->
+        <div id="custom-coffee-options-panel" class="space-y-4 hidden">
+          <!-- Milk Base -->
+          <div class="space-y-2">
+            <label class="block text-xs font-bold text-stone-300">Select Milk / Dairy Base:</label>
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <label class="p-2.5 bg-stone-900 border border-stone-800 rounded-xl flex items-center gap-2 cursor-pointer hover:border-orange-500">
+                <input type="radio" name="opt-milk" value="Whole Milk" checked class="accent-orange-600"> Whole Milk
+              </label>
+              <label class="p-2.5 bg-stone-900 border border-stone-800 rounded-xl flex items-center gap-2 cursor-pointer hover:border-orange-500">
+                <input type="radio" name="opt-milk" value="Organic Oat Milk (+ $0.75)" class="accent-orange-600"> Oat Milk (+75¢)
+              </label>
+              <label class="p-2.5 bg-stone-900 border border-stone-800 rounded-xl flex items-center gap-2 cursor-pointer hover:border-orange-500">
+                <input type="radio" name="opt-milk" value="Almond Milk (+ $0.50)" class="accent-orange-600"> Almond Milk (+50¢)
+              </label>
+              <label class="p-2.5 bg-stone-900 border border-stone-800 rounded-xl flex items-center gap-2 cursor-pointer hover:border-orange-500">
+                <input type="radio" name="opt-milk" value="Coconut Milk (+ $0.50)" class="accent-orange-600"> Coconut Milk (+50¢)
+              </label>
+            </div>
+          </div>
+
+          <!-- Temperature -->
+          <div class="space-y-2">
+            <label class="block text-xs font-bold text-stone-300">Temperature & Style:</label>
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <label class="p-2.5 bg-stone-900 border border-stone-800 rounded-xl flex items-center gap-2 cursor-pointer hover:border-orange-500">
+                <input type="radio" name="opt-temp" value="Iced Style" checked class="accent-orange-600"> 🧊 Iced
+              </label>
+              <label class="p-2.5 bg-stone-900 border border-stone-800 rounded-xl flex items-center gap-2 cursor-pointer hover:border-orange-500">
+                <input type="radio" name="opt-temp" value="Hot Steam" class="accent-orange-600"> ☕ Hot Steam
+              </label>
+            </div>
+          </div>
+
+          <!-- Shots & Sweetness -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="space-y-1.5">
+              <label for="opt-shots-select" class="block text-xs font-bold text-stone-300">Espresso Shots:</label>
+              <select id="opt-shots-select" class="w-full bg-stone-900 border border-stone-800 rounded-xl p-2.5 text-xs text-stone-200 outline-none">
+                <option value="Standard Shots">Standard Shots</option>
+                <option value="Extra Espresso Shot (+ $1.00)">+ 1 Extra Shot (+$1.00)</option>
+                <option value="Double Extra Shots (+ $2.00)">+ 2 Extra Shots (+$2.00)</option>
+                <option value="Decaf Espresso">Decaf Espresso</option>
+              </select>
+            </div>
+            <div class="space-y-1.5">
+              <label for="opt-sweet-select" class="block text-xs font-bold text-stone-300">Sweetness Level:</label>
+              <select id="opt-sweet-select" class="w-full bg-stone-900 border border-stone-800 rounded-xl p-2.5 text-xs text-stone-200 outline-none">
+                <option value="100% Standard Sweetness">100% Standard</option>
+                <option value="50% Less Sweet">50% Less Sweet</option>
+                <option value="Extra Sweet (+ $0.50)">Extra Sweet (+50¢)</option>
+                <option value="Unsweetened / No Syrup">Unsweetened</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANEL 2: REFRESHERS & SMOOTHIES (NO MILK OPTIONS) -->
+        <div id="custom-refresher-options-panel" class="space-y-4 hidden">
+          <div class="space-y-2">
+            <label class="block text-xs font-bold text-stone-300">Ice Level:</label>
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <label class="p-2.5 bg-stone-900 border border-stone-800 rounded-xl flex items-center gap-2 cursor-pointer hover:border-orange-500">
+                <input type="radio" name="opt-ice" value="Standard Ice" checked class="accent-orange-600"> 🧊 Standard Ice
+              </label>
+              <label class="p-2.5 bg-stone-900 border border-stone-800 rounded-xl flex items-center gap-2 cursor-pointer hover:border-orange-500">
+                <input type="radio" name="opt-ice" value="Light Ice" class="accent-orange-600"> 💧 Light Ice
+              </label>
+              <label class="p-2.5 bg-stone-900 border border-stone-800 rounded-xl flex items-center gap-2 cursor-pointer hover:border-orange-500">
+                <input type="radio" name="opt-ice" value="Extra Ice" class="accent-orange-600"> 🧊 Extra Ice
+              </label>
+              <label class="p-2.5 bg-stone-900 border border-stone-800 rounded-xl flex items-center gap-2 cursor-pointer hover:border-orange-500">
+                <input type="radio" name="opt-ice" value="No Ice" class="accent-orange-600"> 🚫 No Ice
+              </label>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="space-y-1.5">
+              <label for="opt-refr-sweet-select" class="block text-xs font-bold text-stone-300">Sweetness Level:</label>
+              <select id="opt-refr-sweet-select" class="w-full bg-stone-900 border border-stone-800 rounded-xl p-2.5 text-xs text-stone-200 outline-none">
+                <option value="100% Standard Sweetness">100% Standard</option>
+                <option value="50% Less Sweet">50% Less Sweet</option>
+                <option value="Unsweetened">Unsweetened</option>
+              </select>
+            </div>
+            <div class="space-y-1.5">
+              <label for="opt-refr-addon-select" class="block text-xs font-bold text-stone-300">Tropical Add-Ins:</label>
+              <select id="opt-refr-addon-select" class="w-full bg-stone-900 border border-stone-800 rounded-xl p-2.5 text-xs text-stone-200 outline-none">
+                <option value="Standard Recipe">Standard Recipe</option>
+                <option value="Extra Fresh Mango Scoops (+ $0.75)">+ Extra Mango Scoops (+75¢)</option>
+                <option value="Splash of Coconut Water (+ $0.50)">+ Coconut Water Splash (+50¢)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANEL 3: BAKERY & PASTRIES OPTIONS -->
+        <div id="custom-bakery-options-panel" class="space-y-4 hidden">
+          <div class="space-y-2">
+            <label class="block text-xs font-bold text-stone-300">Warming Preference:</label>
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <label class="p-2.5 bg-stone-900 border border-stone-800 rounded-xl flex items-center gap-2 cursor-pointer hover:border-orange-500">
+                <input type="radio" name="opt-bakery-warm" value="Warmed Up" checked class="accent-orange-600"> 🔥 Warmed Up
+              </label>
+              <label class="p-2.5 bg-stone-900 border border-stone-800 rounded-xl flex items-center gap-2 cursor-pointer hover:border-orange-500">
+                <input type="radio" name="opt-bakery-warm" value="Room Temp / Fresh" class="accent-orange-600"> 🥐 Room Temp / Fresh
+              </label>
+            </div>
+          </div>
+
+          <div class="space-y-1.5">
+            <label for="opt-bakery-dip-select" class="block text-xs font-bold text-stone-300">Extra Dips & Glazes:</label>
+            <select id="opt-bakery-dip-select" class="w-full bg-stone-900 border border-stone-800 rounded-xl p-2.5 text-xs text-stone-200 outline-none">
+              <option value="Standard Serving">Standard Serving</option>
+              <option value="Side Argentine Dulce de Leche (+ $1.00)">Side Dulce de Leche (+ $1.00)</option>
+              <option value="Side Miami Guava Dip (+ $0.75)">Side Guava Dip (+ 75¢)</option>
+              <option value="Extra Powdered Sugar & Cinnamon">Extra Powdered Sugar</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- PANEL 4: SAVORY / BREAKFAST OPTIONS -->
+        <div id="custom-food-options-panel" class="space-y-4 hidden">
+          <div class="space-y-2">
+            <label class="block text-xs font-bold text-stone-300">Preparation Preference:</label>
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <label class="p-2.5 bg-stone-900 border border-stone-800 rounded-xl flex items-center gap-2 cursor-pointer hover:border-orange-500">
+                <input type="radio" name="opt-food-prep" value="Warmed & Pressed" checked class="accent-orange-600"> 🔥 Warmed & Pressed
+              </label>
+              <label class="p-2.5 bg-stone-900 border border-stone-800 rounded-xl flex items-center gap-2 cursor-pointer hover:border-orange-500">
+                <input type="radio" name="opt-food-prep" value="Fresh / As-Is" class="accent-orange-600"> 🥐 Fresh / As-Is
+              </label>
+            </div>
+          </div>
+
+          <div class="space-y-1.5">
+            <label for="opt-food-addon-select" class="block text-xs font-bold text-stone-300">Extra Add-ons / Dips:</label>
+            <select id="opt-food-addon-select" class="w-full bg-stone-900 border border-stone-800 rounded-xl p-2.5 text-xs text-stone-200 outline-none">
+              <option value="Standard Serving">Standard Serving</option>
+              <option value="Extra Melted Cheese (+ $1.00)">Extra Swiss/Gouda Cheese (+$1.00)</option>
+              <option value="Side Miami Sofrito Dip (+ $0.75)">Side Sofrito Dip (+75¢)</option>
+              <option value="Extra Salted Butter Dip (+ $0.50)">Extra Salted Butter (+50¢)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Custom Instructions Note -->
+        <div class="space-y-1.5">
+          <label for="custom-instructions-input" class="block text-xs font-bold text-stone-300">Special Requests / Instructions:</label>
+          <input type="text" id="custom-instructions-input" placeholder="e.g. Extra foam, light ice, allergy notes..." class="w-full bg-stone-900 border border-stone-800 rounded-xl p-2.5 text-xs text-stone-200 outline-none focus:border-orange-500">
+        </div>
+
+      </div>
+
+      <div class="pt-2 border-t border-stone-850 flex items-center justify-between gap-3">
+        <button onclick="closeCustomModal()" class="px-4 py-2.5 bg-stone-900 hover:bg-stone-800 text-stone-400 font-bold text-xs rounded-xl transition-all">
+          Cancel
+        </button>
+        <button onclick="confirmCustomizedAddToCart()" class="flex-grow bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 text-white font-bold text-xs py-3 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2">
+          <i data-lucide="shopping-bag" class="w-4 h-4"></i> Add Customized Item to Bag
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed bottom-24 lg:bottom-6 left-1/2 -translate-x-1/2 bg-stone-900 border border-stone-800 shadow-2xl px-5 py-3.5 rounded-2xl text-xs font-medium z-50 text-stone-200 pointer-events-none opacity-0 translate-y-2 transition-all duration-300 flex items-center gap-2.5">
+    <i data-lucide="check-circle" class="w-4.5 h-4.5 text-emerald-500 shrink-0"></i>
+    <span id="toast-message">Success! Item added.</span>
+  </div>
+
+  <!-- Footer Info -->
+  <footer class="bg-espresso-950 border-t border-stone-900 py-6 text-center text-xs text-stone-500 space-y-2 mt-auto">
+    <div class="flex items-center justify-center gap-4 text-stone-400 font-medium flex-wrap">
+      <span>📍 300 Biscayne Blvd, Miami, FL</span>
+      <span>•</span>
+      <span>Open 24 Hours</span>
+      <span>•</span>
+      <span>📞 (305) 555-0199</span>
+    </div>
+    <p>© 2026 Velvet Espresso Café. All rights reserved.</p>
+  </footer>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // --- MENU DATASET WITH MATCHING ACCURATE IMAGES ---
+    const INITIAL_MENU = [
+      {
+        id: "m1",
+        name: "Velvet Signature Cold Brew",
+        category: "signature",
+        description: "24-hour cold-dripped espresso blended with rich cream, velvet caramel foam, and sea salt dusting.",
+        price: 5.75,
+        image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&q=80&w=600",
+        stock: 45,
+        popular: true,
+        new: false,
+        type: "coffee"
+      },
+      {
+        id: "m2",
+        name: "Miami Guava Pastelito Cruffin",
+        category: "bakery",
+        description: "Flaky croissant muffin hybrid baked daily. Rich Miami guava jam filling, vanilla sugar glaze.",
+        price: 4.50,
+        image: "https://images.unsplash.com/photo-1530610476181-d83430b64dcd?auto=format&fit=crop&q=80&w=600",
+        stock: 12,
+        popular: true,
+        new: true,
+        type: "bakery"
+      },
+      {
+        id: "m3",
+        name: "Classic Cuban Colada",
+        category: "coffee",
+        description: "The Miami classic. Sweet, robust espresso whipped with authentic brown sugar espuma. Includes glasses to share.",
+        price: 3.25,
+        image: "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?auto=format&fit=crop&q=80&w=600",
+        stock: 60,
+        popular: true,
+        new: false,
+        type: "coffee"
+      },
+      {
+        id: "m4",
+        name: "Chorizo & Egg Velvet Croissant",
+        category: "breakfast",
+        description: "Buttery, freshly-baked croissant with seasoned chorizo sausage patty, folded egg, and melted swiss cheese.",
+        price: 7.95,
+        image: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&q=80&w=600",
+        stock: 8,
+        popular: false,
+        new: true,
+        type: "food"
+      },
+      {
+        id: "m5",
+        name: "Lavender Oat Latte",
+        category: "coffee",
+        description: "Sustainably-sourced espresso with organic oat milk and natural culinary lavender flower syrup infusion.",
+        price: 5.95,
+        image: "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&q=80&w=600",
+        stock: 35,
+        popular: false,
+        new: true,
+        type: "coffee"
+      },
+      {
+        id: "m6",
+        name: "Avocado Sourdough Toast & Salsa",
+        category: "breakfast",
+        description: "Thick sourdough, mashed fresh avocado, finished with lime-kissed Miami mango salsa and pickled onions.",
+        price: 11.25,
+        image: "https://images.unsplash.com/photo-1588137378633-dea1336ce1e2?auto=format&fit=crop&q=80&w=600",
+        stock: 15,
+        popular: true,
+        new: false,
+        type: "food"
+      },
+      {
+        id: "m7",
+        name: "Matcha Vanilla Oat Foam",
+        category: "signature",
+        description: "Ceremonial grade Japanese Uji matcha shaken with ice, oat milk, topped with house vanilla bean sweet cream.",
+        price: 6.25,
+        image: "https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&q=80&w=600",
+        stock: 22,
+        popular: true,
+        new: true,
+        type: "coffee"
+      },
+      {
+        id: "m8",
+        name: "Traditional Cuban Tostada with Butter",
+        category: "breakfast",
+        description: "Pressed Cuban bread sliced diagonally and spread with rich salted butter. Perfect for dunking into your Café con Leche.",
+        price: 3.50,
+        image: "https://images.unsplash.com/photo-1584776296944-ab6fb57b0bdd?auto=format&fit=crop&q=80&w=600",
+        stock: 40,
+        popular: false,
+        new: false,
+        type: "food"
+      },
+      {
+        id: "m9",
+        name: "Café con Leche",
+        category: "coffee",
+        description: "Steamed whole milk poured over double shot rich Cuban espresso with a sprinkle of raw sugar.",
+        price: 4.25,
+        image: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&q=80&w=600",
+        stock: 50,
+        popular: true,
+        new: false,
+        type: "coffee"
+      },
+      {
+        id: "m10",
+        name: "Artisanal Beef & Cheese Empanada",
+        category: "bakery",
+        description: "Handmade flaky pastry shell filled with savory minced beef, melted gouda cheese, and Cuban sofrito spices.",
+        price: 4.75,
+        image: "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&q=80&w=600",
+        stock: 18,
+        popular: true,
+        new: false,
+        type: "food"
+      },
+      {
+        id: "m11",
+        name: "Passionfruit Hibiscus Refresher",
+        category: "signature",
+        description: "Crisp organic hibiscus tea steeped with tropical Miami passionfruit juice and green coffee extract.",
+        price: 5.25,
+        image: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&q=80&w=600",
+        stock: 30,
+        popular: false,
+        new: true,
+        type: "refresher"
+      },
+      {
+        id: "m12",
+        name: "Triple Guava & Cream Cheese Danish",
+        category: "bakery",
+        description: "Golden puff pastry nest filled with sweet cream cheese and thick guava paste preserve.",
+        price: 4.25,
+        image: "https://images.unsplash.com/photo-1509365465985-25d11c17e812?auto=format&fit=crop&q=80&w=600",
+        stock: 14,
+        popular: false,
+        new: false,
+        type: "bakery"
+      },
+      {
+        id: "m13",
+        name: "Classic Cuban Cortadito",
+        category: "coffee",
+        description: "Equal parts intense Cuban espresso and warm steamed milk topped with thick brown sugar froth.",
+        price: 3.75,
+        image: "https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&q=80&w=600",
+        stock: 35,
+        popular: true,
+        new: false,
+        type: "coffee"
+      },
+      {
+        id: "m14",
+        name: "Caramel Velvet Macchiato",
+        category: "coffee",
+        description: "Freshly pulled espresso poured over steamed vanilla bean milk and finished with artisanal caramel drizzle.",
+        price: 5.85,
+        image: "https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&q=80&w=600",
+        stock: 25,
+        popular: false,
+        new: true,
+        type: "coffee"
+      },
+      {
+        id: "m15",
+        name: "Golden Dulce de Leche Churros",
+        category: "bakery",
+        description: "Three crispy cinnamon sugar churros served warm with a side of rich Argentine dulce de leche dip.",
+        price: 5.50,
+        image: "https://images.unsplash.com/photo-1624371414361-e670edf4898d?auto=format&fit=crop&q=80&w=600",
+        stock: 20,
+        popular: true,
+        new: true,
+        type: "bakery"
+      },
+      {
+        id: "m16",
+        name: "Authentic Pressed Cubano Sandwich",
+        category: "breakfast",
+        description: "Mojo roasted pork, glazed ham, Swiss cheese, pickles, and yellow mustard on hot pressed Cuban bread.",
+        price: 11.95,
+        image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&q=80&w=600",
+        stock: 10,
+        popular: true,
+        new: false,
+        type: "food"
+      },
+      {
+        id: "m17",
+        name: "Tropical Mango Dragonfruit Smoothie",
+        category: "signature",
+        description: "Blended fresh ripe mango, red dragonfruit, coconut water, and a splash of lime juice.",
+        price: 6.50,
+        image: "https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&q=80&w=600",
+        stock: 18,
+        popular: false,
+        new: true,
+        type: "refresher"
+      },
+      {
+        id: "m18",
+        name: "Velvet Spiced Chai Cold Foam",
+        category: "signature",
+        description: "Micro-brewed black tea steeped with cardamom, cinnamon, and ginger, topped with cold milk foam.",
+        price: 5.95,
+        image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&q=80&w=600",
+        stock: 28,
+        popular: false,
+        new: false,
+        type: "coffee"
+      }
+    ];
+
+    const INITIAL_FAVORITES = [
+      {
+        id: "fav-1",
+        name: "My Quick Sunrise Colada",
+        items: [
+          { menuId: "m3", quantity: 1, customNote: "Classic Espuma" },
+          { menuId: "m2", quantity: 1, customNote: "Warmed Up" }
+        ]
+      },
+      {
+        id: "fav-2",
+        name: "Morning Work Fuel",
+        items: [
+          { menuId: "m1", quantity: 1, customNote: "Oat Milk, Extra Cold Foam" },
+          { menuId: "m4", quantity: 1, customNote: "Extra Swiss Cheese" }
+        ]
+      }
+    ];
+
+    let state = {
+      menu: [...INITIAL_MENU],
+      cart: [],
+      favorites: [...INITIAL_FAVORITES],
+      orders: [
+        {
+          id: "VEL-8921",
+          items: [{ menuId: "m1", quantity: 2, customNote: "Oat Milk" }, { menuId: "m2", quantity: 1, customNote: "Warmed Up" }],
+          customerName: "Gabriella S.",
+          time: "10 mins ago",
+          total: 16.00,
+          status: "Preparing"
+        }
+      ],
+      currentTab: "dashboard",
+      activeOrder: null,
+      selectedCategory: "all",
+      searchQuery: "",
+      totalTimeSaved: 345,
+      aiParsedCartItems: [],
+      speechRecording: false,
+      speechRecognitionObj: null,
+      customizingItem: null,
+      voiceStep: 1
+    };
+
+    window.onload = function() {
+      lucide.createIcons();
+      updateTimeBasedGreeting();
+      initSpeechRecognition();
+      renderAll();
+    };
+
+    function switchTab(tabName) {
+      state.currentTab = tabName;
+      const tabs = ["dashboard", "menu", "voice", "favorites", "staff"];
+      tabs.forEach(tab => {
+        const section = document.getElementById(`tab-${tab}`);
+        const navBtn = document.getElementById(`nav-${tab}`);
+        const mobileNavBtn = document.getElementById(`mobile-nav-${tab}`);
+        
+        if (section) {
+          if (tab === tabName) section.classList.remove("hidden");
+          else section.classList.add("hidden");
+        }
+        if (navBtn) {
+          if (tab === tabName) navBtn.className = "px-4 py-2 rounded-full font-semibold transition-all flex items-center gap-1.5 bg-orange-700 text-white shadow-md";
+          else navBtn.className = "px-4 py-2 rounded-full font-semibold transition-all flex items-center gap-1.5 text-stone-400 hover:text-stone-200";
+        }
+        if (mobileNavBtn) {
+          if (tab === tabName) mobileNavBtn.className = "flex flex-col items-center gap-1 text-orange-500 min-w-[50px]";
+          else mobileNavBtn.className = "flex flex-col items-center gap-1 text-stone-400 min-w-[50px]";
+        }
+      });
+      setTimeout(() => lucide.createIcons(), 30);
+    }
+
+    function selectCategory(cat) {
+      state.selectedCategory = cat;
+      const categories = ['all', 'coffee', 'signature', 'bakery', 'breakfast'];
+      categories.forEach(c => {
+        const btn = document.getElementById(`cat-btn-${c}`);
+        if (btn) {
+          if (c === cat) btn.className = "flex-shrink-0 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all bg-orange-700 text-white";
+          else btn.className = "flex-shrink-0 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all bg-stone-900 hover:bg-stone-800 text-stone-300";
+        }
+      });
+      renderMenuGrid();
+    }
+
+    function filterMenu() {
+      const input = document.getElementById("menu-search-input");
+      if (input) state.searchQuery = input.value.trim().toLowerCase();
+      renderMenuGrid();
+    }
+
+    function resetMenuSearch() {
+      const input = document.getElementById("menu-search-input");
+      if (input) input.value = "";
+      state.searchQuery = "";
+      selectCategory('all');
+    }
+
+    function toggleCart(show) {
+      const drawer = document.getElementById("cart-drawer");
+      const overlay = document.getElementById("cart-drawer-overlay");
+      if (show) {
+        if (drawer) drawer.classList.remove("translate-x-full");
+        if (overlay) {
+          overlay.classList.remove("pointer-events-none", "opacity-0");
+          overlay.classList.add("opacity-100");
+        }
+        renderCart();
+      } else {
+        if (drawer) drawer.classList.add("translate-x-full");
+        if (overlay) {
+          overlay.classList.add("pointer-events-none", "opacity-0");
+          overlay.classList.remove("opacity-100");
+        }
+      }
+    }
+
+    // --- ITEM CUSTOMIZATION LOGIC ---
+    function openCustomModal(itemId) {
+      const item = state.menu.find(i => i.id === itemId);
+      if (!item || item.stock <= 0) return;
+
+      state.customizingItem = item;
+      document.getElementById("custom-modal-title").innerText = `Customize: ${item.name}`;
+      document.getElementById("custom-modal-price").innerText = `$${item.price.toFixed(2)}`;
+      document.getElementById("custom-modal-img").src = item.image;
+      document.getElementById("custom-instructions-input").value = "";
+
+      const coffeePanel = document.getElementById("custom-coffee-options-panel");
+      const refresherPanel = document.getElementById("custom-refresher-options-panel");
+      const bakeryPanel = document.getElementById("custom-bakery-options-panel");
+      const foodPanel = document.getElementById("custom-food-options-panel");
+
+      // Hide all panels initially
+      coffeePanel.classList.add("hidden");
+      refresherPanel.classList.add("hidden");
+      bakeryPanel.classList.add("hidden");
+      foodPanel.classList.add("hidden");
+
+      // Show relevant panel based on item type
+      if (item.type === "coffee") {
+        coffeePanel.classList.remove("hidden");
+      } else if (item.type === "refresher") {
+        refresherPanel.classList.remove("hidden");
+      } else if (item.type === "bakery") {
+        bakeryPanel.classList.remove("hidden");
+      } else if (item.type === "food") {
+        foodPanel.classList.remove("hidden");
+      } else {
+        coffeePanel.classList.remove("hidden"); // fallback
+      }
+
+      const modal = document.getElementById("custom-modal");
+      modal.classList.remove("pointer-events-none", "opacity-0");
+      setTimeout(() => lucide.createIcons(), 20);
+    }
+
+    function closeCustomModal() {
+      const modal = document.getElementById("custom-modal");
+      modal.classList.add("pointer-events-none", "opacity-0");
+      state.customizingItem = null;
+    }
+
+    function confirmCustomizedAddToCart() {
+      if (!state.customizingItem) return;
+
+      const item = state.customizingItem;
+      const notes = [];
+
+      if (item.type === "coffee") {
+        const selectedMilk = document.querySelector('input[name="opt-milk"]:checked')?.value;
+        const selectedTemp = document.querySelector('input[name="opt-temp"]:checked')?.value;
+        const selectedShots = document.getElementById("opt-shots-select").value;
+        const selectedSweet = document.getElementById("opt-sweet-select").value;
+
+        if (selectedMilk) notes.push(selectedMilk);
+        if (selectedTemp) notes.push(selectedTemp);
+        if (selectedShots && selectedShots !== "Standard Shots") notes.push(selectedShots);
+        if (selectedSweet && selectedSweet !== "100% Standard Sweetness") notes.push(selectedSweet);
+      } else if (item.type === "refresher") {
+        const selectedIce = document.querySelector('input[name="opt-ice"]:checked')?.value;
+        const selectedSweet = document.getElementById("opt-refr-sweet-select").value;
+        const selectedAddon = document.getElementById("opt-refr-addon-select").value;
+
+        if (selectedIce) notes.push(selectedIce);
+        if (selectedSweet && selectedSweet !== "100% Standard Sweetness") notes.push(selectedSweet);
+        if (selectedAddon && selectedAddon !== "Standard Recipe") notes.push(selectedAddon);
+      } else if (item.type === "bakery") {
+        const selectedWarm = document.querySelector('input[name="opt-bakery-warm"]:checked')?.value;
+        const selectedDip = document.getElementById("opt-bakery-dip-select").value;
+
+        if (selectedWarm) notes.push(selectedWarm);
+        if (selectedDip && selectedDip !== "Standard Serving") notes.push(selectedDip);
+      } else if (item.type === "food") {
+        const selectedPrep = document.querySelector('input[name="opt-food-prep"]:checked')?.value;
+        const selectedAddon = document.getElementById("opt-food-addon-select").value;
+
+        if (selectedPrep) notes.push(selectedPrep);
+        if (selectedAddon && selectedAddon !== "Standard Serving") notes.push(selectedAddon);
+      }
+
+      const userInstruction = document.getElementById("custom-instructions-input").value.trim();
+      if (userInstruction) notes.push(`Note: "${userInstruction}"`);
+
+      const customNoteString = notes.join(', ');
+      addToCartWithCustomization(item.id, 1, customNoteString);
+      
+      closeCustomModal();
+    }
+
+    function addToCartWithCustomization(itemId, qty = 1, customNote = '') {
+      const item = state.menu.find(i => i.id === itemId);
+      if (!item || item.stock <= 0) return;
+
+      const existingInCart = state.cart.find(ci => ci.menuId === itemId && (ci.customNote || '') === customNote);
+      
+      if (existingInCart) {
+        existingInCart.quantity += qty;
+      } else {
+        state.cart.push({ menuId: itemId, quantity: qty, customNote: customNote });
+      }
+
+      showToast(`Added ${item.name} (${customNote || 'Standard'}) to bag!`);
+      renderAll();
+    }
+
+    function addToCart(itemId) {
+      openCustomModal(itemId);
+    }
+
+    // --- ENHANCED SPEECH RECOGNITION AND GEMINI PARSER ---
+    function initSpeechRecognition() {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (SpeechRecognition) {
+        state.speechRecognitionObj = new SpeechRecognition();
+        state.speechRecognitionObj.continuous = true;
+        state.speechRecognitionObj.interimResults = true;
+        state.speechRecognitionObj.lang = 'en-US';
+
+        state.speechRecognitionObj.onresult = (event) => {
+          let fullTranscript = '';
+          for (let i = 0; i < event.results.length; i++) {
+            fullTranscript += event.results[i][0].transcript + ' ';
+          }
+          const textInput = document.getElementById('ai-voice-text-input');
+          if (textInput) textInput.value = fullTranscript.trim();
+        };
+
+        state.speechRecognitionObj.onend = () => {
+          if (state.speechRecording) {
+            try {
+              state.speechRecognitionObj.start();
+              return;
+            } catch (e) {
+              console.warn('Auto restart speech error:', e);
+            }
+          }
+          state.speechRecording = false;
+          updateMicUI(false);
+        };
+
+        state.speechRecognitionObj.onerror = (err) => {
+          if (err.error === 'no-speech' && state.speechRecording) return;
+          if (err.error === 'aborted') return;
+          state.speechRecording = false;
+          updateMicUI(false);
+        };
+      }
+    }
+
+    function updateMicUI(isRecording) {
+      const micBtn = document.getElementById('mic-record-btn');
+      const micIcon = document.getElementById('mic-icon');
+      const statusText = document.getElementById('mic-status-text');
+
+      if (isRecording) {
+        if (micBtn) {
+          micBtn.className = "w-16 h-16 rounded-full bg-gradient-to-br from-rose-600 to-red-700 animate-pulse ring-4 ring-rose-500/50 text-white flex items-center justify-center shadow-xl transition-all cursor-pointer";
+        }
+        if (micIcon) {
+          micIcon.setAttribute('data-lucide', 'square');
+        }
+        if (statusText) {
+          statusText.innerHTML = '<span class="text-rose-400 font-bold">🔴 Recording active...</span> Click button again to STOP listening.';
+        }
+      } else {
+        if (micBtn) {
+          micBtn.className = "w-16 h-16 rounded-full bg-gradient-to-br from-orange-600 to-amber-600 hover:scale-105 active:scale-95 text-white flex items-center justify-center shadow-xl shadow-orange-950/50 transition-all cursor-pointer group";
+        }
+        if (micIcon) {
+          micIcon.setAttribute('data-lucide', 'mic');
+        }
+        if (statusText) {
+          statusText.innerText = 'Click microphone to START speaking. (Press the speak button again anytime you want to speak again)';
+        }
+      }
+      setTimeout(() => lucide.createIcons(), 20);
+    }
+
+    function toggleSpeechRecognition() {
+      if (!state.speechRecognitionObj) {
+        showToast("Speech Recognition is not supported in this browser. You can type your order below!");
+        return;
+      }
+
+      if (!state.speechRecording) {
+        try {
+          state.speechRecording = true;
+          state.speechRecognitionObj.start();
+          updateMicUI(true);
+          showToast("Microphone active — speak freely!");
+        } catch (e) {
+          state.speechRecording = false;
+          updateMicUI(false);
+        }
+      } else {
+        state.speechRecording = false;
+        try {
+          state.speechRecognitionObj.stop();
+        } catch (e) {}
+        updateMicUI(false);
+        showToast("Stopped listening. Click 'Interpret & Advance Process' to parse your order.");
+      }
+    }
+
+    function restartVoiceWorkflow() {
+      if (state.speechRecording && state.speechRecognitionObj) {
+        state.speechRecording = false;
+        try { state.speechRecognitionObj.stop(); } catch(e) {}
+      }
+      updateMicUI(false);
+
+      state.voiceStep = 1;
+      state.aiParsedCartItems = [];
+      document.getElementById("ai-voice-text-input").value = "";
+      document.getElementById("comment-box-backup").value = "";
+      document.getElementById("voice-input-title").innerHTML = `<i data-lucide="volume-2" class="w-5 h-5 text-orange-400"></i> Step 1: Speak Order to AI`;
+      document.getElementById("transcript-label-text").innerText = "Speech Order Transcript:";
+      document.getElementById("bpmn-decision-panel").classList.add("hidden");
+      document.getElementById("bpmn-edit-subpanel").classList.add("hidden");
+      document.getElementById("ai-readout-banner").classList.add("hidden");
+      
+      const confirmBtn = document.getElementById("add-voice-cart-btn");
+      confirmBtn.disabled = true;
+      confirmBtn.className = "w-full bg-stone-800 text-stone-500 cursor-not-allowed font-bold text-xs py-3 rounded-xl transition-all flex items-center justify-center gap-2";
+
+      renderAIParsedOutput([], "");
+      updateVoiceStepperUI(1);
+      showToast("Voice workflow restarted.");
+    }
+
+    function handleBpmnChoice(choice) {
+      if (choice === 'correct') {
+        document.getElementById("bpmn-decision-panel").classList.add("hidden");
+        document.getElementById("bpmn-edit-subpanel").classList.add("hidden");
+        
+        updateVoiceStepperUI(4);
+        
+        const confirmBtn = document.getElementById("add-voice-cart-btn");
+        confirmBtn.disabled = false;
+        confirmBtn.className = "w-full bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600 text-white font-bold text-xs py-3 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/40 cursor-pointer animate-pulse";
+        
+        showToast("Order verified! Click Step 4 below to confirm & add items to your bag.");
+      } else if (choice === 'incorrect') {
+        document.getElementById("bpmn-decision-panel").classList.add("hidden");
+        document.getElementById("bpmn-edit-subpanel").classList.remove("hidden");
+        updateVoiceStepperUI(3);
+        showToast("Select how you would like to edit or modify your order.");
+      }
+    }
+
+    // --- ENHANCED GEMINI AI SPEECH & CUSTOMIZATION PARSER ---
+    async function parseSpeechWithGemini(userText, commentBox) {
+      const combined = (userText + ' ' + commentBox).toLowerCase();
+      const results = [];
+
+      // Keyword mapping dictionary for menu items & synonyms
+      const itemKeywords = [
+        { id: "m1", keywords: ["velvet cold brew", "cold brew", "signature cold brew"] },
+        { id: "m2", keywords: ["cruffin", "pastelito cruffin", "guava pastelito", "pastelito"] },
+        { id: "m3", keywords: ["cuban colada", "colada"] },
+        { id: "m4", keywords: ["chorizo croissant", "chorizo egg", "chorizo", "croissant sandwich"] },
+        { id: "m5", keywords: ["lavender oat latte", "lavender latte", "lavender"] },
+        { id: "m6", keywords: ["avocado toast", "avocado sourdough", "avocado"] },
+        { id: "m7", keywords: ["matcha vanilla", "matcha oat foam", "matcha latte", "matcha"] },
+        { id: "m8", keywords: ["tostada", "cuban tostada", "tostada with butter"] },
+        { id: "m9", keywords: ["cafe con leche", "con leche"] },
+        { id: "m10", keywords: ["empanada", "beef empanada", "beef and cheese empanada"] },
+        { id: "m11", keywords: ["hibiscus refresher", "passionfruit refresher", "refresher"] },
+        { id: "m12", keywords: ["danish", "guava danish", "cream cheese danish"] },
+        { id: "m13", keywords: ["cortadito", "cuban cortadito"] },
+        { id: "m14", keywords: ["macchiato", "caramel macchiato", "caramel velvet macchiato"] },
+        { id: "m15", keywords: ["churros", "dulce de leche churros"] },
+        { id: "m16", keywords: ["cubano", "pressed cubano", "cuban sandwich"] },
+        { id: "m17", keywords: ["mango smoothie", "dragonfruit smoothie", "smoothie"] },
+        { id: "m18", keywords: ["chai cold foam", "chai latte", "spiced chai"] }
+      ];
+
+      // Parse custom options spoken in the text
+      function extractCustomNotes(itemType, text) {
+        const notes = [];
+        
+        // Milk parsing (only for coffee!)
+        if (itemType === "coffee") {
+          if (text.includes("oat milk") || text.includes("oat")) notes.push("Oat Milk");
+          else if (text.includes("almond milk") || text.includes("almond")) notes.push("Almond Milk");
+          else if (text.includes("coconut milk") || text.includes("coconut")) notes.push("Coconut Milk");
+          else if (text.includes("whole milk")) notes.push("Whole Milk");
+        }
+
+        // Temperature
+        if (itemType === "coffee") {
+          if (text.includes("iced") || text.includes("over ice") || text.includes("cold")) notes.push("Iced");
+          else if (text.includes("hot") || text.includes("steamed") || text.includes("warm")) notes.push("Hot");
+        }
+
+        // Espresso Shots
+        if (itemType === "coffee") {
+          if (text.includes("extra shot") || text.includes("double shot") || text.includes("add shot")) notes.push("Extra Espresso Shot");
+          if (text.includes("decaf")) notes.push("Decaf");
+        }
+
+        // Sweetness
+        if (text.includes("less sweet") || text.includes("half sweet") || text.includes("50% sweet")) notes.push("50% Less Sweet");
+        else if (text.includes("unsweetened") || text.includes("no sugar") || text.includes("no syrup")) notes.push("Unsweetened");
+        else if (text.includes("extra sweet") || text.includes("more sweet")) notes.push("Extra Sweet");
+
+        // Refreshers specifics
+        if (itemType === "refresher") {
+          if (text.includes("light ice")) notes.push("Light Ice");
+          else if (text.includes("no ice")) notes.push("No Ice");
+          else if (text.includes("extra ice")) notes.push("Extra Ice");
+          if (text.includes("mango scoop") || text.includes("extra fruit")) notes.push("Extra Fruit Scoops");
+        }
+
+        // Bakery / Food specifics
+        if (itemType === "bakery" || itemType === "food") {
+          if (text.includes("warmed") || text.includes("warm") || text.includes("pressed")) notes.push("Warmed & Pressed");
+          if (text.includes("extra cheese")) notes.push("Extra Cheese");
+          if (text.includes("sofrito") || text.includes("dip")) notes.push("Side Sofrito Dip");
+          if (text.includes("dulce de leche")) notes.push("Side Dulce de Leche");
+        }
+
+        if (commentBox) {
+          notes.push(`Note: "${commentBox}"`);
+        }
+
+        return notes.join(", ");
+      }
+
+      // Detect quantities & items
+      itemKeywords.forEach(entry => {
+        const item = state.menu.find(m => m.id === entry.id);
+        if (!item) return;
+
+        let matched = false;
+        for (let kw of entry.keywords) {
+          if (combined.includes(kw)) {
+            matched = true;
+            break;
+          }
+        }
+
+        if (matched) {
+          let qty = 1;
+          const numWords = { "two": 2, "2": 2, "three": 3, "3": 3, "four": 4, "4": 4, "five": 5, "5": 5 };
+          Object.keys(numWords).forEach(numStr => {
+            if (combined.includes(`${numStr} ${entry.keywords[0]}`) || combined.includes(`${numStr} ${item.name.toLowerCase()}`)) {
+              qty = numWords[numStr];
+            }
+          });
+
+          const noteStr = extractCustomNotes(item.type, combined);
+
+          results.push({
+            menuId: item.id,
+            quantity: qty,
+            customNote: noteStr || "Standard AI Voice Selection"
+          });
+        }
+      });
+
+      // Fallback if no specific menu item matched
+      if (results.length === 0) {
+        results.push({
+          menuId: state.menu[0].id,
+          quantity: 1,
+          customNote: combined ? `Parsed Note: "${combined}"` : "AI Voice Parsed Selection"
+        });
+      }
+
+      return results;
+    }
+
+    function renderAIParsedOutput(items, commentBox) {
+      const container = document.getElementById("ai-parsed-items-list");
+      if (!items || items.length === 0) {
+        container.className = "min-h-[120px] bg-espresso-950 border border-stone-850 rounded-xl p-4 flex flex-col justify-center items-center text-center text-stone-500 space-y-2";
+        container.innerHTML = `
+          <i data-lucide="mic-off" class="w-6 h-6 opacity-40"></i>
+          <p class="text-xs">No voice order processed yet. Speak your order on the left to initiate the workflow.</p>
+        `;
+        setTimeout(() => lucide.createIcons(), 20);
+        return;
+      }
+
+      container.className = "min-h-[120px] bg-espresso-950 border border-stone-850 rounded-xl p-4 flex flex-col justify-start space-y-2 text-left";
+      container.innerHTML = items.map(pi => {
+        const item = state.menu.find(m => m.id === pi.menuId);
+        if (!item) return '';
+        return `
+          <div class="flex items-center justify-between bg-stone-900 border border-stone-800 p-2.5 rounded-xl text-xs">
+            <div class="flex items-center gap-2">
+              <span class="w-6 h-6 rounded-lg bg-orange-700/30 border border-orange-600/40 text-orange-400 font-bold flex items-center justify-center font-mono">${pi.quantity}x</span>
+              <div>
+                <strong class="text-stone-200">${item.name}</strong>
+                ${pi.customNote ? `<p class="text-[10px] text-amber-400 font-medium">✦ ${pi.customNote}</p>` : ''}
+              </div>
+            </div>
+            <span class="font-mono text-stone-400 font-bold">$${(item.price * pi.quantity).toFixed(2)}</span>
+          </div>
+        `;
+      }).join('');
+
+      setTimeout(() => lucide.createIcons(), 20);
+    }
+
+    function updateVoiceStepperUI(step) {
+      state.voiceStep = step;
+      for (let i = 1; i <= 4; i++) {
+        const badge = document.getElementById(`v-step-badge-${i}`);
+        if (i === step) {
+          badge.className = "bg-orange-700 text-white p-2.5 rounded-xl border border-orange-600 flex items-center gap-2 text-xs font-bold transition-all shadow-md";
+        } else if (i < step) {
+          badge.className = "bg-emerald-900/60 text-emerald-300 p-2.5 rounded-xl border border-emerald-700 flex items-center gap-2 text-xs font-bold transition-all";
+        } else {
+          badge.className = "bg-stone-900 text-stone-500 p-2.5 rounded-xl border border-stone-800 flex items-center gap-2 text-xs font-bold transition-all";
+        }
+      }
+    }
+
+    async function processAIVoiceOrder() {
+      const userText = document.getElementById("ai-voice-text-input").value.trim();
+      const commentBox = document.getElementById("comment-box-backup").value.trim();
+
+      if (!userText && !commentBox) {
+        showToast("Please speak or enter an order description first!");
+        return;
+      }
+
+      const processBtn = document.getElementById("process-voice-btn");
+      processBtn.disabled = true;
+      processBtn.innerHTML = `<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i> Interpreting Speech...`;
+
+      const parsedItems = await parseSpeechWithGemini(userText, commentBox);
+      state.aiParsedCartItems = parsedItems;
+
+      renderAIParsedOutput(parsedItems, commentBox);
+      updateVoiceStepperUI(2);
+      readCartOutLoud();
+
+      document.getElementById("bpmn-decision-panel").classList.remove("hidden");
+      
+      processBtn.disabled = false;
+      processBtn.innerHTML = `<i data-lucide="sparkles" class="w-4 h-4"></i> Update & Re-Analyze Speech`;
+      setTimeout(() => lucide.createIcons(), 50);
+    }
+
+    function readCartOutLoud() {
+      if (state.aiParsedCartItems.length === 0) return;
+
+      const speechParts = state.aiParsedCartItems.map(p => {
+        const item = state.menu.find(m => m.id === p.menuId);
+        return `${p.quantity} ${item ? item.name : 'item'} ${p.customNote ? `with ${p.customNote}` : ''}`;
+      });
+
+      const speechText = `I have parsed your order as follows: ${speechParts.join(', ')}. Press the speak button again if you want to speak again, or click Yes to confirm!`;
+
+      document.getElementById("ai-readout-text").innerText = `"${speechText}"`;
+      document.getElementById("ai-readout-banner").classList.remove("hidden");
+
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(speechText);
+        utterance.rate = 1.0;
+        utterance.pitch = 1.0;
+        window.speechSynthesis.speak(utterance);
+      }
+    }
+
+    function handleBpmnEditChoice(editOption) {
+      if (editOption === 'retry') {
+        document.getElementById("voice-input-title").innerHTML = `<i data-lucide="mic" class="w-5 h-5 text-amber-400"></i> Speak Modifications To AI`;
+        document.getElementById("transcript-label-text").innerText = "Speak Modification Input:";
+        document.getElementById("bpmn-edit-subpanel").classList.add("hidden");
+        showToast("Press the speak button again to speak your modifications!");
+      } else if (editOption === 'comment') {
+        document.getElementById("comment-box-backup").focus();
+        document.getElementById("bpmn-edit-subpanel").classList.add("hidden");
+        showToast("Enter specific notes in the Special Comment Box!");
+      }
+    }
+
+    function confirmAndTransferVoiceOrder() {
+      if (state.aiParsedCartItems.length === 0) return;
+
+      state.aiParsedCartItems.forEach(pi => {
+        const item = state.menu.find(m => m.id === pi.menuId);
+        if (item) {
+          addToCartWithCustomization(pi.menuId, pi.quantity, pi.customNote || 'AI Voice Custom');
+        }
+      });
+
+      showToast("Verbal confirmation successful! Transferred order to your Bag.");
+      toggleCart(true);
+      restartVoiceWorkflow();
+    }
+
+    function sendChatbotQuery() {
+      const input = document.getElementById("chatbot-input");
+      if (!input) return;
+      const msg = input.value.trim();
+      if (!msg) return;
+
+      const chatContainer = document.getElementById("chatbot-messages");
+      
+      const userMsgEl = document.createElement("div");
+      userMsgEl.className = "bg-stone-800 border border-stone-750 p-2 rounded-lg text-stone-200 text-right font-medium";
+      userMsgEl.innerText = msg;
+      chatContainer.appendChild(userMsgEl);
+
+      input.value = "";
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+
+      setTimeout(() => {
+        const botMsgEl = document.createElement("div");
+        botMsgEl.className = "bg-orange-950/40 border border-orange-900/40 p-2 rounded-lg text-stone-300";
+
+        let reply = "I'm happy to help! We offer organic oat milk, almond milk, and coconut milk for all espresso beverages. Pickup orders are ready in ~2-4 minutes!";
+        const lower = msg.toLowerCase();
+
+        if (lower.includes("diet") || lower.includes("vegan") || lower.includes("dairy")) {
+          reply = "🌱 We offer Organic Oat, Almond, and Coconut milk substitutes! Our Guava Cruffins and Avocado Sourdough Toast are customer vegan favorites.";
+        } else if (lower.includes("time") || lower.includes("wait") || lower.includes("fast")) {
+          reply = "⏱️ Our average online pickup wait time is ~2-4 minutes. You can track your order in real-time on our tracker modal!";
+        } else if (lower.includes("hours") || lower.includes("open") || lower.includes("location")) {
+          reply = "☕ Velvet Espresso Cafe is open 24/7! We are located at 300 Biscayne Blvd, Miami, FL.";
+        } else if (lower.includes("syrup") || lower.includes("sweet") || lower.includes("sugar")) {
+          reply = "🍯 We offer natural culinary lavender syrup, caramel foam, vanilla bean sweet cream, and authentic Cuban brown sugar espuma!";
+        }
+
+        botMsgEl.innerHTML = `🤖 <strong>Velvet AI:</strong> ${reply}`;
+        chatContainer.appendChild(botMsgEl);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+      }, 600);
+    }
+
+    function updateTimeBasedGreeting() {
+      const hours = new Date().getHours();
+      const greetingEl = document.getElementById("time-greeting-title");
+      if (hours >= 5 && hours < 12) {
+        greetingEl.innerHTML = "Good Morning, Miami! Beat the morning rush.";
+      } else if (hours >= 12 && hours < 17) {
+        greetingEl.innerHTML = "Afternoon Slump? Secure your pick-me-up.";
+      } else if (hours >= 17 && hours < 22) {
+        greetingEl.innerHTML = "Velvet Happy Hour - Order online now.";
+      } else {
+        greetingEl.innerHTML = "Late Night Craving? We are brewing 24/7.";
+      }
+    }
+
+    function renderAll() {
+      renderDashboard();
+      renderMenuGrid();
+      renderFavorites();
+      renderCart();
+      renderStaffHub();
+      updateBadges();
+    }
+
+    function updateBadges() {
+      const totalCartQuantity = state.cart.reduce((sum, item) => sum + item.quantity, 0);
+      const cartBadge = document.getElementById("cart-count-badge");
+      if (totalCartQuantity > 0) {
+        cartBadge.innerText = totalCartQuantity;
+        cartBadge.classList.remove("scale-0");
+        cartBadge.classList.add("scale-100");
+      } else {
+        cartBadge.classList.add("scale-0");
+        cartBadge.classList.remove("scale-100");
+      }
+
+      const pendingOrders = state.orders.filter(o => o.status === "Awaiting Confirmation" || o.status === "Preparing").length;
+      const staffBadgeDesktop = document.getElementById("pending-badge");
+      const staffBadgeMobile = document.getElementById("pending-badge-mobile");
+      
+      if (pendingOrders > 0) {
+        staffBadgeDesktop.innerText = pendingOrders;
+        staffBadgeDesktop.classList.remove("hidden");
+        staffBadgeMobile.innerText = pendingOrders;
+        staffBadgeMobile.classList.remove("hidden");
+      } else {
+        staffBadgeDesktop.classList.add("hidden");
+        staffBadgeMobile.classList.add("hidden");
+      }
+
+      const trackerBtn = document.getElementById("active-tracker-btn");
+      if (state.activeOrder) {
+        trackerBtn.classList.remove("hidden");
+        trackerBtn.classList.add("flex");
+      } else {
+        trackerBtn.classList.add("hidden");
+        trackerBtn.classList.remove("flex");
+      }
+    }
+
+    function renderDashboard() {
+      const newGrid = document.getElementById("dashboard-new-grid");
+      const popularGrid = document.getElementById("dashboard-popular-grid");
+      
+      const newItems = state.menu.filter(i => i.new).slice(0, 2);
+      const popularItems = state.menu.filter(i => i.popular).slice(0, 2);
+
+      newGrid.innerHTML = newItems.map(item => generateDashboardItemHTML(item)).join('');
+      popularGrid.innerHTML = popularItems.map(item => generateDashboardItemHTML(item)).join('');
+    }
+
+    function generateDashboardItemHTML(item) {
+      const isLowStock = item.stock > 0 && item.stock <= 10;
+      const isOutOfStock = item.stock <= 0;
+      
+      let badgeHTML = '';
+      if (isOutOfStock) {
+        badgeHTML = `<span class="bg-red-500/15 text-red-400 border border-red-500/25 text-[10px] font-bold px-2 py-0.5 rounded-full">Out of Stock</span>`;
+      } else if (isLowStock) {
+        badgeHTML = `<span class="bg-amber-500/15 text-amber-400 border border-amber-500/25 text-[10px] font-bold px-2 py-0.5 rounded-full">Only ${item.stock} Left</span>`;
+      } else {
+        badgeHTML = `<span class="bg-stone-800 text-stone-400 text-[10px] font-semibold px-2 py-0.5 rounded-full">Freshly Stocked</span>`;
+      }
+
+      const categoryFallback = item.type === 'bakery' ? 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=400' : (item.type === 'food' ? 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&q=80&w=400' : 'https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&q=80&w=400');
+
+      return `
+        <div class="bg-stone-900/60 border border-stone-850 rounded-2xl p-4 flex flex-col justify-between hover:border-stone-800 transition-all group">
+          <div class="space-y-3">
+            <div class="aspect-video w-full rounded-xl overflow-hidden relative bg-stone-950">
+              <img src="${item.image}" alt="${item.name}" onerror="this.src='${categoryFallback}'" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80">
+              <div class="absolute top-2 left-2 flex gap-1.5">${badgeHTML}</div>
+            </div>
+            <div>
+              <h4 class="font-bold text-sm text-stone-100 font-serif leading-tight group-hover:text-orange-400 transition-colors">${item.name}</h4>
+              <p class="text-xs text-stone-400 mt-1 line-clamp-2">${item.description}</p>
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-4 mt-2 border-t border-stone-900 gap-2">
+            <span class="font-extrabold text-sm text-amber-50 font-mono">$${item.price.toFixed(2)}</span>
+            <div class="flex gap-1">
+              <button onclick="openCustomModal('${item.id}')" ${isOutOfStock ? 'disabled' : ''} class="${isOutOfStock ? 'hidden' : 'bg-orange-600 hover:bg-orange-500 text-white'} text-xs font-bold px-3 py-1.5 rounded-xl transition-all flex items-center gap-1">
+                <i data-lucide="sliders" class="w-3.5 h-3.5"></i> Customize & Add
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderMenuGrid() {
+      const grid = document.getElementById("menu-grid");
+      const emptyState = document.getElementById("menu-empty-state");
+
+      let filtered = state.menu;
+
+      if (state.selectedCategory !== 'all') {
+        filtered = filtered.filter(i => i.category === state.selectedCategory);
+      }
+
+      if (state.searchQuery) {
+        filtered = filtered.filter(i => 
+          i.name.toLowerCase().includes(state.searchQuery) || 
+          i.description.toLowerCase().includes(state.searchQuery)
+        );
+      }
+
+      if (filtered.length === 0) {
+        grid.innerHTML = "";
+        emptyState.classList.remove("hidden");
+      } else {
+        emptyState.classList.add("hidden");
+        grid.innerHTML = filtered.map(item => {
+          const isOutOfStock = item.stock <= 0;
+          const isLowStock = item.stock > 0 && item.stock <= 10;
+          
+          let stockStatusText = '';
+          if (isOutOfStock) {
+            stockStatusText = `<span class="bg-red-500/10 text-red-400 border border-red-500/20 text-[10px] font-bold px-2 py-0.5 rounded-full">Out of Stock</span>`;
+          } else if (isLowStock) {
+            stockStatusText = `<span class="bg-amber-500/10 text-amber-400 border border-amber-500/20 text-[10px] font-bold px-2 py-0.5 rounded-full">Only ${item.stock} left</span>`;
+          } else {
+            stockStatusText = `<span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-bold px-2 py-0.5 rounded-full">Available</span>`;
+          }
+
+          const categoryFallback = item.type === 'bakery' ? 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=400' : (item.type === 'food' ? 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&q=80&w=400' : 'https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&q=80&w=400');
+
+          return `
+            <div class="bg-stone-900/40 border border-stone-850 rounded-2xl overflow-hidden hover:border-stone-800 hover:shadow-xl transition-all flex flex-col group">
+              <div class="aspect-[16/10] w-full bg-stone-950 overflow-hidden relative">
+                <img src="${item.image}" alt="${item.name}" onerror="this.src='${categoryFallback}'" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80">
+                <div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
+                  ${stockStatusText}
+                  ${item.popular ? '<span class="bg-amber-500 text-espresso-950 text-[9px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider">Top Seller</span>' : ''}
+                  ${item.new ? '<span class="bg-emerald-500 text-espresso-950 text-[9px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider">Miami Special</span>' : ''}
+                </div>
+              </div>
+
+              <div class="p-5 flex-grow flex flex-col justify-between space-y-4">
+                <div class="space-y-1.5">
+                  <h4 class="font-extrabold text-base text-stone-100 font-serif leading-tight">${item.name}</h4>
+                  <p class="text-xs text-stone-400 leading-relaxed">${item.description}</p>
+                </div>
+
+                <div class="flex items-center justify-between pt-4 border-t border-stone-900 gap-2">
+                  <span class="font-black text-base text-amber-400 font-mono">$${item.price.toFixed(2)}</span>
+                  <button onclick="openCustomModal('${item.id}')" ${isOutOfStock ? 'disabled' : ''} class="${isOutOfStock ? 'bg-stone-800 text-stone-500 cursor-not-allowed' : 'bg-orange-600 hover:bg-orange-500 text-white'} font-bold text-xs px-4 py-2 rounded-xl transition-all flex items-center gap-1.5">
+                    <i data-lucide="sliders" class="w-4 h-4"></i> Customize & Add
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      setTimeout(() => lucide.createIcons(), 50);
+    }
+
+    function renderCart() {
+      const container = document.getElementById("cart-items-container");
+      const emptyView = document.getElementById("cart-empty-view");
+      const saveBox = document.getElementById("cart-favorites-save-box");
+
+      if (state.cart.length === 0) {
+        container.innerHTML = "";
+        emptyView.classList.remove("hidden");
+        saveBox.classList.add("hidden");
+        updateCartPricing(0);
+        return;
+      }
+
+      emptyView.classList.add("hidden");
+      saveBox.classList.remove("hidden");
+
+      let subtotal = 0;
+      container.innerHTML = state.cart.map((ci, idx) => {
+        const item = state.menu.find(m => m.id === ci.menuId);
+        if (!item) return '';
+        subtotal += item.price * ci.quantity;
+
+        return `
+          <div class="flex items-center gap-3 bg-stone-900/50 border border-stone-900 rounded-xl p-3 relative group">
+            <img src="${item.image}" alt="${item.name}" onerror="this.src='https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=80&w=150'" class="w-12 h-12 rounded-lg object-cover bg-stone-950">
+            <div class="flex-grow min-w-0">
+              <h5 class="text-xs font-extrabold text-stone-200 truncate leading-snug">${item.name}</h5>
+              ${ci.customNote ? `<p class="text-[10px] text-amber-400 truncate mt-0.5">✦ ${ci.customNote}</p>` : ''}
+              <p class="text-[10px] text-orange-400 font-mono mt-0.5">$${item.price.toFixed(2)} each</p>
+            </div>
+            
+            <div class="flex items-center gap-2">
+              <div class="flex items-center bg-espresso-950 rounded-lg border border-stone-800 p-1">
+                <button onclick="updateCartIndexQty(${idx}, -1)" class="p-1 hover:text-orange-400 transition-colors">
+                  <i data-lucide="minus" class="w-3.5 h-3.5"></i>
+                </button>
+                <span class="px-2 text-xs font-mono font-bold text-stone-300">${ci.quantity}</span>
+                <button onclick="updateCartIndexQty(${idx}, 1)" class="p-1 hover:text-orange-400 transition-colors">
+                  <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      updateCartPricing(subtotal);
+      setTimeout(() => lucide.createIcons(), 20);
+    }
+
+    function updateCartIndexQty(index, change) {
+      if (index < 0 || index >= state.cart.length) return;
+      const ci = state.cart[index];
+      const item = state.menu.find(m => m.id === ci.menuId);
+
+      const newQty = ci.quantity + change;
+      if (newQty <= 0) {
+        state.cart.splice(index, 1);
+        showToast("Item removed.");
+      } else {
+        if (item && newQty > item.stock) {
+          showToast(`Sorry, only ${item.stock} available.`);
+          return;
+        }
+        ci.quantity = newQty;
+      }
+      renderAll();
+    }
+
+    function updateCartPricing(subtotal) {
+      const tax = subtotal * 0.07;
+      const total = subtotal + tax;
+
+      document.getElementById("cart-subtotal").innerText = `$${subtotal.toFixed(2)}`;
+      document.getElementById("cart-tax").innerText = `$${tax.toFixed(2)}`;
+      document.getElementById("cart-total").innerText = `$${total.toFixed(2)}`;
+
+      const cta = document.getElementById("checkout-cta");
+      if (subtotal === 0) {
+        cta.setAttribute("disabled", "true");
+        cta.className = "w-full bg-stone-800 text-stone-500 cursor-not-allowed font-semibold text-sm py-3 rounded-xl transition-all flex items-center justify-center gap-2";
+      } else {
+        cta.removeAttribute("disabled");
+        cta.className = "w-full bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-500 hover:to-orange-600 text-white font-semibold text-sm py-3 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-orange-950/40 cursor-pointer";
+      }
+    }
+
+    function handlePlaceOrder() {
+      if (state.cart.length === 0) return;
+
+      const randomNum = Math.floor(1000 + Math.random() * 9000);
+      const newOrderId = `VEL-${randomNum}`;
+      
+      const newOrder = {
+        id: newOrderId,
+        items: [...state.cart],
+        customerName: "You (Digital App)",
+        time: "Just now",
+        total: parseFloat((state.cart.reduce((sum, ci) => {
+          const m = state.menu.find(x => x.id === ci.menuId);
+          return sum + (m ? m.price * ci.quantity : 0);
+        }, 0) * 1.07).toFixed(2)),
+        status: "Awaiting Confirmation"
+      };
+
+      state.cart.forEach(ci => {
+        const menuItem = state.menu.find(m => m.id === ci.menuId);
+        if (menuItem) {
+          menuItem.stock = Math.max(0, menuItem.stock - ci.quantity);
+        }
+      });
+
+      state.orders.unshift(newOrder);
+      state.activeOrder = newOrder;
+      state.totalTimeSaved += 3;
+
+      state.cart = [];
+      toggleCart(false);
+
+      showToast(`Order Placed! ID: ${newOrderId}`);
+      openTrackerModal();
+      renderAll();
+    }
+
+    function saveCurrentCartAsFavorite() {
+      const nameInput = document.getElementById("favorite-name-input");
+      const nameVal = nameInput.value.trim();
+      if (!nameVal) {
+        showToast("Please write a name for this template.");
+        return;
+      }
+
+      state.favorites.unshift({
+        id: `fav-${Date.now()}`,
+        name: nameVal,
+        items: [...state.cart]
+      });
+
+      nameInput.value = "";
+      showToast(`Saved favorite combo "${nameVal}"!`);
+      renderAll();
+    }
+
+    function loadFavoriteToCart(favId) {
+      const favorite = state.favorites.find(f => f.id === favId);
+      if (!favorite) return;
+
+      favorite.items.forEach(fi => {
+        addToCartWithCustomization(fi.menuId, fi.quantity, fi.customNote || 'Favorite Bundle');
+      });
+      showToast(`Loaded "${favorite.name}" into bag!`);
+      toggleCart(true);
+    }
+
+    function deleteFavorite(favId, event) {
+      event.stopPropagation();
+      state.favorites = state.favorites.filter(f => f.id !== favId);
+      showToast("Favorite template deleted.");
+      renderAll();
+    }
+
+    function renderFavorites() {
+      const grid = document.getElementById("favorites-list-grid");
+      const emptyState = document.getElementById("favorites-empty-state");
+
+      if (state.favorites.length === 0) {
+        grid.innerHTML = "";
+        emptyState.classList.remove("hidden");
+        return;
+      }
+
+      emptyState.classList.add("hidden");
+      grid.innerHTML = state.favorites.map(fav => {
+        let favCost = 0;
+        const itemSummaries = fav.items.map(fi => {
+          const item = state.menu.find(m => m.id === fi.menuId);
+          if (!item) return '';
+          favCost += item.price * fi.quantity;
+          return `
+            <div class="flex justify-between items-center text-xs text-stone-300">
+              <span class="truncate">${fi.quantity}x ${item.name}</span>
+              <span class="font-mono text-stone-400">$${(item.price * fi.quantity).toFixed(2)}</span>
+            </div>
+          `;
+        }).join('');
+
+        return `
+          <div class="bg-stone-900/60 border border-stone-850 rounded-2xl p-5 hover:border-rose-900/60 transition-all flex flex-col justify-between space-y-4">
+            <div class="space-y-3">
+              <div class="flex justify-between items-start">
+                <div class="space-y-1">
+                  <h4 class="font-bold text-stone-200 text-sm flex items-center gap-1.5 leading-tight">
+                    <i data-lucide="heart" class="w-4 h-4 text-rose-500 fill-rose-500 shrink-0"></i>
+                    ${fav.name}
+                  </h4>
+                  <span class="text-[10px] uppercase font-bold text-stone-500 tracking-wider">Custom Combo</span>
+                </div>
+                <button onclick="deleteFavorite('${fav.id}', event)" class="p-1.5 bg-stone-950 hover:bg-red-500/10 hover:text-red-400 text-stone-500 rounded-lg transition-all">
+                  <i data-lucide="trash-2" class="w-4 h-4"></i>
+                </button>
+              </div>
+
+              <div class="p-3 bg-stone-950 rounded-xl border border-stone-900/50 divide-y divide-stone-900/50 space-y-1.5">
+                ${itemSummaries}
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between pt-3 border-t border-stone-900">
+              <div class="text-[10px] text-stone-500 uppercase tracking-wider">
+                Total Est. <strong class="text-xs text-stone-300 block font-mono">$${favCost.toFixed(2)}</strong>
+              </div>
+              <button onclick="loadFavoriteToCart('${fav.id}')" class="bg-rose-900/30 hover:bg-rose-800/40 border border-rose-800/50 text-rose-300 text-xs font-bold px-4 py-2 rounded-xl transition-all flex items-center gap-1.5">
+                <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i> Load Bundle
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      setTimeout(() => lucide.createIcons(), 20);
+    }
+
+    function openTrackerModal() {
+      if (!state.activeOrder) return;
+      
+      const order = state.activeOrder;
+      document.getElementById("tracker-order-id").innerText = `ORDER ID: ${order.id}`;
+      document.getElementById("tracker-receipt-count").innerText = `${order.items.reduce((a, b) => a + b.quantity, 0)} items`;
+
+      document.getElementById("tracker-receipt-items").innerHTML = order.items.map(ci => {
+        const item = state.menu.find(x => x.id === ci.menuId);
+        return `
+          <div class="flex justify-between">
+            <span>${ci.quantity}x ${item ? item.name : 'Unknown'}</span>
+            <span>$${(item ? item.price * ci.quantity : 0).toFixed(2)}</span>
+          </div>
+        `;
+      }).join('');
+
+      updateTrackerUIProgress(order.status);
+      document.getElementById("tracker-modal").classList.remove("pointer-events-none", "opacity-0");
+    }
+
+    function toggleTrackerModal(show) {
+      const modal = document.getElementById("tracker-modal");
+      if (show) modal.classList.remove("pointer-events-none", "opacity-0");
+      else modal.classList.add("pointer-events-none", "opacity-0");
+    }
+
+    function updateTrackerUIProgress(status) {
+      const progressBar = document.getElementById("tracker-progress-line");
+      const node2 = document.getElementById("step-node-2");
+      const node3 = document.getElementById("step-node-3");
+      const text2 = document.getElementById("step-text-2");
+      const text3 = document.getElementById("step-text-3");
+      const statusPrimary = document.getElementById("tracker-status-primary");
+      const statusSecondary = document.getElementById("tracker-status-secondary");
+      const timerEl = document.getElementById("tracker-timer");
+
+      node2.className = "w-10 h-10 rounded-full bg-stone-900 text-stone-500 border-4 border-espresso-950 flex items-center justify-center text-xs font-bold transition-all";
+      node3.className = "w-10 h-10 rounded-full bg-stone-900 text-stone-500 border-4 border-espresso-950 flex items-center justify-center text-xs font-bold transition-all";
+
+      if (status === "Awaiting Confirmation") {
+        progressBar.style.width = "15%";
+        statusPrimary.innerText = "Order Received & Queued";
+        statusSecondary.innerText = "Predictive algorithm estimating queue hand-off time.";
+        timerEl.innerText = "~ 2-4 Mins";
+      } else if (status === "Preparing") {
+        progressBar.style.width = "50%";
+        node2.className = "w-10 h-10 rounded-full bg-orange-700 text-white border-4 border-espresso-950 flex items-center justify-center text-xs font-bold animate-pulse";
+        text2.className = "text-[11px] font-bold mt-2 text-orange-400";
+        statusPrimary.innerText = "Barista Preparing Order!";
+        statusSecondary.innerText = "Grinding espresso beans & warming fresh pastries.";
+        timerEl.innerText = "~ 1-2 Mins";
+      } else if (status === "Ready") {
+        progressBar.style.width = "100%";
+        node2.className = "w-10 h-10 rounded-full bg-orange-700 text-white border-4 border-espresso-950 flex items-center justify-center text-xs font-bold";
+        node3.className = "w-10 h-10 rounded-full bg-emerald-600 text-white border-4 border-espresso-950 flex items-center justify-center text-xs font-bold animate-bounce";
+        text2.className = "text-[11px] font-bold mt-2 text-orange-400";
+        text3.className = "text-[11px] font-bold mt-2 text-emerald-400";
+        statusPrimary.innerText = "Ready for Pick-up!";
+        statusSecondary.innerText = "Walk straight to the online pick-up sign with ID: " + state.activeOrder.id;
+        timerEl.innerText = "Now Ready";
+      }
+    }
+
+    function renderStaffHub() {
+      const ordersContainer = document.getElementById("staff-order-pipeline");
+      const noOrdersView = document.getElementById("staff-no-orders");
+      
+      document.getElementById("staff-stat-total-orders").innerText = state.orders.length;
+      document.getElementById("staff-stat-saved-minutes").innerText = `${state.orders.length * 3}m`;
+      document.getElementById("staff-stat-pending-orders").innerText = state.orders.filter(o => o.status === 'Awaiting Confirmation' || o.status === 'Preparing').length;
+      
+      const revenue = state.orders.reduce((sum, o) => sum + o.total, 0);
+      document.getElementById("staff-stat-total-revenue").innerText = `$${revenue.toFixed(2)}`;
+
+      if (state.orders.length === 0) {
+        ordersContainer.innerHTML = "";
+        noOrdersView.classList.remove("hidden");
+      } else {
+        noOrdersView.classList.add("hidden");
+        ordersContainer.innerHTML = state.orders.map(order => {
+          let statusBadgeClass = '';
+          let ctaBtnHTML = '';
+
+          if (order.status === "Awaiting Confirmation") {
+            statusBadgeClass = "bg-rose-500/10 text-rose-400 border border-rose-500/20";
+            ctaBtnHTML = `
+              <button onclick="changeOrderStatus('${order.id}', 'Preparing')" class="bg-amber-600 hover:bg-amber-500 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition-all flex items-center gap-1">
+                <i data-lucide="play" class="w-3.5 h-3.5"></i> Start Preparing
+              </button>
+            `;
+          } else if (order.status === "Preparing") {
+            statusBadgeClass = "bg-amber-500/10 text-amber-400 border border-amber-500/20 animate-pulse";
+            ctaBtnHTML = `
+              <button onclick="changeOrderStatus('${order.id}', 'Ready')" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition-all flex items-center gap-1">
+                <i data-lucide="check" class="w-3.5 h-3.5"></i> Mark Ready
+              </button>
+            `;
+          } else {
+            statusBadgeClass = "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20";
+            ctaBtnHTML = `<span class="text-xs text-stone-500 flex items-center gap-1"><i data-lucide="archive" class="w-3.5 h-3.5"></i> Picked Up</span>`;
+          }
+
+          const itemsBreakdown = order.items.map(ci => {
+            const item = state.menu.find(m => m.id === ci.menuId);
+            return `<span class="inline-block bg-espresso-950 border border-stone-850 text-[11px] text-stone-300 rounded px-2 py-0.5">${ci.quantity}x ${item ? item.name : 'Unknown'} ${ci.customNote ? `(${ci.customNote})` : ''}</span>`;
+          }).join(' ');
+
+          return `
+            <div class="bg-stone-900/60 border border-stone-850 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div class="space-y-2">
+                <div class="flex items-center gap-2">
+                  <span class="text-sm font-extrabold text-stone-200 font-mono">${order.id}</span>
+                  <span class="text-xs text-stone-500">• ${order.customerName}</span>
+                  <span class="text-[10px] ${statusBadgeClass} px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">${order.status}</span>
+                </div>
+                <div class="flex flex-wrap gap-1.5">
+                  ${itemsBreakdown}
+                </div>
+              </div>
+              <div class="flex items-center gap-3 shrink-0 self-end sm:self-center">
+                <div class="text-right hidden sm:block">
+                  <span class="block text-xs font-bold text-stone-300 font-mono">$${order.total.toFixed(2)}</span>
+                  <span class="text-[10px] text-stone-500">${order.time}</span>
+                </div>
+                ${ctaBtnHTML}
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      const inventoryContainer = document.getElementById("staff-inventory-list");
+      inventoryContainer.innerHTML = state.menu.map(item => {
+        return `
+          <div class="flex items-center justify-between py-2.5">
+            <div class="min-w-0 pr-2">
+              <h5 class="text-xs font-extrabold text-stone-300 truncate leading-tight">${item.name}</h5>
+              <span class="text-[10px] text-stone-500 font-mono">Stock level: ${item.stock} left</span>
+            </div>
+            <div class="flex items-center gap-1.5 shrink-0">
+              <button onclick="adjustStockLevel('${item.id}', -5)" class="p-1 bg-stone-950 hover:bg-stone-900 rounded text-stone-400 hover:text-stone-200 text-xs font-bold" title="Decrease stock">-5</button>
+              <button onclick="adjustStockLevel('${item.id}', 10)" class="p-1.5 bg-orange-950/40 text-orange-400 hover:bg-orange-900 border border-orange-900/30 rounded text-xs font-bold" title="Replenish stock">+10</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      setTimeout(() => lucide.createIcons(), 20);
+    }
+
+    function changeOrderStatus(orderId, newStatus) {
+      const order = state.orders.find(o => o.id === orderId);
+      if (!order) return;
+
+      order.status = newStatus;
+      showToast(`Order ${orderId} updated to: ${newStatus}`);
+
+      if (state.activeOrder && state.activeOrder.id === orderId) {
+        state.activeOrder.status = newStatus;
+        updateTrackerUIProgress(newStatus);
+      }
+
+      renderAll();
+    }
+
+    function adjustStockLevel(itemId, amount) {
+      const item = state.menu.find(i => i.id === itemId);
+      if (!item) return;
+
+      item.stock = Math.max(0, item.stock + amount);
+      showToast(`Adjusted ${item.name} inventory.`);
+      renderAll();
+    }
+
+    function injectSampleOrder() {
+      const names = ["Alejandro R.", "Chloe V.", "Daniel P.", "Elena M.", "Mateo S."];
+      const randomName = names[Math.floor(Math.random() * names.length)];
+      
+      const itemsToBuy = [];
+      const numItems = Math.floor(Math.random() * 2) + 1;
+      for (let i = 0; i < numItems; i++) {
+        const randomItem = state.menu[Math.floor(Math.random() * state.menu.length)];
+        if (randomItem.stock > 0) {
+          itemsToBuy.push({ menuId: randomItem.id, quantity: Math.floor(Math.random() * 2) + 1 });
+        }
+      }
+
+      if (itemsToBuy.length === 0) {
+        showToast("All items out of stock!");
+        return;
+      }
+
+      const randomNum = Math.floor(1000 + Math.random() * 9000);
+      const randomId = `VEL-${randomNum}`;
+
+      const injected = {
+        id: randomId,
+        items: itemsToBuy,
+        customerName: randomName,
+        time: "Just now",
+        total: parseFloat((itemsToBuy.reduce((sum, ci) => {
+          const m = state.menu.find(x => x.id === ci.menuId);
+          return sum + (m ? m.price * ci.quantity : 0);
+        }, 0) * 1.07).toFixed(2)),
+        status: "Awaiting Confirmation"
+      };
+
+      itemsToBuy.forEach(ci => {
+        const menuItem = state.menu.find(m => m.id === ci.menuId);
+        if (menuItem) menuItem.stock = Math.max(0, menuItem.stock - ci.quantity);
+      });
+
+      state.orders.unshift(injected);
+      showToast(`Simulated customer order: ${randomId}`);
+      renderAll();
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      const text = document.getElementById("toast-message");
+      text.innerText = message;
+
+      toast.classList.remove("opacity-0", "translate-y-2");
+      toast.classList.add("opacity-100", "translate-y-0");
+
+      setTimeout(() => {
+        toast.classList.remove("opacity-100", "translate-y-0");
+        toast.classList.add("opacity-0", "translate-y-2");
+      }, 3500);
+    }
+  </script>
+</body>
+</html>
