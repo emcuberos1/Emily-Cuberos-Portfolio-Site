@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rubell Museum Courtyard Addition — Emily Cuberos</title>
+<meta name="description" content="Rubell Museum Courtyard Addition — an architecture studio project by Emily Cuberos. Site plan, sections, elevations, floor plans, and physical models.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Public+Sans:wght@400;500;600;700;800&display=swap');
+
+  :root{
+    --cream:#FBF5E7;
+    --cream-deep:#F3E7CC;
+    --card:#FFFFFF;
+    --teal:#1F4A41;
+    --teal-2:#2C6154;
+    --teal-soft:#E4EEE9;
+    --gold:#C1922E;
+    --gold-light:#E7C878;
+    --peach:#E8A97C;
+    --peach-soft:#FBE7D8;
+    --ink:#23291F;
+    --muted:#8A7F68;
+  }
+
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Public Sans',sans-serif;
+  }
+  .font-display{font-family:'Fraunces',serif;}
+
+  ::selection{background:var(--gold-light);color:var(--ink);}
+  ::-webkit-scrollbar{width:10px;}
+  ::-webkit-scrollbar-track{background:var(--cream-deep);}
+  ::-webkit-scrollbar-thumb{background:var(--gold);border-radius:8px;}
+
+  .eyebrow{
+    font-family:'Public Sans',sans-serif;
+    font-weight:700;
+    font-size:12px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--gold);
+  }
+
+  .stamp{
+    width:96px;height:96px;
+    border-radius:9999px;
+    border:2px dashed var(--teal-2);
+    display:flex;align-items:center;justify-content:center;
+    flex-direction:column;
+    text-align:center;
+    transform:rotate(-8deg);
+    color:var(--teal);
+    background:rgba(255,255,255,.5);
+    flex-shrink:0;
+  }
+  .stamp span.big{font-family:'Fraunces',serif; font-size:13px; font-weight:600; line-height:1.05;}
+  .stamp span.small{font-size:7px; letter-spacing:.1em; text-transform:uppercase; margin-top:2px; font-weight:700;}
+
+  .nav-pill{
+    background:rgba(251,245,231,.85);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(31,74,65,0.08);
+  }
+  .nav-link{
+    position:relative;
+    color:var(--ink);
+    opacity:.72;
+    transition:opacity .2s ease;
+  }
+  .nav-link:hover{opacity:1;}
+
+  .btn-primary{
+    background:var(--teal);
+    color:var(--cream);
+    transition:background .2s ease, transform .2s ease;
+  }
+  .btn-primary:hover{background:var(--teal-2); transform:translateY(-1px);}
+
+  .btn-ghost{
+    border:1.5px solid var(--teal);
+    color:var(--teal);
+    transition:background .2s ease, color .2s ease;
+  }
+  .btn-ghost:hover{background:var(--teal); color:var(--cream);}
+
+  .chip{
+    background:var(--teal-soft);
+    color:var(--teal);
+    font-weight:600;
+    font-size:12.5px;
+  }
+
+  .card-soft{
+    background:var(--card);
+    border-radius:24px;
+    box-shadow:0 14px 34px -22px rgba(31,74,65,0.22);
+  }
+
+  .plate{
+    background:var(--card);
+    border-radius:16px;
+    box-shadow:0 14px 34px -22px rgba(31,74,65,0.22);
+    padding:1.25rem;
+    cursor:zoom-in;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .plate:hover{transform:translateY(-3px); box-shadow:0 20px 40px -20px rgba(31,74,65,0.3);}
+  .plate img{width:100%;height:auto;display:block;}
+
+  .plate-label{
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-top:.85rem;
+  }
+
+  .section-eyebrow-line{
+    flex:1;
+    height:1px;
+    background:var(--cream-deep);
+  }
+
+  #lightbox{
+    position:fixed; inset:0; z-index:100;
+    background:rgba(35,41,31,0.92);
+    display:none;
+    align-items:center; justify-content:center;
+    padding:2rem;
+    cursor:zoom-out;
+  }
+  #lightbox.open{display:flex;}
+  #lightbox img{max-width:100%; max-height:100%; border-radius:8px; box-shadow:0 30px 80px rgba(0,0,0,.5);}
+  #lightbox-close{
+    position:absolute; top:1.5rem; right:1.5rem;
+    width:44px;height:44px;border-radius:9999px;
+    background:rgba(255,255,255,.12);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--cream);
+  }
+
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-3xl">
+  <div class="nav-pill rounded-full px-5 md:px-7 py-3 flex items-center justify-between shadow-sm">
+    <a href="../../index.html" class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background:var(--teal);">
+        <span class="font-display italic text-[var(--cream)] text-sm">Ec</span>
+      </div>
+    </a>
+    <a href="../../index.html#architecture" class="nav-link text-[13px] font-semibold flex items-center gap-1.5">
+      <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+      Back to portfolio
+    </a>
+    <a href="../../index.html#contact" class="btn-primary text-[13px] font-bold rounded-full px-5 py-2.5">Say hello</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="relative overflow-hidden pt-40 md:pt-48 pb-16 px-5 md:px-10">
+  <div class="max-w-4xl mx-auto relative z-10">
+    <div class="flex items-start gap-5 md:gap-7">
+      <div class="stamp">
+        <span class="big">03</span>
+        <span class="small">Studio</span>
+      </div>
+      <div>
+        <p class="eyebrow mb-2">FIU Master of Architecture — Design Studio 3</p>
+        <h1 class="font-display text-4xl md:text-5xl font-medium leading-tight" style="color:var(--teal);">Rubell Museum<br>Courtyard Addition</h1>
+      </div>
+    </div>
+    <p class="mt-8 text-[15px] md:text-base leading-relaxed max-w-2xl" style="color:var(--ink);">
+      The task was to design a building — or buildings — and redesign the courtyard at the Rubell Museum in Miami, Florida. The structure had to sit at the end of the courtyard, next to the street, and take design cues from a different specific building. My reference was the Royal Collections Gallery in Madrid. The program called for an art gallery, a café, and a library, all sharing one courtyard.
+    </p>
+  </div>
+</section>
+
+<!-- ============ SITE PLAN ============ -->
+<section class="px-5 md:px-10 pb-6">
+  <div class="max-w-4xl mx-auto">
+    <div class="flex items-center gap-4 mb-6">
+      <h2 class="font-display italic text-2xl" style="color:var(--teal);">Site Plan</h2>
+      <div class="section-eyebrow-line"></div>
+      <span class="chip rounded-full px-3 py-1">1/32&Prime; = 1&prime;</span>
+    </div>
+    <div class="plate" onclick="openLightbox('images/site_plan.jpg')">
+      <img src="images/site_plan.jpg" alt="Site plan showing the Rubell Museum courtyard addition among surrounding context buildings">
+    </div>
+  </div>
+</section>
+
+<!-- ============ SITE SECTIONS ============ -->
+<section class="px-5 md:px-10 py-6">
+  <div class="max-w-4xl mx-auto">
+    <div class="flex items-center gap-4 mb-6">
+      <h2 class="font-display italic text-2xl" style="color:var(--teal);">Site Sections</h2>
+      <div class="section-eyebrow-line"></div>
+      <span class="chip rounded-full px-3 py-1">1/16&Prime; = 1&prime;</span>
+    </div>
+    <div class="grid gap-5">
+      <div class="plate" onclick="openLightbox('images/site_section_a.jpg')">
+        <img src="images/site_section_a.jpg" alt="Site section A through the gallery, bookstore, and café">
+      </div>
+      <div class="plate" onclick="openLightbox('images/site_section_b.jpg')">
+        <img src="images/site_section_b.jpg" alt="Site section B through the courtyard and planted seating areas">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ELEVATIONS ============ -->
+<section class="px-5 md:px-10 py-6">
+  <div class="max-w-4xl mx-auto py-10">
+    <div class="flex items-center gap-4 mb-6">
+      <h2 class="font-display italic text-2xl" style="color:var(--teal);">Elevations</h2>
+      <div class="section-eyebrow-line"></div>
+      <span class="chip rounded-full px-3 py-1">1/16&Prime; = 1&prime;</span>
+    </div>
+    <div class="grid gap-5">
+      <div>
+        <div class="plate" onclick="openLightbox('images/elevation_street.jpg')">
+          <img src="images/elevation_street.jpg" alt="Site elevation as seen from the street">
+        </div>
+        <p class="plate-label">From the street</p>
+      </div>
+      <div>
+        <div class="plate" onclick="openLightbox('images/elevation_courtyard.jpg')">
+          <img src="images/elevation_courtyard.jpg" alt="Interior courtyard elevation">
+        </div>
+        <p class="plate-label">From the courtyard</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SITE AXON ============ -->
+<section class="px-5 md:px-10 py-6" style="background:var(--cream-deep);">
+  <div class="max-w-4xl mx-auto py-10">
+    <div class="flex items-center gap-4 mb-6">
+      <h2 class="font-display italic text-2xl" style="color:var(--teal);">Site Axonometric</h2>
+      <div class="section-eyebrow-line" style="background:rgba(31,74,65,0.12);"></div>
+    </div>
+    <div class="plate max-w-2xl mx-auto" onclick="openLightbox('images/site_axon.jpg')">
+      <img src="images/site_axon.jpg" alt="Exploded axonometric drawing of the building massing and interior program">
+    </div>
+  </div>
+</section>
+
+<!-- ============ FLOOR PLANS ============ -->
+<section class="px-5 md:px-10 py-6">
+  <div class="max-w-4xl mx-auto py-10">
+    <div class="flex items-center gap-4 mb-6">
+      <h2 class="font-display italic text-2xl" style="color:var(--teal);">Floor Plans</h2>
+      <div class="section-eyebrow-line"></div>
+      <span class="chip rounded-full px-3 py-1">1/8&Prime; = 1&prime;</span>
+    </div>
+    <div class="grid gap-5">
+      <div>
+        <div class="plate" onclick="openLightbox('images/ground_floor.jpg')">
+          <img src="images/ground_floor.jpg" alt="Ground floor and courtyard plan">
+        </div>
+        <p class="plate-label">Ground floor &amp; courtyard</p>
+      </div>
+      <div>
+        <div class="plate" onclick="openLightbox('images/second_floor.jpg')">
+          <img src="images/second_floor.jpg" alt="Second floor plan">
+        </div>
+        <p class="plate-label">Second floor</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CROSS SECTIONS ============ -->
+<section class="px-5 md:px-10 py-6" style="background:var(--cream-deep);">
+  <div class="max-w-4xl mx-auto py-10">
+    <div class="flex items-center gap-4 mb-6">
+      <h2 class="font-display italic text-2xl" style="color:var(--teal);">Detailed Cross Sections</h2>
+      <div class="section-eyebrow-line" style="background:rgba(31,74,65,0.12);"></div>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5">
+      <div>
+        <div class="plate" onclick="openLightbox('images/cross_section_a.jpg')">
+          <img src="images/cross_section_a.jpg" alt="Detailed cross section A through the bookstore stair and shelving">
+        </div>
+        <p class="plate-label">Section A</p>
+      </div>
+      <div>
+        <div class="plate" onclick="openLightbox('images/cross_section_b.jpg')">
+          <img src="images/cross_section_b.jpg" alt="Detailed cross section B">
+        </div>
+        <p class="plate-label">Section B</p>
+      </div>
+      <div>
+        <div class="plate" onclick="openLightbox('images/cross_section_c.jpg')">
+          <img src="images/cross_section_c.jpg" alt="Detailed cross section C">
+        </div>
+        <p class="plate-label">Section C</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RENDERINGS ============ -->
+<section class="px-5 md:px-10 py-6">
+  <div class="max-w-4xl mx-auto py-10">
+    <div class="flex items-center gap-4 mb-6">
+      <h2 class="font-display italic text-2xl" style="color:var(--teal);">Exterior Renderings</h2>
+      <div class="section-eyebrow-line"></div>
+    </div>
+    <div class="grid md:grid-cols-2 gap-5">
+      <div>
+        <div class="plate" onclick="openLightbox('images/render_courtyard.jpg')">
+          <img src="images/render_courtyard.jpg" alt="Exterior rendering from inside the courtyard">
+        </div>
+        <p class="plate-label">From inside the courtyard</p>
+      </div>
+      <div>
+        <div class="plate" onclick="openLightbox('images/render_street.jpg')">
+          <img src="images/render_street.jpg" alt="Exterior rendering from the street">
+        </div>
+        <p class="plate-label">From the street</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODELS ============ -->
+<section class="px-5 md:px-10 py-6" style="background:var(--cream-deep);">
+  <div class="max-w-4xl mx-auto py-10">
+    <div class="flex items-center gap-4 mb-6">
+      <h2 class="font-display italic text-2xl" style="color:var(--teal);">Physical Models</h2>
+      <div class="section-eyebrow-line" style="background:rgba(31,74,65,0.12);"></div>
+    </div>
+    <div class="grid md:grid-cols-2 gap-5 mb-5">
+      <div class="plate" onclick="openLightbox('images/rubell_model_1.jpg')"><img src="images/rubell_model_1.jpg" alt="Section model, view 1"></div>
+      <div class="plate" onclick="openLightbox('images/rubell_model_2.jpg')"><img src="images/rubell_model_2.jpg" alt="Section model, view 2"></div>
+      <div class="plate" onclick="openLightbox('images/rubell_model_3.jpg')"><img src="images/rubell_model_3.jpg" alt="Section model, view 3"></div>
+      <div class="plate" onclick="openLightbox('images/rubell_model_4.jpg')"><img src="images/rubell_model_4.jpg" alt="Section model, view 4"></div>
+    </div>
+    <div class="plate max-w-xl mx-auto" onclick="openLightbox('images/rubell_model_5.jpg')">
+      <img src="images/rubell_model_5.jpg" alt="Site model">
+    </div>
+    <p class="text-center plate-label !mt-4">Images 1&ndash;4: section model &nbsp;&middot;&nbsp; Image 5: site model</p>
+  </div>
+</section>
+
+<!-- ============ CONCEPT ============ -->
+<section class="px-5 md:px-10 py-6" style="background:var(--cream-deep);">
+  <div class="max-w-4xl mx-auto py-10">
+    <div class="flex items-center gap-4 mb-8">
+      <h2 class="font-display italic text-2xl" style="color:var(--teal);">Concept</h2>
+      <div class="section-eyebrow-line" style="background:rgba(31,74,65,0.12);"></div>
+    </div>
+    <div class="grid md:grid-cols-5 gap-10 items-start">
+      <div class="md:col-span-3 space-y-4 text-[14.5px] leading-relaxed" style="color:var(--ink);">
+        <p>The concept behind my design of the new building was to take inspiration from the Royal Collections Gallery, without making it look all that similar to it. The main design characteristics from the Royal Collections Gallery are the double layer of columns, the geometry, the &ldquo;chopped&rdquo; fluidity, and the varying heights of each floor. I incorporated each of these concepts into my design. Using a plan of the double layer of columns, I created a grid that served as the guide for the shape of everything. I created an interesting shape for the buildings by weaving my way through the grid. This is one area where I was also able to tie in the geometry of the Royal Collections Gallery.</p>
+        <p>Just like the Royal Collections Gallery, my design has no curves, only straight lines and perfect corners. This concept is not just seen in plan view, but also in elevation. The general shape of the building, as well as the more intricate designs incorporated into it all follow the same language when it comes to geometry. I was able to do many different combinations of shapes that kept the idea of straight and crisp lines and angles. With the geometry, I was also able to highlight another main design characteristic of the Royal Collections Gallery. This being its &ldquo;chopped&rdquo; fluidity.</p>
+        <p>What I mean by &ldquo;chopped&rdquo; fluidity is seen really well in the Royal Collections Gallery&rsquo;s elevation. Though it all appears continuous, there are constant breaks in the building (between the columns), that force the outermost surfaces of the building to unalign with eachother. I was able to incorpoate this into my design by carving spaces out of my building. Some I simply carved a few inches into the wall, while others I completely dug into the building. I found this to be a unique way to introduce that aspect of the Royal Collections Gallery into my design. With these carvings, I was also able to incorporate the idea of the varying heights shown in the building as well.</p>
+        <p>The Royal Collections Gallery has several floors that vary in height. This can clearly be seen in the facade of the building. I chose to incorporate this in two ways. The first way was in relation to the carvings. Not all of the carvings are the same size. Some carvings are double the size of others, while others merge into one another. This was an interesting way to incorporate this idea into my design. The second way I incorporated it was simply by making the middle building (the gallery) double the height (on the inside) as the others. I also made the first building on the left (the bookstore) just one floor, but starting on the second floor. The final building (the cafe), has two floors. Each of the buildings has a different relationship when it comes to floors and heights.</p>
+        <p>The space below the bookstore (left building) is meant to be a space to simply sit down, unwind, or read a book. The second floor also has some spaces inside the store to sit and read. The middle building is the gallery. It is meant to house many paintings of varying sizes, as well as a couple sculptures. The building on the right is the cafe. The idea was that you could order on the ground floor, and either sit there, outside, or on the second floor where there is additional seating to enjoy your coffee and/or pastry.</p>
+        <p>I wanted the design of the courtyard to be simple but to still tie in to everything. I was able to create an interesting design where it appears that everything in the courtyard is getting even more pixelated, as it gets further from the building, almost as if it were being pulled out of it. This kept the idea of the grid and tied in some other key spaces, such as additional seating, some greenery, and some small ponds as well. My design of both the building and the courtyard was an interesting take on all of the main design concepts of the Royal Collections Gallery, creating a geometric, &ldquo;carved out&rdquo; building with an open and spacious courtyard, all on a simple double layered column grid.</p>
+      </div>
+      <div class="md:col-span-2 grid grid-cols-2 gap-4">
+        <div class="plate !p-2" onclick="openLightbox('images/detail_bench.jpg')">
+          <img src="images/detail_bench.jpg" alt="Integrated bench section detail">
+          <p class="plate-label !mt-2 !text-[10px]">Bench</p>
+        </div>
+        <div class="plate !p-2" onclick="openLightbox('images/detail_hidden_room.jpg')">
+          <img src="images/detail_hidden_room.jpg" alt="Hidden room section detail">
+          <p class="plate-label !mt-2 !text-[10px]">Hidden room</p>
+        </div>
+        <div class="plate !p-2 col-span-2" onclick="openLightbox('images/detail_photo.jpg')">
+          <img src="images/detail_photo.jpg" alt="Royal Collections Gallery reference photo with section transformation drawings">
+          <p class="plate-label !mt-2 !text-[10px]">Reference photo</p>
+        </div>
+        <div class="plate !p-2 col-span-2" onclick="openLightbox('images/detail_stair.jpg')">
+          <img src="images/detail_stair.jpg" alt="Stair section detail">
+          <p class="plate-label !mt-2 !text-[10px]">Stair</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEXT PROJECT / FOOTER NAV ============ -->
+<section class="px-5 md:px-10 py-16">
+  <div class="max-w-4xl mx-auto text-center">
+    <a href="../../index.html#architecture" class="btn-ghost rounded-full px-6 py-3 text-sm font-bold inline-flex items-center gap-2">
+      <i data-lucide="arrow-left" class="w-4 h-4"></i>
+      Back to Architecture Studio
+    </a>
+  </div>
+</section>
+
+<!-- ============ LIGHTBOX ============ -->
+<div id="lightbox" onclick="closeLightbox()">
+  <div id="lightbox-close"><i data-lucide="x" class="w-5 h-5"></i></div>
+  <img id="lightbox-img" src="" alt="Enlarged drawing">
+</div>
+
+<script>
+  lucide.createIcons();
+
+  function openLightbox(src){
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function closeLightbox(){
+    document.getElementById('lightbox').classList.remove('open');
+  }
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') closeLightbox(); });
+
+  const revealEls = document.querySelectorAll('.plate, h2');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); } });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => { el.classList.add('reveal'); io.observe(el); });
+</script>
+
+</body>
+</html>
