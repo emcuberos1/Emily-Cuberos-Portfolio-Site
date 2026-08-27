@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lincoln Road Folly Addition — Emily Cuberos</title>
+<meta name="description" content="Lincoln Road Folly Addition — an architecture studio project by Emily Cuberos. Site plan, pavilion plan, sections, axonometrics, and physical models.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Public+Sans:wght@400;500;600;700;800&display=swap');
+
+  :root{
+    --cream:#FBF5E7; --cream-deep:#F3E7CC; --card:#FFFFFF;
+    --teal:#1F4A41; --teal-2:#2C6154; --teal-soft:#E4EEE9;
+    --gold:#C1922E; --gold-light:#E7C878; --peach:#E8A97C; --peach-soft:#FBE7D8;
+    --ink:#23291F; --muted:#8A7F68;
+  }
+  html{scroll-behavior:smooth;}
+  body{background:var(--cream); color:var(--ink); font-family:'Public Sans',sans-serif;}
+  .font-display{font-family:'Fraunces',serif;}
+  ::selection{background:var(--gold-light);color:var(--ink);}
+  ::-webkit-scrollbar{width:10px;}
+  ::-webkit-scrollbar-track{background:var(--cream-deep);}
+  ::-webkit-scrollbar-thumb{background:var(--gold);border-radius:8px;}
+  .eyebrow{font-family:'Public Sans',sans-serif; font-weight:700; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--gold);}
+  .stamp{width:96px;height:96px;border-radius:9999px;border:2px dashed var(--teal-2);display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;transform:rotate(-8deg);color:var(--teal);background:rgba(255,255,255,.5);flex-shrink:0;}
+  .stamp span.big{font-family:'Fraunces',serif; font-size:13px; font-weight:600; line-height:1.05;}
+  .stamp span.small{font-size:7px; letter-spacing:.1em; text-transform:uppercase; margin-top:2px; font-weight:700;}
+  .nav-pill{background:rgba(251,245,231,.85); backdrop-filter:blur(10px); border:1px solid rgba(31,74,65,0.08);}
+  .nav-link{position:relative; color:var(--ink); opacity:.72; transition:opacity .2s ease;}
+  .nav-link:hover{opacity:1;}
+  .btn-primary{background:var(--teal); color:var(--cream); transition:background .2s ease, transform .2s ease;}
+  .btn-primary:hover{background:var(--teal-2); transform:translateY(-1px);}
+  .btn-ghost{border:1.5px solid var(--teal); color:var(--teal); transition:background .2s ease, color .2s ease;}
+  .btn-ghost:hover{background:var(--teal); color:var(--cream);}
+  .chip{background:var(--teal-soft); color:var(--teal); font-weight:600; font-size:12.5px;}
+  .plate{background:var(--card); border-radius:16px; box-shadow:0 14px 34px -22px rgba(31,74,65,0.22); padding:1.25rem; cursor:zoom-in; transition:transform .25s ease, box-shadow .25s ease;}
+  .plate:hover{transform:translateY(-3px); box-shadow:0 20px 40px -20px rgba(31,74,65,0.3);}
+  .plate img{width:100%;height:auto;display:block;}
+  .plate-label{font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-top:.85rem;}
+  .section-eyebrow-line{flex:1; height:1px; background:var(--cream-deep);}
+  #lightbox{position:fixed; inset:0; z-index:100; background:rgba(35,41,31,0.92); display:none; align-items:center; justify-content:center; padding:2rem; cursor:zoom-out;}
+  #lightbox.open{display:flex;}
+  #lightbox img{max-width:100%; max-height:100%; border-radius:8px; box-shadow:0 30px 80px rgba(0,0,0,.5);}
+  #lightbox-close{position:absolute; top:1.5rem; right:1.5rem; width:44px;height:44px;border-radius:9999px; background:rgba(255,255,255,.12); display:flex;align-items:center;justify-content:center; color:var(--cream);}
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<header class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-3xl">
+  <div class="nav-pill rounded-full px-5 md:px-7 py-3 flex items-center justify-between shadow-sm">
+    <a href="../../index.html" class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background:var(--teal);">
+        <span class="font-display italic text-[var(--cream)] text-sm">Ec</span>
+      </div>
+    </a>
+    <a href="../../index.html#architecture" class="nav-link text-[13px] font-semibold flex items-center gap-1.5">
+      <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+      Back to portfolio
+    </a>
+    <a href="../../index.html#contact" class="btn-primary text-[13px] font-bold rounded-full px-5 py-2.5">Say hello</a>
+  </div>
+</header>
+
+<section class="relative overflow-hidden pt-40 md:pt-48 pb-16 px-5 md:px-10">
+  <div class="max-w-4xl mx-auto relative z-10">
+    <div class="flex items-start gap-5 md:gap-7">
+      <div class="stamp"><span class="big">01</span><span class="small">Studio</span></div>
+      <div>
+        <p class="eyebrow mb-2">FIU Master of Architecture — Design Studio 1</p>
+        <h1 class="font-display text-4xl md:text-5xl font-medium leading-tight" style="color:var(--teal);">Lincoln Road<br>Folly Addition</h1>
+      </div>
+    </div>
+    <p class="mt-8 text-[15px] md:text-base leading-relaxed max-w-2xl" style="color:var(--ink);">
+      The task was to design a small pavilion for the eastern end of the Lincoln Road pedestrian mall in Miami Beach. The program called for a shaded area with integrated seating, a place to wash one&rsquo;s feet, and integrated planters &mdash; plus a redesign of that entire section of Lincoln Road, with varied elevations throughout. The design also had to reference an earlier project of mine that turned a painting into a 3D object.
+    </p>
+  </div>
+</section>
+
+<section class="px-5 md:px-10 pb-6">
+  <div class="max-w-4xl mx-auto">
+    <div class="flex items-center gap-4 mb-6">
+      <h2 class="font-display italic text-2xl" style="color:var(--teal);">Site Plan</h2>
+      <div class="section-eyebrow-line"></div>
+      <span class="chip rounded-full px-3 py-1">1/8&Prime; = 1&prime;</span>
+    </div>
+    <div class="plate" onclick="openLightbox('images/lincoln_site_plan.jpg')">
+      <img src="images/lincoln_site_plan.jpg" alt="Site plan of the Lincoln Road folly pavilion and surrounding redesigned mall section">
+    </div>
+  </div>
+</section>
+
+<section class="px-5 md:px-10 py-6">
+  <div class="max-w-4xl mx-auto">
+    <div class="flex items-center gap-4 mb-6">
+      <h2 class="font-display italic text-2xl" style="color:var(--teal);">Site Section</h2>
+      <div class="section-eyebrow-line"></div>
+      <span class="chip rounded-full px-3 py-1">1/8&Prime; = 1&prime;</span>
+    </div>
+    <div class="plate" onclick="openLightbox('images/lincoln_site_section.jpg')">
+      <img src="images/lincoln_site_section.jpg" alt="Long site section through the redesigned Lincoln Road mall section">
+    </div>
+  </div>
+</section>
+
+<section class="px-5 md:px-10 py-6" style="background:var(--cream-deep);">
+  <div class="max-w-4xl mx-auto py-10">
+    <div class="flex items-center gap-4 mb-6">
+      <h2 class="font-display italic text-2xl" style="color:var(--teal);">Pavilion Plan</h2>
+      <div class="section-eyebrow-line" style="background:rgba(31,74,65,0.12);"></div>
+      <span class="chip rounded-full px-3 py-1">1/4&Prime; = 1&prime;</span>
+    </div>
+    <div class="plate" onclick="openLightbox('images/lincoln_pavilion_plan.jpg')">
+      <img src="images/lincoln_pavilion_plan.jpg" alt="Detailed pavilion plan with seating, planters, and water feature">
+    </div>
+  </div>
+</section>
+
+<section class="px-5 md:px-10 py-6">
+  <div class="max-w-4xl mx-auto py-10">
+    <div class="flex items-center gap-4 mb-6">
+      <h2 class="font-display italic text-2xl" style="color:var(--teal);">Sections</h2>
+      <div class="section-eyebrow-line"></div>
+      <span class="chip rounded-full px-3 py-1">1/4&Prime; = 1&prime;</span>
+    </div>
+    <div class="grid gap-5">
+      <div>
+        <div class="plate" onclick="openLightbox('images/lincoln_longitudinal.jpg')">
+          <img src="images/lincoln_longitudinal.jpg" alt="Longitudinal section through the pavilion">
+        </div>
+        <p class="plate-label">Longitudinal section</p>
+      </div>
+      <div>
+        <div class="plate" onclick="openLightbox('images/lincoln_transverse.jpg')">
+          <img src="images/lincoln_transverse.jpg" alt="Transverse section through the pavilion">
+        </div>
+        <p class="plate-label">Transverse section</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="px-5 md:px-10 py-6" style="background:var(--cream-deep);">
+  <div class="max-w-4xl mx-auto py-10">
+    <div class="flex items-center gap-4 mb-6">
+      <h2 class="font-display italic text-2xl" style="color:var(--teal);">Isos</h2>
+      <div class="section-eyebrow-line" style="background:rgba(31,74,65,0.12);"></div>
+    </div>
+    <div class="plate" onclick="openLightbox('images/lincoln_isos.jpg')">
+      <img src="images/lincoln_isos.jpg" alt="Final design isometric with two earlier design iteration isometrics">
+    </div>
+  </div>
+</section>
+
+<section class="px-5 md:px-10 py-6">
+  <div class="max-w-4xl mx-auto py-10">
+    <div class="flex items-center gap-4 mb-6">
+      <h2 class="font-display italic text-2xl" style="color:var(--teal);">Pavilion Model</h2>
+      <div class="section-eyebrow-line"></div>
+    </div>
+    <div class="grid md:grid-cols-2 gap-5 mb-5">
+      <div class="plate" onclick="openLightbox('images/lincoln_photo_1.jpg')"><img src="images/lincoln_photo_1.jpg" alt="Pavilion model, full aerial view"></div>
+      <div class="plate" onclick="openLightbox('images/lincoln_photo_4.jpg')"><img src="images/lincoln_photo_4.jpg" alt="Pavilion model, aerial view from opposite end"></div>
+      <div class="plate" onclick="openLightbox('images/lincoln_photo_3.jpg')"><img src="images/lincoln_photo_3.jpg" alt="Pavilion model, top-down view"></div>
+      <div class="plate" onclick="openLightbox('images/lincoln_photo_7.jpg')"><img src="images/lincoln_photo_7.jpg" alt="Pavilion model, close-up of canopy with planter and pool"></div>
+      <div class="plate" onclick="openLightbox('images/lincoln_photo_8.jpg')"><img src="images/lincoln_photo_8.jpg" alt="Pavilion model, close-up of canopy structure"></div>
+      <div class="plate" onclick="openLightbox('images/lincoln_photo_10.jpg')"><img src="images/lincoln_photo_10.jpg" alt="Pavilion model, close-up with pool and figure for scale"></div>
+    </div>
+  </div>
+</section>
+
+<section class="px-5 md:px-10 py-16">
+  <div class="max-w-4xl mx-auto text-center">
+    <a href="../../index.html#architecture" class="btn-ghost rounded-full px-6 py-3 text-sm font-bold inline-flex items-center gap-2">
+      <i data-lucide="arrow-left" class="w-4 h-4"></i>
+      Back to Architecture Studio
+    </a>
+  </div>
+</section>
+
+<div id="lightbox" onclick="closeLightbox()">
+  <div id="lightbox-close"><i data-lucide="x" class="w-5 h-5"></i></div>
+  <img id="lightbox-img" src="" alt="Enlarged drawing">
+</div>
+
+<script>
+  lucide.createIcons();
+  function openLightbox(src){ document.getElementById('lightbox-img').src = src; document.getElementById('lightbox').classList.add('open'); }
+  function closeLightbox(){ document.getElementById('lightbox').classList.remove('open'); }
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') closeLightbox(); });
+  const revealEls = document.querySelectorAll('.plate, h2');
+  const io = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); } }); }, { threshold: 0.1 });
+  revealEls.forEach(el => { el.classList.add('reveal'); io.observe(el); });
+</script>
+
+</body>
+</html>
