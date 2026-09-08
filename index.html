@@ -351,11 +351,10 @@
   <div class="max-w-5xl mx-auto">
     <div class="text-center mb-16">
       <div class="eyebrow mb-3">The work</div>
-      <h2 class="font-display text-4xl md:text-5xl mb-4">Two builds, start to finish</h2>
+      <h2 class="font-display text-4xl md:text-5xl mb-4">Three builds, start to finish</h2>
       <p class="text-[15.5px] text-[var(--ink)]/70 max-w-xl mx-auto leading-relaxed">
-        Both are team systems-analysis projects, built for fictional companies as coursework, carried from
-        requirements through a working, coded interface. I owned the business case and interface design on
-        one, and led process design and the prototype on the other.
+        Coursework and a self-directed credential project, each carried from a real brief through to a
+        working, coded interface &mdash; two as a 5-person systems-analysis team, one solo.
       </p>
     </div>
 
@@ -498,6 +497,73 @@
           </a>
           <a href="docs/velvet-espresso-presentation.pdf" target="_blank" class="btn-ghost rounded-full px-5 py-2.5 text-sm font-bold">
             Full deck
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE STUDY 3: INTEL SUSTAINABILITY TIMELINE -->
+    <div class="reveal ticket mt-10 grid md:grid-cols-[1fr_auto_1.6fr]">
+      <div class="p-8 md:p-9 flex flex-col justify-between" style="background:var(--teal); color:var(--cream);">
+        <div>
+          <div class="stop-number text-5xl mb-4">03</div>
+          <h3 class="font-display text-2xl leading-tight mb-2">Intel Sustainability Timeline</h3>
+          <p class="text-xs uppercase tracking-wide font-semibold" style="color:var(--gold-light);">Interactive responsive timeline, solo build</p>
+        </div>
+        <div class="mt-8 space-y-3">
+          <div class="flex justify-between text-sm border-b border-white/15 pb-2">
+            <span class="opacity-70">Program</span><span class="font-semibold text-right">FIU Global Career Accelerator</span>
+          </div>
+          <div class="flex justify-between text-sm border-b border-white/15 pb-2">
+            <span class="opacity-70">My role</span><span class="font-semibold">Solo, AI-assisted</span>
+          </div>
+          <div class="flex justify-between text-sm">
+            <span class="opacity-70">Team</span><span class="font-semibold">Individual project</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hidden md:block relative">
+        <div class="punch" style="left:-14px; top:0;"></div>
+        <div class="ticket-divider h-full"></div>
+        <div class="punch" style="left:-14px; bottom:0; top:auto;"></div>
+      </div>
+
+      <div class="p-8 md:p-9">
+        <p class="text-[15px] leading-relaxed text-[var(--ink)]/85 mb-5">
+          A self-directed build for FIU's Global Career Accelerator, a web development micro-credential
+          delivered with Intel &mdash; not client work, and not something Intel commissioned or uses; Intel's
+          public sustainability milestones were simply the subject I designed around. I built a fully
+          responsive interactive timeline covering nine milestones, directing AI to implement the code
+          changes I specified and reviewing each result before finalizing it, with additional edits of my
+          own throughout.
+        </p>
+
+        <div class="flex flex-wrap gap-4 mb-6">
+          <div class="chip rounded-full px-3.5 py-1.5">9 milestones</div>
+          <div class="chip rounded-full px-3.5 py-1.5">CSS Scroll Snap</div>
+          <div class="chip rounded-full px-3.5 py-1.5">Fully responsive</div>
+        </div>
+
+        <details class="group">
+          <summary class="cursor-pointer text-sm font-bold flex items-center gap-2" style="color:var(--teal);">
+            What I actually did
+            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-open:rotate-180"></i>
+          </summary>
+          <ul class="mt-4 space-y-2.5 text-sm text-[var(--ink)]/80">
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Built a fully responsive Flexbox layout: milestones scroll horizontally on desktop, stack vertically on mobile.</li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Designed hover-triggered detail cards that pull out from beneath each milestone, revealing information without covering anything already visible.</li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Implemented CSS Scroll Snap and subtle CSS transforms for smoother horizontal navigation and more engaging hover interactions.</li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Directed AI (GitHub Copilot) to implement specific code changes I described, reviewing each result before finalizing it and making manual edits of my own along the way.</li>
+          </ul>
+        </details>
+
+        <div class="flex flex-wrap gap-3 mt-7">
+          <a href="https://emcuberos1.github.io/Intel-Sustainability-Timeline/" target="_blank" class="btn-primary rounded-full px-5 py-2.5 text-sm font-bold flex items-center gap-2">
+            Launch live site <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+          <a href="https://github.com/emcuberos1/Intel-Sustainability-Timeline" target="_blank" class="btn-ghost rounded-full px-5 py-2.5 text-sm font-bold flex items-center gap-2">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.75 2.69 1.25 3.34.96.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.05.78 2.11 0 1.53-.01 2.76-.01 3.13 0 .3.2.66.79.55A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg> GitHub
           </a>
         </div>
       </div>
