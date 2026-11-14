@@ -9,7 +9,12 @@
 <meta property="og:url" content="https://emily-cuberos-portfolio.netlify.app/">
 <meta property="og:title" content="Emily Cuberos — Project Management &amp; Process Improvement Student">
 <meta property="og:description" content="Process improvement, systems analysis, and two years of architectural design training — case studies, live prototypes, and a full architecture portfolio.">
+<meta property="og:image" content="https://emily-cuberos-portfolio.netlify.app/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Emily Cuberos, project management and process improvement student">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://emily-cuberos-portfolio.netlify.app/assets/og-image.png">
 <meta name="twitter:title" content="Emily Cuberos — Project Management &amp; Process Improvement Student">
 <meta name="twitter:description" content="Process improvement, systems analysis, and two years of architectural design training — case studies, live prototypes, and a full architecture portfolio.">
 
@@ -133,6 +138,8 @@
   }
   .btn-ghost:hover{background:var(--teal); color:var(--cream);}
 
+  #architecture .card-soft{border:1px solid rgba(31,74,65,0.16); box-shadow:0 16px 38px -22px rgba(31,74,65,0.35);}
+
   .chip{
     background:var(--teal-soft);
     color:var(--teal);
@@ -186,30 +193,32 @@
 <body>
 
 <!-- ============ NAV ============ -->
-<header class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-3xl">
-  <div class="nav-pill rounded-full px-5 md:px-7 py-3 flex items-center justify-between shadow-sm">
+<header class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] lg:w-max max-w-[95%]">
+  <div class="nav-pill rounded-full px-5 md:px-7 py-3 flex items-center justify-between lg:gap-7 shadow-sm">
     <a href="#top" class="flex items-center gap-2">
       <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background:var(--teal);">
         <span class="font-display italic text-[var(--cream)] text-sm">Ec</span>
       </div>
     </a>
-    <nav class="hidden md:flex items-center gap-6 text-[13px] font-semibold">
+    <nav class="hidden lg:flex items-center gap-4 text-[13px] font-semibold whitespace-nowrap">
       <a href="#about" class="nav-link">About</a>
-      <a href="#work" class="nav-link">The Work</a>
+      <a href="#work" class="nav-link">Process Work</a>
+      <a href="#gca" class="nav-link">Built with AI</a>
       <a href="#architecture" class="nav-link">Architecture</a>
       <a href="#skills" class="nav-link">Skills</a>
       <a href="#certs" class="nav-link">Certifications</a>
       <a href="#timeline" class="nav-link">Timeline</a>
       <a href="docs/Emily_Cuberos_Resume.pdf" target="_blank" class="nav-link">R&eacute;sum&eacute;</a>
     </nav>
-    <a href="#contact" class="btn-primary hidden md:inline-flex text-[13px] font-bold rounded-full px-5 py-2.5">Say hello</a>
-    <button id="mobile-menu-btn" class="md:hidden flex items-center justify-center w-9 h-9" aria-label="Open menu" aria-expanded="false">
+    <a href="#contact" class="btn-primary hidden lg:inline-flex whitespace-nowrap text-[13px] font-bold rounded-full px-5 py-2.5">Say hello</a>
+    <button id="mobile-menu-btn" class="lg:hidden flex items-center justify-center w-9 h-9" aria-label="Open menu" aria-expanded="false">
       <i data-lucide="menu" class="w-5 h-5"></i>
     </button>
   </div>
-  <div id="mobile-menu" class="hidden md:hidden mt-2 nav-pill rounded-3xl px-5 py-4 flex flex-col gap-1 text-[14px] font-semibold shadow-sm">
+  <div id="mobile-menu" class="hidden lg:hidden mt-2 nav-pill rounded-3xl px-5 py-4 flex flex-col gap-1 text-[14px] font-semibold shadow-sm">
     <a href="#about" class="nav-link py-2">About</a>
-    <a href="#work" class="nav-link py-2">The Work</a>
+    <a href="#work" class="nav-link py-2">Process Work</a>
+    <a href="#gca" class="nav-link py-2">Built with AI</a>
     <a href="#architecture" class="nav-link py-2">Architecture</a>
     <a href="#skills" class="nav-link py-2">Skills</a>
     <a href="#certs" class="nav-link py-2">Certifications</a>
@@ -220,12 +229,12 @@
 </header>
 
 <!-- ============ HERO ============ -->
-<section id="top" class="relative overflow-hidden pt-40 md:pt-48 pb-24 px-5 md:px-10">
+<section id="top" class="relative overflow-hidden pt-40 md:pt-48 pb-24 px-5 md:px-10 flex flex-col justify-start" style="min-height:100vh; min-height:100svh;">
   <div class="blob w-[420px] h-[420px] -top-24 -left-32" style="background:var(--peach-soft);"></div>
   <div class="blob w-[360px] h-[360px] top-10 -right-24" style="background:var(--teal-soft);"></div>
   <div class="blob w-[260px] h-[260px] top-72 left-1/3" style="background:var(--gold-light); opacity:.25;"></div>
 
-  <div class="max-w-4xl mx-auto relative z-10 text-center">
+  <div class="w-full max-w-4xl mx-auto relative z-10 text-center">
     <div class="eyebrow mb-5">Hi, I&rsquo;m</div>
     <h1 class="font-display text-[15vw] md:text-7xl leading-[0.98] font-medium">
       Emily Cuberos
@@ -240,6 +249,9 @@
       <a href="#work" class="btn-primary rounded-full px-7 py-3.5 font-bold text-sm flex items-center gap-2">
         See what I&rsquo;ve built <i data-lucide="arrow-right" class="w-4 h-4"></i>
       </a>
+      <a href="docs/Emily_Cuberos_Resume.pdf" target="_blank" class="btn-ghost rounded-full px-7 py-3.5 font-bold text-sm flex items-center gap-2">
+        Download r&eacute;sum&eacute; <i data-lucide="download" class="w-4 h-4"></i>
+      </a>
       <a href="#contact" class="btn-ghost rounded-full px-7 py-3.5 font-bold text-sm">
         Get in touch
       </a>
@@ -247,7 +259,7 @@
   </div>
 
   <!-- Welcome strip -->
-  <div class="max-w-5xl mx-auto mt-20 relative z-10">
+  <div class="w-full max-w-5xl mx-auto mt-20 relative z-10">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
       <div class="card-soft p-6 text-center">
         <div class="kpi text-3xl" style="color:var(--teal);">3.74</div>
@@ -262,7 +274,7 @@
         <div class="text-xs font-semibold text-[var(--muted)] mt-1 uppercase tracking-wide">Architecture studio</div>
       </div>
       <div class="card-soft p-6 text-center">
-        <div class="kpi text-3xl" style="color:var(--teal);">7</div>
+        <div class="kpi text-3xl" style="color:var(--teal);">8</div>
         <div class="text-xs font-semibold text-[var(--muted)] mt-1 uppercase tracking-wide">Certifications</div>
       </div>
     </div>
@@ -270,7 +282,7 @@
 </section>
 
 <!-- ============ ABOUT ============ -->
-<section id="about" class="px-5 md:px-10 py-20">
+<section id="about" class="px-5 md:px-10 py-20" style="background:var(--cream-deep);">
   <div class="max-w-5xl mx-auto">
     <div class="grid md:grid-cols-2 gap-12 items-center">
       <div>
@@ -350,11 +362,11 @@
 <section id="work" class="px-5 md:px-10 py-24" style="background:var(--teal-soft);">
   <div class="max-w-5xl mx-auto">
     <div class="text-center mb-16">
-      <div class="eyebrow mb-3">The work</div>
-      <h2 class="font-display text-4xl md:text-5xl mb-4">Three builds, start to finish</h2>
+      <div class="eyebrow mb-3">Process work</div>
+      <h2 class="font-display text-4xl md:text-5xl mb-4">Two builds, start to finish</h2>
       <p class="text-[15.5px] text-[var(--ink)]/70 max-w-xl mx-auto leading-relaxed">
-        Coursework and a self-directed credential project, each carried from a real brief through to a
-        working, coded interface &mdash; two as a 5-person systems-analysis team, one solo.
+        Two course projects, each carried from a real brief through to a working, coded interface, built
+        as a 5-person systems-analysis team.
       </p>
     </div>
 
@@ -396,7 +408,7 @@
 
         <div class="flex flex-wrap gap-4 mb-6">
           <div class="chip rounded-full px-3.5 py-1.5">$70K est. build</div>
-          <div class="chip rounded-full px-3.5 py-1.5">$50K/yr saved + earned</div>
+          <div class="chip rounded-full px-3.5 py-1.5">$50K/yr projected (saved + earned)</div>
           <div class="chip rounded-full px-3.5 py-1.5">14-table 3NF schema</div>
         </div>
 
@@ -459,11 +471,10 @@
 
       <div class="p-8 md:p-9">
         <p class="text-[15px] leading-relaxed text-[var(--ink)]/85 mb-5">
-          In a course simulation for a fictional 24-hour caf&eacute;, our team designed realistic process
-          problems &mdash; a single rework loop at the order-accuracy check, worsened by orders that included a
-          customization &mdash; then worked out how to fix them. I mapped the as-is process, then
-          designed a phased AI rollout &mdash; voice ordering first, predictive wait times and a support
-          chatbot later &mdash; and built the ordering interface that demonstrates it.
+          For a fictional 24-hour caf&eacute; in a course project, our team researched real problems caf&eacute;s face and how companies have
+          used AI to solve them, then used that research to shape our caf&eacute;&rsquo;s problems and fixes &mdash; chiefly a rework loop at the
+          order-accuracy check, worsened by orders with customizations. I mapped the as-is process, designed a phased AI rollout &mdash;
+          voice ordering first, predictive wait times and a support chatbot later &mdash; and built the ordering interface that demonstrates it.
         </p>
 
         <div class="flex flex-wrap gap-4 mb-6">
@@ -501,24 +512,36 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- CASE STUDY 3: INTEL SUSTAINABILITY TIMELINE -->
-    <div class="reveal ticket mt-10 grid md:grid-cols-[1fr_auto_1.6fr]">
+<!-- ============ GCA / BRAND PROJECTS ============ -->
+<section id="gca" class="px-5 md:px-10 py-20" style="background:var(--cream-deep);">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-16">
+      <div class="eyebrow mb-3">Global Career Accelerator</div>
+      <h2 class="font-display text-4xl md:text-5xl mb-4">Built with AI</h2>
+      <p class="text-[15.5px] text-[var(--ink)]/70 max-w-xl mx-auto leading-relaxed">
+        Four brand-themed web projects from FIU&rsquo;s Global Career Accelerator, an applied, AI-assisted web-development program run with Podium Education. I directed AI to build each one, then tested and refined them.
+      </p>
+    </div>
+
+    <div class="reveal ticket mb-10 grid md:grid-cols-[1fr_auto_1.6fr]">
       <div class="p-8 md:p-9 flex flex-col justify-between" style="background:var(--teal); color:var(--cream);">
         <div>
-          <div class="stop-number text-5xl mb-4">03</div>
+          <div class="stop-number text-5xl mb-4" style="color:var(--gold-light);">01</div>
           <h3 class="font-display text-2xl leading-tight mb-2">Intel Sustainability Timeline</h3>
-          <p class="text-xs uppercase tracking-wide font-semibold" style="color:var(--gold-light);">Interactive responsive timeline, solo build</p>
+          <p class="text-xs uppercase tracking-wide font-semibold" style="color:var(--gold-light);">Interactive responsive timeline</p>
         </div>
         <div class="mt-8 space-y-3">
           <div class="flex justify-between text-sm border-b border-white/15 pb-2">
             <span class="opacity-70">Program</span><span class="font-semibold text-right">FIU Global Career Accelerator</span>
           </div>
           <div class="flex justify-between text-sm border-b border-white/15 pb-2">
-            <span class="opacity-70">My role</span><span class="font-semibold">Solo, AI-assisted</span>
+            <span class="opacity-70">Brand</span><span class="font-semibold text-right">Intel</span>
           </div>
-          <div class="flex justify-between text-sm">
-            <span class="opacity-70">Team</span><span class="font-semibold">Individual project</span>
+          <div class="flex justify-between text-sm ">
+            <span class="opacity-70">Team</span><span class="font-semibold text-right">Individual project</span>
           </div>
         </div>
       </div>
@@ -530,40 +553,229 @@
       </div>
 
       <div class="p-8 md:p-9">
-        <p class="text-[15px] leading-relaxed text-[var(--ink)]/85 mb-5">
-          A self-directed build for FIU's Global Career Accelerator, a web development micro-credential
-          delivered with Intel &mdash; not client work, and not something Intel commissioned or uses; Intel's
-          public sustainability milestones were simply the subject I designed around. I built a fully
-          responsive interactive timeline covering nine milestones, directing AI to implement the code
-          changes I specified and reviewing each result before finalizing it, with additional edits of my
-          own throughout.
+        <p class="text-[15px] leading-relaxed text-[var(--ink)]/85 mb-3">
+          Nine milestones from Intel&rsquo;s history presented as a timeline that scrolls horizontally on desktop and stacks vertically on mobile, built in HTML, CSS and Flexbox, then extended with Bootstrap for a three-column section, a newsletter signup form and right-to-left language support. A program project built around Intel&rsquo;s brand and mission; Intel didn&rsquo;t commission or use it.
         </p>
-
+        <p class="text-[15px] leading-relaxed text-[var(--ink)]/85 mb-5">
+          Hover details pull out from below each card instead of covering it, so nothing already on screen gets hidden. The brief never asked for that.
+        </p>
         <div class="flex flex-wrap gap-4 mb-6">
-          <div class="chip rounded-full px-3.5 py-1.5">9 milestones</div>
-          <div class="chip rounded-full px-3.5 py-1.5">CSS Scroll Snap</div>
-          <div class="chip rounded-full px-3.5 py-1.5">Fully responsive</div>
+          <div class="chip rounded-full px-3.5 py-1.5">9 milestones</div><div class="chip rounded-full px-3.5 py-1.5">100 accessibility score</div><div class="chip rounded-full px-3.5 py-1.5">RTL support</div>
         </div>
 
         <details class="group">
           <summary class="cursor-pointer text-sm font-bold flex items-center gap-2" style="color:var(--teal);">
-            What I actually did
+            More details
             <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-open:rotate-180"></i>
           </summary>
           <ul class="mt-4 space-y-2.5 text-sm text-[var(--ink)]/80">
-            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Built a fully responsive Flexbox layout: milestones scroll horizontally on desktop, stack vertically on mobile.</li>
-            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Designed hover-triggered detail cards that pull out from beneath each milestone, revealing information without covering anything already visible.</li>
-            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Implemented CSS Scroll Snap and subtle CSS transforms for smoother horizontal navigation and more engaging hover interactions.</li>
-            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Directed AI (GitHub Copilot) to implement specific code changes I described, reviewing each result before finalizing it and making manual edits of my own along the way.</li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Lighthouse accessibility score of 100 on desktop and mobile: contrast ratios, descriptive alt text on every image, labelled form fields.</li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>CSS scroll snap for the horizontal navigation, plus transforms and shadows on hover.</li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>AI-generated images (made with Microsoft Copilot) matched to each milestone, and a modal confirming newsletter signup.</li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Right-to-left layout applies automatically when the page language changes.</li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>The &ldquo;Learn More&rdquo; links are intentional placeholders &mdash; scope, not broken links.</li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Responsive layout that adapts from phone to desktop.</li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Directed AI (GitHub Copilot) to implement what I specified and reviewed each result before finalizing.</li>
           </ul>
         </details>
 
         <div class="flex flex-wrap gap-3 mt-7">
-          <a href="https://emcuberos1.github.io/Intel-Sustainability-Timeline/" target="_blank" class="btn-primary rounded-full px-5 py-2.5 text-sm font-bold flex items-center gap-2">
+          <a href="https://emcuberos1.github.io/Intel-Sustainability-Timeline/" target="_blank" rel="noopener" class="btn-primary rounded-full px-5 py-2.5 text-sm font-bold flex items-center gap-2">
             Launch live site <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
           </a>
-          <a href="https://github.com/emcuberos1/Intel-Sustainability-Timeline" target="_blank" class="btn-ghost rounded-full px-5 py-2.5 text-sm font-bold flex items-center gap-2">
-            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.75 2.69 1.25 3.34.96.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.05.78 2.11 0 1.53-.01 2.76-.01 3.13 0 .3.2.66.79.55A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg> GitHub
+          <a href="https://github.com/emcuberos1/Intel-Sustainability-Timeline" target="_blank" rel="noopener" class="btn-ghost rounded-full px-5 py-2.5 text-sm font-bold flex items-center gap-2">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.75 2.69 1.25 3.34.96.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.05.78 2.11 0 1.53-.01 2.76-.01 3.13 0 .3.2.66.79.55A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="reveal ticket mb-10 grid md:grid-cols-[1fr_auto_1.6fr]">
+      <div class="p-8 md:p-9 flex flex-col justify-between" style="background:var(--teal); color:var(--cream);">
+        <div>
+          <div class="stop-number text-5xl mb-4" style="color:var(--gold-light);">02</div>
+          <h3 class="font-display text-2xl leading-tight mb-2">The Waterfinder</h3>
+          <p class="text-xs uppercase tracking-wide font-semibold" style="color:var(--gold-light);">Interactive game for charity: water</p>
+        </div>
+        <div class="mt-8 space-y-3">
+          <div class="flex justify-between text-sm border-b border-white/15 pb-2">
+            <span class="opacity-70">Program</span><span class="font-semibold text-right">FIU Global Career Accelerator</span>
+          </div>
+          <div class="flex justify-between text-sm border-b border-white/15 pb-2">
+            <span class="opacity-70">Brand</span><span class="font-semibold text-right">charity: water</span>
+          </div>
+          <div class="flex justify-between text-sm ">
+            <span class="opacity-70">Team</span><span class="font-semibold text-right">Individual project</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hidden md:block relative">
+        <div class="punch" style="left:-14px; top:0;"></div>
+        <div class="ticket-divider h-full"></div>
+        <div class="punch" style="left:-14px; bottom:0; top:auto;"></div>
+      </div>
+
+      <div class="p-8 md:p-9">
+        <p class="text-[15px] leading-relaxed text-[var(--ink)]/85 mb-4">
+          A Minesweeper-style game for charity: water. You dig down through soil, avoiding contaminated water, to reach the clean water below. Four difficulty levels, from Beginner to Impossible, scored on time rather than points. A program project built around charity: water&rsquo;s brand and mission; charity: water didn&rsquo;t commission or use it.
+        </p>
+        <p class="text-[15px] leading-relaxed text-[var(--ink)]/85 mb-5">
+          Not a game with a charity&rsquo;s logo pasted on it, but one that puts players in charity: water&rsquo;s position. I researched how they actually drill wells, and made avoiding near-surface water the core mechanic.
+        </p>
+        <div class="flex flex-wrap gap-4 mb-6">
+          <div class="chip gold rounded-full px-3.5 py-1.5">4 difficulty levels</div><div class="chip gold rounded-full px-3.5 py-1.5">No-guess boards</div><div class="chip gold rounded-full px-3.5 py-1.5">User tested</div>
+        </div>
+
+        <details class="group">
+          <summary class="cursor-pointer text-sm font-bold flex items-center gap-2" style="color:var(--teal);">
+            More details
+            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-open:rotate-180"></i>
+          </summary>
+          <ul class="mt-4 space-y-2.5 text-sm text-[var(--ink)]/80">
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Planned before building: Balsamiq wireframes for desktop, tablet and mobile, a game-logic spec written like a hand-off to an engineering team, and a pitch note to charity: water stakeholders.</li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Some boards forced players to guess. The cause was board generation, so the game now plays each board against itself and discards any that can&rsquo;t be won without guessing.</li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Friends playtested it, and both changes came from their feedback: milestone text now appears when the final tile is revealed, and footer links went from grey to black so they get noticed.</li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Three sound effects, milestone messages, win confetti, and Georgia and Montserrat to match charity: water&rsquo;s brand guidelines.</li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Mouse and touch controls: left-click to dig and right-click to place a cone, or double-tap and tap on mobile. On phones the grid gets fewer columns and more rows so tiles stay big enough to tap.</li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Responsive layout that adapts from phone to desktop.</li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Directed AI (GitHub Copilot, then Claude for the board logic) to implement what I specified and reviewed each result before finalizing.</li>
+          </ul>
+        </details>
+
+        <div class="flex flex-wrap gap-3 mt-7">
+          <a href="https://emcuberos1.github.io/The-Waterfinder/" target="_blank" rel="noopener" class="btn-primary rounded-full px-5 py-2.5 text-sm font-bold flex items-center gap-2">
+            Launch live site <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+          <a href="https://github.com/emcuberos1/The-Waterfinder" target="_blank" rel="noopener" class="btn-ghost rounded-full px-5 py-2.5 text-sm font-bold flex items-center gap-2">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.75 2.69 1.25 3.34.96.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.05.78 2.11 0 1.53-.01 2.76-.01 3.13 0 .3.2.66.79.55A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="reveal ticket mb-10 grid md:grid-cols-[1fr_auto_1.6fr]">
+      <div class="p-8 md:p-9 flex flex-col justify-between" style="background:var(--teal); color:var(--cream);">
+        <div>
+          <div class="stop-number text-5xl mb-4" style="color:var(--gold-light);">03</div>
+          <h3 class="font-display text-2xl leading-tight mb-2">NASA Space Explorer</h3>
+          <p class="text-xs uppercase tracking-wide font-semibold" style="color:var(--gold-light);">Astronomy Picture of the Day gallery</p>
+        </div>
+        <div class="mt-8 space-y-3">
+          <div class="flex justify-between text-sm border-b border-white/15 pb-2">
+            <span class="opacity-70">Program</span><span class="font-semibold text-right">FIU Global Career Accelerator</span>
+          </div>
+          <div class="flex justify-between text-sm border-b border-white/15 pb-2">
+            <span class="opacity-70">Brand</span><span class="font-semibold text-right">NASA</span>
+          </div>
+          <div class="flex justify-between text-sm ">
+            <span class="opacity-70">Team</span><span class="font-semibold text-right">Individual project</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hidden md:block relative">
+        <div class="punch" style="left:-14px; top:0;"></div>
+        <div class="ticket-divider h-full"></div>
+        <div class="punch" style="left:-14px; bottom:0; top:auto;"></div>
+      </div>
+
+      <div class="p-8 md:p-9">
+        <p class="text-[15px] leading-relaxed text-[var(--ink)]/85 mb-4">
+          A gallery of NASA&rsquo;s Astronomy Picture of the Day, browsable by date range, with a modal detail view for each image and its full explanation. Styled to NASA&rsquo;s own web design system. A program project built around NASA&rsquo;s brand and mission; NASA didn&rsquo;t commission or use it.
+        </p>
+        <p class="text-[15px] leading-relaxed text-[var(--ink)]/85 mb-5">
+          NASA&rsquo;s API returned the wrong data &mdash; every card showed the same placeholder logo. I tested across dates and ruled out my own code, then found a backup NASA endpoint. The app now detects the placeholder data and switches to the backup automatically, and goes back to NASA&rsquo;s API if it recovers.
+        </p>
+        <div class="flex flex-wrap gap-4 mb-6">
+          <div class="chip rounded-full px-3.5 py-1.5">Date-range browsing</div><div class="chip rounded-full px-3.5 py-1.5">Modal detail view</div><div class="chip rounded-full px-3.5 py-1.5">API fallback</div>
+        </div>
+
+        <details class="group">
+          <summary class="cursor-pointer text-sm font-bold flex items-center gap-2" style="color:var(--teal);">
+            More details
+            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-open:rotate-180"></i>
+          </summary>
+          <ul class="mt-4 space-y-2.5 text-sm text-[var(--ink)]/80">
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Added beyond the brief: arrows inside the modal to move between days without closing it.</li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Handles video entries, shows a random space fact on each reload, and zooms images on hover.</li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Shows a readable message when an image fails to load, and retries by checking what the server actually sent.</li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Responsive layout that adapts from phone to desktop.</li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Directed AI (GitHub Copilot, with Claude for debugging) to implement what I specified and reviewed each result before finalizing.</li>
+          </ul>
+        </details>
+
+        <div class="flex flex-wrap gap-3 mt-7">
+          <a href="https://emcuberos1.github.io/Nasa-Space-Explorer/" target="_blank" rel="noopener" class="btn-primary rounded-full px-5 py-2.5 text-sm font-bold flex items-center gap-2">
+            Launch live site <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+          <a href="https://github.com/emcuberos1/Nasa-Space-Explorer" target="_blank" rel="noopener" class="btn-ghost rounded-full px-5 py-2.5 text-sm font-bold flex items-center gap-2">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.75 2.69 1.25 3.34.96.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.05.78 2.11 0 1.53-.01 2.76-.01 3.13 0 .3.2.66.79.55A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="reveal ticket grid md:grid-cols-[1fr_auto_1.6fr]">
+      <div class="p-8 md:p-9 flex flex-col justify-between" style="background:var(--teal); color:var(--cream);">
+        <div>
+          <div class="stop-number text-5xl mb-4" style="color:var(--gold-light);">04</div>
+          <h3 class="font-display text-2xl leading-tight mb-2">L&rsquo;Or&eacute;al Smart Routine Builder</h3>
+          <p class="text-xs uppercase tracking-wide font-semibold" style="color:var(--gold-light);">AI routine builder &amp; chatbot</p>
+        </div>
+        <div class="mt-8 space-y-3">
+          <div class="flex justify-between text-sm border-b border-white/15 pb-2">
+            <span class="opacity-70">Program</span><span class="font-semibold text-right">FIU Global Career Accelerator</span>
+          </div>
+          <div class="flex justify-between text-sm border-b border-white/15 pb-2">
+            <span class="opacity-70">Brand</span><span class="font-semibold text-right">L&rsquo;Or&eacute;al</span>
+          </div>
+          <div class="flex justify-between text-sm ">
+            <span class="opacity-70">Team</span><span class="font-semibold text-right">Individual project</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hidden md:block relative">
+        <div class="punch" style="left:-14px; top:0;"></div>
+        <div class="ticket-divider h-full"></div>
+        <div class="punch" style="left:-14px; bottom:0; top:auto;"></div>
+      </div>
+
+      <div class="p-8 md:p-9">
+        <p class="text-[15px] leading-relaxed text-[var(--ink)]/85 mb-4">
+          Browse and search 35 real products across L&rsquo;Or&eacute;al Group brands, select the ones you want, and get a routine generated from those specific items &mdash; then ask follow-up questions with the whole conversation in context. Selections survive a reload, answers carry live web search citations, and right-to-left languages are supported. Built on an earlier chatbot version I made for the same brand. A program project built around L&rsquo;Or&eacute;al&rsquo;s brand and mission; L&rsquo;Or&eacute;al didn&rsquo;t commission or use it.
+        </p>
+        <p class="text-[15px] leading-relaxed text-[var(--ink)]/85 mb-5">
+          Every request goes through a Cloudflare Worker, so the API key never appears in anything the browser downloads.
+        </p>
+        <div class="flex flex-wrap gap-4 mb-6">
+          <div class="chip gold rounded-full px-3.5 py-1.5">35 products</div><div class="chip gold rounded-full px-3.5 py-1.5">Cloudflare Worker</div><div class="chip gold rounded-full px-3.5 py-1.5">RTL support</div><div class="chip gold rounded-full px-3.5 py-1.5">Web search citations</div>
+        </div>
+
+        <details class="group">
+          <summary class="cursor-pointer text-sm font-bold flex items-center gap-2" style="color:var(--teal);">
+            More details
+            <i data-lucide="chevron-down" class="w-4 h-4 transition-transform group-open:rotate-180"></i>
+          </summary>
+          <ul class="mt-4 space-y-2.5 text-sm text-[var(--ink)]/80">
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>The bug wasn&rsquo;t where it looked: the page sent the right model, but the Worker had its own model hardcoded and ignored it. I confirmed that in the DevTools payload.</li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Two product images failed because of two different filename-encoding bugs in the data, not the code.</li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Black background with L&rsquo;Or&eacute;al&rsquo;s red and gold accents. Fonts: Bodoni Moda and Poppins, free equivalents of the commercially licensed pairing L&rsquo;Or&eacute;al uses.</li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>The page scrolls to the chat when you generate a routine, selected products show thumbnails, and failed images get a placeholder.</li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Responsive layout that adapts from phone to desktop.</li>
+            <li class="flex gap-2"><i data-lucide="check-circle" class="w-4 h-4 mt-0.5 shrink-0" style="color:var(--gold);"></i>Directed AI (GitHub Copilot and Claude) to implement what I specified and reviewed each result before finalizing.</li>
+          </ul>
+          <p class="mt-4 text-sm"><a href="https://emcuberos1.github.io/Loreal-Chatbot/" target="_blank" rel="noopener" class="underline font-semibold" style="color:var(--teal);">See the earlier chatbot version</a></p>
+        </details>
+
+        <div class="flex flex-wrap gap-3 mt-7">
+          <a href="https://emcuberos1.github.io/Loreal-Routine-Builder/" target="_blank" rel="noopener" class="btn-primary rounded-full px-5 py-2.5 text-sm font-bold flex items-center gap-2">
+            Launch live site <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          </a>
+          <a href="https://github.com/emcuberos1/Loreal-Routine-Builder" target="_blank" rel="noopener" class="btn-ghost rounded-full px-5 py-2.5 text-sm font-bold flex items-center gap-2">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.75 2.69 1.25 3.34.96.1-.74.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.35.78 1.05.78 2.11 0 1.53-.01 2.76-.01 3.13 0 .3.2.66.79.55A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+            GitHub
           </a>
         </div>
       </div>
@@ -572,7 +784,7 @@
 </section>
 
 <!-- ============ ARCHITECTURE STUDIO ============ -->
-<section id="architecture" class="px-5 md:px-10 py-20" style="background:var(--cream-deep);">
+<section id="architecture" class="px-5 md:px-10 py-20">
   <div class="max-w-5xl mx-auto">
     <div class="text-center mb-14">
       <div class="eyebrow mb-3">Where it started</div>
@@ -642,51 +854,6 @@
             View full project <i data-lucide="arrow-right" class="w-3 h-3"></i>
           </a>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ GCA / BRAND PROJECTS ============ -->
-<section id="gca" class="px-5 md:px-10 py-20">
-  <div class="max-w-5xl mx-auto">
-    <div class="text-center mb-12">
-      <div class="eyebrow mb-3">Coming this fall</div>
-      <h2 class="font-display text-4xl mb-4">Global Career Accelerator</h2>
-      <p class="text-[15.5px] text-[var(--ink)]/70 max-w-xl mx-auto leading-relaxed">
-        FIU&rsquo;s applied web-development program, run with Podium Education. Four brand-sponsored builds,
-        Fall 2026 &mdash; each one earns a stackable certification.
-      </p>
-    </div>
-
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-      <div class="card-soft p-6 text-center">
-        <div class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4" style="background:var(--teal-soft);">
-          <i data-lucide="droplets" class="w-5 h-5" style="color:var(--teal);"></i>
-        </div>
-        <div class="font-display text-lg mb-1.5">charity: water</div>
-        <p class="text-xs text-[var(--muted)] leading-relaxed">An interactive game introducing charity: water&rsquo;s mission to new visitors.</p>
-      </div>
-      <div class="card-soft p-6 text-center">
-        <div class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4" style="background:var(--peach-soft);">
-          <i data-lucide="milestone" class="w-5 h-5" style="color:#9A5B26;"></i>
-        </div>
-        <div class="font-display text-lg mb-1.5">Intel</div>
-        <p class="text-xs text-[var(--muted)] leading-relaxed">An interactive timeline built for the Web Development track.</p>
-      </div>
-      <div class="card-soft p-6 text-center">
-        <div class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4" style="background:var(--teal-soft);">
-          <i data-lucide="rocket" class="w-5 h-5" style="color:var(--teal);"></i>
-        </div>
-        <div class="font-display text-lg mb-1.5">NASA</div>
-        <p class="text-xs text-[var(--muted)] leading-relaxed">A photo gallery showcasing NASA imagery and missions.</p>
-      </div>
-      <div class="card-soft p-6 text-center">
-        <div class="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4" style="background:var(--peach-soft);">
-          <i data-lucide="sparkles" class="w-5 h-5" style="color:#9A5B26;"></i>
-        </div>
-        <div class="font-display text-lg mb-1.5">L&rsquo;Or&eacute;al</div>
-        <p class="text-xs text-[var(--muted)] leading-relaxed">A smart skincare routine builder with an AI-powered recommendation flow.</p>
       </div>
     </div>
   </div>
@@ -862,8 +1029,8 @@
           </div>
         </div>
         <p class="text-xs text-[var(--muted)] mt-4 leading-relaxed px-1">
-          Earned on completion of each track, Aug&ndash;Dec 2026, alongside the charity:&thinsp;water, Intel,
-          NASA, and L&rsquo;Or&eacute;al brand projects above.
+          Web Development earned Oct 2026; the other three are in progress this fall, alongside the charity:&thinsp;water, Intel,
+          NASA, and L&rsquo;Or&eacute;al builds in the GCA section.
         </p>
       </div>
     </div>
